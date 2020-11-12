@@ -24,6 +24,7 @@
     "nodemon": "^2.0.6",
     "pm2": "^4.5.0",
     "signale": "^1.4.0",
+    "vue-feather-icons": "^5.1.0",
     "vuepress": "^1.7.1"
   }
 }
