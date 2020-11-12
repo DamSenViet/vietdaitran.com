@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "pm2 start ./server/index.js --name vietdaitran.com",
+    "stop": "pm2 delete vietdaitran.com",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "vuepress dev client",
     "build:client": "vuepress build client",
