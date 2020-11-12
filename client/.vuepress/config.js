@@ -10,18 +10,8 @@ const {
 
 const title = "Viet Tran";
 
-const displayAllHeaders = false;
-
-const navbar = false;
-
-const themeConfig = {
-  navbar,
-  displayAllHeaders,
-};
-
 module.exports = {
   title,
-  themeConfig,
   devServer: {
     https: true,
     cert: fs.readFileSync(SSL_CERT),
