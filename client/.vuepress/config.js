@@ -12,6 +12,9 @@ const title = "Viet Tran";
 
 module.exports = {
   title,
+  themeConfig: {
+    searchPlaceholder: 'Search...'
+  },
   devServer: {
     https: true,
     cert: fs.readFileSync(SSL_CERT),

@@ -1,175 +1,261 @@
 <template>
-  <main
-    class="home"
-    :aria-labelledby="data.heroText !== null ? 'main-title' : null"
-  >
-    <header class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-      >
-
-      <h1
-        v-if="data.heroText !== null"
-        id="main-title"
-      >
-        {{ data.heroText || $title || 'Hello' }}
+  <div class="home">
+    <section class="hero">
+      <h1 class="name">
+        <span>Viet</span> <br />
+        <span>Tran</span>
       </h1>
-
-      <p
-        v-if="data.tagline !== null"
-        class="description"
-      >
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+      <div class="title">Developer / UI & UX Designer</div>
+    </section>
+    <section class="about basic-section">
+      <h2>Introduction</h2>
+      <p>
+        Hello there! Welcome to my portfolio. I'm Viet, a Developer and UI / UX
+        designer (and hobby illustrator) located on the US West Coast. I
+        freelance web development and web design in my spare time. I'm a
+        self-motivated creator and am always looking forward to learn new
+        technologies to add to my toolkit. I'm excited for new opportunities,
+        the chance to meet new people, and meaningfully contribute to promising
+        software projects.
       </p>
-
-      <p
-        v-if="data.actionText && data.actionLink"
-        class="action"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
-      </p>
-    </header>
-
-    <div
-      v-if="data.features && data.features.length"
-      class="features"
-    >
-      <div
-        v-for="(feature, index) in data.features"
-        :key="index"
-        class="feature"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+      <div class="action-container">
+        <a href="https://github.com/DamSenViet">
+          <span>Check Out My GitHub</span>
+          <GithubIcon />
+          <span>&rarr;</span>
+        </a>
       </div>
-    </div>
-
-    <Content class="theme-default-content custom" />
-
-    <div
-      v-if="data.footer"
-      class="footer"
-    >
-      {{ data.footer }}
-    </div>
-  </main>
+    </section>
+    <section class="contact basic-section">
+      <h2>Opportunities</h2>
+      <p>
+        New knowledge is always useful and I'm always hungry to learn new
+        things. I'm constantly working on new projects to deliver solutions to
+        both hobby and academic communities. Have an idea? Interested in joining
+        me for a project? Let's gets the ball rolling and discuss ideas
+        together!
+      </p>
+      <div class="action-container">
+        <RouterLink to="/contact">
+          <span>Let's Talk Over Coffee</span>
+          <CoffeeIcon />
+          <span>&rarr;</span>
+        </RouterLink>
+      </div>
+    </section>
+    <section class="timeline basic-section">
+      <h2>Timeline</h2>
+      <div class="table-container">
+        <div class="table-header">
+          <div class="project">Project</div>
+          <div class="release">Planned Release</div>
+        </div>
+        <div class="table-content">
+          <div class="table-row">
+            <div class="project">Keybits</div>
+            <div class="release">Dec. 2020</div>
+          </div>
+        </div>
+      </div>
+      <div class="action-container">
+        <RouterLink to="/planned">
+          <span>Explore Planned Projects</span>
+          <ActivityIcon />
+          <span>&rarr;</span>
+        </RouterLink>
+      </div>
+    </section>
+    <section class="projects basic-section">
+      <h2>Projects</h2>
+      <p>
+        Interested in my previous projects? Here's a small preview of my work.
+      </p>
+      <div class="action-container">
+        <RouterLink to="/projects">
+          <span>View All Projects</span>
+          <PackageIcon />
+          <span>&rarr;</span>
+        </RouterLink>
+      </div>
+    </section>
+    <Content class="theme-default-content" />
+  </div>
 </template>
 
 <script>
-import NavLink from '@theme/components/NavLink.vue'
+import {
+  GithubIcon,
+  CoffeeIcon,
+  BriefcaseIcon,
+  ActivityIcon,
+  PackageIcon,
+} from "vue-feather-icons";
 
 export default {
-  name: 'Home',
+  name: "Home",
 
-  components: { NavLink },
+  components: {
+    GithubIcon,
+    CoffeeIcon,
+    BriefcaseIcon,
+    ActivityIcon,
+    PackageIcon,
+  },
+};
+</script>
 
-  computed: {
-    data () {
-      return this.$page.frontmatter
-    },
+<style lang="stylus" scoped>
+@import './../styles/screens';
+@import './../styles/colors';
+@import './../styles/interactions';
+@import './../styles/fonts';
 
-    actionLink () {
-      return {
-        link: this.data.actionLink,
-        text: this.data.actionText
+.home {
+  display: grid;
+  grid-template-areas: 'hero' 'about' 'contact' 'timeline' 'projects';
+  justify-content: center;
+  justify-items: stretch;
+  row-gap: 3rem;
+  column-gap: 3rem;
+
+  > .hero {
+    grid-area: hero;
+    text-align: center;
+    font-smooth: never;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+
+    > .name {
+      margin-bottom: 0rem;
+      line-height: 1.75;
+      font-family: $fonts-monoton, $fonts-averia-serif-libre;
+      font-size: 3.2rem;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-weight: 400;
+
+      +screens-md() {
+        br {
+          display: none;
+        }
+      }
+    }
+
+    > .title {
+      font-family: $fonts-averia-serif-libre;
+      font-size: 0.875rem;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+  }
+
+  .basic-section {
+    > h2 {
+      margin-top: 0rem;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      font-family: $fonts-open-sans, --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+    }
+
+    > p {
+      text-align: justify;
+      font-size: 0.8rem;
+      font-family: sans-serif, --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+    }
+
+    > .action-container {
+      margin-top: 1.5rem;
+
+      > a {
+        position: relative;
+        border-reveal($colors-text, 1px, 6px, 10px);
+
+        > span {
+          font-size: 0.75rem;
+          color: black;
+          vertical-align: middle;
+        }
+
+        > svg {
+          // fill: $colors-text;
+          height: 1rem;
+          stroke: $colors-text;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+    }
+
+    > h3 {
+      font-size: 0.8rem;
+    }
+
+    > ul {
+      font-size: 0.8rem;
+    }
+  }
+
+  > .about {
+    grid-area: about;
+  }
+
+  > .contact {
+    grid-area: contact;
+  }
+
+  > .services {
+    grid-area: services;
+  }
+
+  > .timeline {
+    grid-area: timeline;
+
+    +screens-md() {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .table-container {
+      +screens-md() {
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .table-header, .table-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        column-gap: 10px;
+      }
+
+      .table-header {
+        text-decoration: underline;
+        font-size: 0.8rem;
+      }
+
+      .table-content {
+        margin-top: 1rem;
+        justify-self: stretch;
+
+        .table-row {
+          font-size: 0.8rem;
+
+          .project, .release {
+            padding-top: 1rem;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+          }
+
+          &:nth-child(odd) {
+            background-color: $colors-hint-of-red;
+          }
+        }
       }
     }
   }
+
+  > .projects {
+    grid-area: projects;
+  }
 }
-</script>
-
-<style lang="stylus">
-.home
-  padding $navbarHeight 2rem 0
-  max-width $homePageWidth
-  margin 0px auto
-  display block
-  .hero
-    text-align center
-    img
-      max-width: 100%
-      max-height 280px
-      display block
-      margin 3rem auto 1.5rem
-    h1
-      font-size 3rem
-    h1, .description, .action
-      margin 1.8rem auto
-    .description
-      max-width 35rem
-      font-size 1.6rem
-      line-height 1.3
-      color lighten($textColor, 40%)
-    .action-button
-      display inline-block
-      font-size 1.2rem
-      color #fff
-      background-color $accentColor
-      padding 0.8rem 1.6rem
-      border-radius 4px
-      transition background-color .1s ease
-      box-sizing border-box
-      border-bottom 1px solid darken($accentColor, 10%)
-      &:hover
-        background-color lighten($accentColor, 10%)
-  .features
-    border-top 1px solid $borderColor
-    padding 1.2rem 0
-    margin-top 2.5rem
-    display flex
-    flex-wrap wrap
-    align-items flex-start
-    align-content stretch
-    justify-content space-between
-  .feature
-    flex-grow 1
-    flex-basis 30%
-    max-width 30%
-    h2
-      font-size 1.4rem
-      font-weight 500
-      border-bottom none
-      padding-bottom 0
-      color lighten($textColor, 10%)
-    p
-      color lighten($textColor, 25%)
-  .footer
-    padding 2.5rem
-    border-top 1px solid $borderColor
-    text-align center
-    color lighten($textColor, 25%)
-
-@media (max-width: $MQMobile)
-  .home
-    .features
-      flex-direction column
-    .feature
-      max-width 100%
-      padding 0 2.5rem
-
-@media (max-width: $MQMobileNarrow)
-  .home
-    padding-left 1.5rem
-    padding-right 1.5rem
-    .hero
-      img
-        max-height 210px
-        margin 2rem auto 1.2rem
-      h1
-        font-size 2rem
-      h1, .description, .action
-        margin 1.2rem auto
-      .description
-        font-size 1.2rem
-      .action-button
-        font-size 1rem
-        padding 0.6rem 1.2rem
-    .feature
-      h2
-        font-size 1.25rem
 </style>

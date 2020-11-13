@@ -211,7 +211,7 @@ export function resolveMatchingConfig(regularPath, config) {
   return {}
 }
 
-function ensureEndingSlash(path) {
+export function ensureEndingSlash(path) {
   return /(\.html|\/)$/.test(path)
     ? path
     : path + '/'

@@ -1,0 +1,34 @@
+$break-width-sm = 480px;
+$break-width-md = 768px;
+$break-width-lg = 992px;
+$break-width-xlg = 1280px;
+
+respond-to-width($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    {block};
+  }
+}
+
+screens-sm() {
+  +respond-to-width($break-width-sm) {
+    {block};
+  }
+}
+
+screens-md() {
+  +respond-to-width($break-width-md) {
+    {block};
+  }
+}
+
+screens-lg() {
+  +respond-to-width($break-width-lg) {
+    {block};
+  }
+}
+
+screens-xlg() {
+  +respond-to-width($break-width-xlg) {
+    {block};
+  }
+}
