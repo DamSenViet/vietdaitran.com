@@ -4,6 +4,7 @@ env.correct();
 env.check();
 const fs = require("fs");
 const signale = require("signale");
+const path = require("path");
 const { pathToClientBuild } = require("./../etc/paths");
 const { ifProdVal } = require("./../etc/env");
 const {
@@ -14,7 +15,7 @@ const {
 } = process.env;
 
 const fastify = require("fastify")({
-  logger: true,
+  logger: ifProdVal(false, true),
   https: {
     cert: fs.readFileSync(SSL_CERT),
     key: fs.readFileSync(SSL_KEY),
@@ -31,6 +32,12 @@ fastify
     root: pathToClientBuild,
   });
 
+fastify.addHook("preHandler", async (request, reply) => {
+  const accepts = new Set(request.headers.accept.split(","));
+  if (accepts.has("text/html")) {
+    reply.sendFile("index.html", path.resolve(pathToClientBuild));
+  }
+});
 
 
 const port = ifProdVal(443, Number.parseInt(DEV_PORT));
