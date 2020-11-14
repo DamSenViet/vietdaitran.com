@@ -6,12 +6,26 @@ const envConfig = {
   NODE_ENV: false,
   SSL_CERT: true,
   SSL_KEY: true,
+  SENDGRID_API_KEY: true,
+  GRECAPTCHA_SECRET_KEY: true,
+  GRECAPTCHA_SITE_KEY: true,
+  DEV_HOST: false,
+  DEV_PORT: false,
+};
+
+const clientEnvConfig = {
+  GRECAPTCHA_SITE_KEY: true,
 };
 
 // list of env variables to loaded as default
 // subset of env config keys
 const defaultEnv = {
   NODE_ENV: "development",
+  DEV_HOST: "localhost",
+  DEV_PORT: "3000",
+};
+
+const transformEnv = {
 };
 
 const validateEnv = {
@@ -31,6 +45,8 @@ const validateEnv = {
 
 module.exports = {
   envConfig,
+  clientEnvConfig,
   defaultEnv,
+  transformEnv,
   validateEnv,
 };

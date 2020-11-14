@@ -3,7 +3,9 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 const signale = require('signale');
 const {
+  clientEnvConfig,
   envConfig,
+  transformEnv,
   defaultEnv,
   validateEnv
 } = require('../config/env.config');
@@ -58,6 +60,24 @@ const check = () => {
 };
 
 
+const buildClient = () => {
+  // a, b, intersection
+  const clientEnvVars = Object.keys(clientEnvConfig);
+  const processEnvVars = new Set(Object.keys(process.env));
+  const clientAvailEnvVars = [...clientEnvVars].filter(envVar => processEnvVars.has(envVar));
+
+  // construct client env from what is available
+  const clientEnv = clientAvailEnvVars
+    .reduce((env, envVar) => {
+      if (envVar in transformEnv)
+        env[envVar] = transformEnv[envVar]();
+      else
+        env[envVar] = process.env[envVar];
+      return env;
+    }, {});
+  return clientEnv;
+};
+
 
 // UTILITIES
 const ifDevVal = (devVal, defaultVal) => {
@@ -93,6 +113,7 @@ module.exports = {
   load,
   correct,
   check,
+  buildClient,
   ifDevVal,
   ifDevExec,
   ifProdVal,

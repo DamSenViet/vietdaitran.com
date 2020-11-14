@@ -4,15 +4,17 @@ env.correct();
 env.check();
 const fs = require("fs");
 const signale = require("signale");
-const { pathToClientBuild } = require ("./../etc/paths");
+const { pathToClientBuild } = require("./../etc/paths");
 const { ifProdVal } = require("./../etc/env");
 const {
   SSL_CERT,
   SSL_KEY,
+  DEV_HOST,
+  DEV_PORT,
 } = process.env;
 
 const fastify = require("fastify")({
-  logger: false,
+  logger: true,
   https: {
     cert: fs.readFileSync(SSL_CERT),
     key: fs.readFileSync(SSL_KEY),
@@ -22,14 +24,17 @@ const fastify = require("fastify")({
 
 fastify
   .register(require("fastify-helmet"))
-  .register(require("fastify-cors"), { origin: false })
+  .register(require("fastify-cors"), { origin: ifProdVal(false, true) })
   .register(require("fastify-sensible"))
+  .register(require("./routes"), { prefix: "/api" })
   .register(require("fastify-static"), {
     root: pathToClientBuild,
   });
 
-const port = ifProdVal(443, 8080);
-const host = ifProdVal("0.0.0.0", "localhost");
+
+
+const port = ifProdVal(443, Number.parseInt(DEV_PORT));
+const host = ifProdVal("0.0.0.0", DEV_HOST);
 
 (async () => {
   try {
