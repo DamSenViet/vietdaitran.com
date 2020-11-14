@@ -16,13 +16,14 @@ const sendMail = async (fromEmail, fromName, subject, text) => {
     autoHideBadge: true,
   });
   const grecaptchaToken = await recaptcha.execute('mail');
-  await api.post("/mail", {
+  const response = await api.post("/mail", {
     grecaptchaToken,
     fromEmail,
     fromName,
     subject,
     text,
   });
+  console.log(response.status);
 };
 
 export default {

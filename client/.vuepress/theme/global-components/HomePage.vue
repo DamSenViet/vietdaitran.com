@@ -52,7 +52,7 @@
         </div>
         <div class="table-content">
           <div class="table-row">
-            <div class="project">Keybits</div>
+            <div class="project">keybits-js</div>
             <div class="release">Dec. 2020</div>
           </div>
         </div>
@@ -68,8 +68,10 @@
     <section class="projects basic-section">
       <h2>Projects</h2>
       <p>
-        Interested in my previous projects? Here's a small preview of my work.
+        Interested in my previous projects? Here's a small preview of my recent
+        work.
       </p>
+      <Projects :recent="6" />
       <div class="action-container">
         <RouterLink to="/projects">
           <span>View All Projects</span>
@@ -78,11 +80,11 @@
         </RouterLink>
       </div>
     </section>
-    <Content class="theme-default-content" />
   </div>
 </template>
 
 <script>
+import Projects from "./../components/Projects";
 import {
   GithubIcon,
   CoffeeIcon,
@@ -92,9 +94,10 @@ import {
 } from "vue-feather-icons";
 
 export default {
-  name: "Home",
+  name: "HomePage",
 
   components: {
+    Projects,
     GithubIcon,
     CoffeeIcon,
     BriefcaseIcon,
