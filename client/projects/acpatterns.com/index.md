@@ -54,13 +54,17 @@ Several notable online news and social media presences have published articles a
 
 * [AbdallahSmash026 (Youtube)](https://youtu.be/aIEA5QnQSDo)
 
+* [Lego (Twitter)](https://twitter.com/LEGO_Group/status/1322508736678813696)
+
+* [KFC Phillipines (Twitter)](https://twitter.com/KFCPhilippines/status/1273093956763439104?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1273093956763439104%7Ctwgr%5E&ref_url=https%3A%2F%2Feconsultancy.com%2Fthe-animal-crossing-phenomenon-marketing%2F)
+
 ## Team Members
 
 * [Thulinma (Lead Engineer)](https://github.com/Thulinma)
 
 * [DamSenViet (Lead Frontend Engineer, Lead UI/UX Designer)](https://github.com/DamSenViet)
 
-* [Myumi (UI Developer)](https://github.com/myumi)
+* [Myumi (QR Code & UI Developer)](https://github.com/myumi)
 
 * [MelonSpeedRuns (Data Miner)](https://twitter.com/MelonSpeedruns)
 
@@ -106,7 +110,7 @@ announcement with a deadline quickly approaching.
 
 To set the stage, we had 1-2 weeks of development time, which is frankly much
 less than anyone on the team would have hoped for. We were also all in
-different timezones, each of us residing in different regions of the world,
+different timezones, each of us residing in different regions of the world, 
 introducing communication and coordination problems. We decided on deploying a
 web application on our servers and domains, with the potential to release an
 offline version. This web application would include, the pattern editor
@@ -134,7 +138,7 @@ our timeline, an account system was not feasible.
 
 ### Lead Frontend Engineer
 
-As the most experienced front-end developer on the team at the time,
+As the most experienced front-end developer on the team at the time, 
 (based on expertise, not work years) I advised my team on our technology
 stack. I gave them options on potential build strategies we could use to
 provide both online and offline versions of the application, the benefits of
@@ -150,8 +154,8 @@ written in a different language, TypeScript, whereas we were using JavaScript.
 This was handled with git submodules at my suggestion.
 
 I handled a large amount of our UI programming. This involved setting up
-our initial routing, pages, data stores, portal managers, api libraries,
-integrating internationalization features and guiding my team through `Vue.js`,
+our initial routing, pages, data stores, portal managers, api libraries, 
+integrating internationalization features and guiding my team through `Vue.js` , 
 a framework my team did not have prior exposure to, but quickly familiarized
 themselves with.
 
@@ -180,7 +184,6 @@ Latest Homepage Mockups:
 
 <img src="./latest-homepage.png" />
 
-
 Over the course of the project, I realized I had split too much time
 between my two roles as developer and designer, that I had trouble fixing
 bottlenecks. Even after the initial release, I found myself having to
@@ -206,7 +209,7 @@ of requests and deal with malicious ones.
 I learned that when you have user-generated content, but don't have the human
 resources to moderate that content, you end up with some very glaring issues.
 During the week of release, we received complaints about inappropriate content
-in our pattern database. This content included racism, sexism, genderism, porn,
+in our pattern database. This content included racism, sexism, genderism, porn, 
 gore, etc – clearly not content meant for kids or those playing Animal Crossing
 for relaxation purposes, which would be a large portion of our users. We were
 even featured on [Eurogamer](https://www.eurogamer.net/articles/2020-03-21-animal-crossing-new-horizons-players-are-putting-memes-hand-wash-warnings-and-some-very-nasty-things-in-their-islands)
@@ -218,14 +221,14 @@ had sent us a legal notice, pleasantly worded, that we take down the website
 entirely, citing us for copyright infringement (for allowing users to convert
 **their** images into QR Codes for  **their** game and for inappropriate
 content) despite the fact that the feature to scan QR codes at all, was Nintendo's
-decision. I did heavily agree that we needed a way to moderate the patterns,
-but not with the copyright infringement. Even if our application did not exist,
+decision. I did heavily agree that we needed a way to moderate the patterns, 
+but not with the copyright infringement. Even if our application did not exist, 
 users could still create copyright infringing content in-game without our help.
 
 In the same exact day we got the notice, we temporarily disabled the browsing
 system, setup NSFW filters, and began work on a moderating system. We also
 removed all references to Nintendo at their request. At this point, Nintendo
-de-escalated the legal threat and left us somewhat confused about their intentions,
+de-escalated the legal threat and left us somewhat confused about their intentions, 
 despite us not taking away the ability to convert images to patterns and then to
 QR Codes.
 
@@ -264,13 +267,13 @@ global users.
 We've made it into popular culture! Over the first few COVID months, you
 could see us all over social media channels. Our patterns and QR codes were
 included in the posts of popular Facebook groups such as "Subtle Asian
-Traits", on [Instagram](https://www.instagram.com/p/B_R-61pFrjP/?utm_source=ig_web_button_share_sheet),
+Traits", on [Instagram](https://www.instagram.com/p/B_R-61pFrjP/?utm_source=ig_web_button_share_sheet), 
 and even on Twitter by pixel art arists. Even popular Youtube gaming channel
 [GameXplain](https://www.youtube.com/watch?v=7Qrvb0Pi29c) made a video about
 our application and a tutorial of how to use it!
 
 We gained enough traction to even be featured in news articles of
-well-established digital news outlets such as [Wall Street Journal](https://www.wsj.com/articles/nintendos-animal-crossing-goes-upscale-with-museum-masterpieces-11597852490),
+well-established digital news outlets such as [Wall Street Journal](https://www.wsj.com/articles/nintendos-animal-crossing-goes-upscale-with-museum-masterpieces-11597852490), 
 [Polygon](https://www.polygon.com/animal-crossing-new-horizons-switch-acnh-guide/2020/3/27/21197396/turn-pictures-into-murals-patterns-in-game-nook-link-qr-code).
 
 Museums like the [Getty](https://experiments.getty.edu/ac-art-generator) built
@@ -297,4 +300,3 @@ proud that our work is being used by others in a wholesome or productive manner.
 
 I hope to continue making tools like these on a much larger scale for
 other communities as well.
-
