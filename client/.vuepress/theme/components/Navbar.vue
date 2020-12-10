@@ -63,6 +63,7 @@
 
 <script>
 import {
+  HomeIcon,
   BriefcaseIcon,
   PackageIcon,
   ActivityIcon,
@@ -85,6 +86,11 @@ export default {
     return {
       isMenuOpen: false,
       menuItems: [
+        {
+          text: "Home",
+          link: "/",
+          icon: HomeIcon,
+        },
         {
           text: "Projects",
           link: "/projects/",
