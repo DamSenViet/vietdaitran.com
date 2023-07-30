@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { remark } from 'remark';
-import html from 'remark-html';
 
 export interface ProjectMetadata {
   name: string,
@@ -15,7 +13,6 @@ export interface ProjectMetadata {
 
 export interface ProjectDatum extends ProjectMetadata {
   id: string,
-  contentHtml: string,
 }
 
 const getBasename = (filename: string) => filename.replace(/\.mdx$/, '');
@@ -35,12 +32,17 @@ const sort = (a: ProjectDatum, b: ProjectDatum) => {
     return -1;
 }
 
-export const projectsDirectory = path.join(process.cwd(), 'src', 'projects');
+export const projectsDirectory = path.join(
+  process.cwd(),
+  'src',
+  'pages',
+  'projects'
+);
 
 export const getAllProjectIds = async () => {
   // the basename of the filename serves as the id
-  const filenames = fs.readdirSync(projectsDirectory);
-  // should maybe filter here
+  const filenames = fs.readdirSync(projectsDirectory)
+    .filter(filename => filename.match(/\.mdx$/));
   return filenames.map(getBasename);
 }
 
@@ -50,18 +52,12 @@ export const getProject = async (id: string): Promise<ProjectDatum> => {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the project metadata section
+  // we can treat it as a db using these...
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString('utf8');
-
-  // Combine the data with the id and contentHtml
+  // Combine the data with the id and markdown
   return {
     id: id,
-    contentHtml,
     ...matterResult.data as ProjectMetadata,
   };
 }
