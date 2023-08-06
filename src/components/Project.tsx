@@ -1,15 +1,12 @@
-import React from 'react';
-import { ProjectDatum } from '@/lib/projects';
+import React from 'react'
+import { ProjectDatum } from '@/lib/projects'
 
 export interface ProjectProps {
-  data: ProjectDatum,
+  data: ProjectDatum
 }
 
 const Project: React.FC<ProjectProps> = ({ data }) => {
-  return (
-    <div>
-    </div>
-  )
+  return <div></div>
 }
 
-export default Project;
+export default Project
