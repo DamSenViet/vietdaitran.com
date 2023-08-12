@@ -34,7 +34,7 @@ export default function ThemeContext(props: ThemeContextProps) {
   // effect to check if user is utilizing theme override
   React.useEffect(() => {
     const nextPaletteMode: PaletteMode =
-      (localStorage.getItem('themeMode') as PaletteMode) ?? preferredMode
+      (localStorage.getItem('mui-mode') as PaletteMode) ?? preferredMode
 
     dispatch({
       type: ThemeActionType.UPDATE,
