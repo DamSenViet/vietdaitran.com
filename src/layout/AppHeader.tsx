@@ -1,8 +1,9 @@
 import { styled, GlobalStyles, Box, Container } from '@mui/material'
 import ThemeModeToggle from '@/components/ThemeModeToggle'
+import HeaderNavDropdown from './HeaderNavDropdown'
 
 // Header must be a static height for reservation of space
-const HEADER_HEIGHT = 60
+const HEADER_HEIGHT = 100
 const Header = styled('header')(({ theme }) => {
   return {
     height: `${HEADER_HEIGHT}px`,
@@ -36,7 +37,9 @@ export default function AppHeader() {
         <Box>
           <ThemeModeToggle />
         </Box>
-        <Box>{/* HEADER NAV DROPDOWN TOGGLE */}</Box>
+        <Box sx={{ ml: 2 }}>
+          <HeaderNavDropdown />
+        </Box>
       </Container>
     </Header>
   )
