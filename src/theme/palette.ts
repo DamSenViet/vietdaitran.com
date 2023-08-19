@@ -1,7 +1,7 @@
 import { PaletteColorOptions } from '@mui/material'
 
 export const primary: PaletteColorOptions = {
-  main: '#f0596d',
+  main: '#ec7b38',
   contrastText: '#fff',
 }
 
