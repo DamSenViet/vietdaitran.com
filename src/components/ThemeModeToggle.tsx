@@ -1,11 +1,11 @@
 import React from 'react'
-import useChangeTheme from '@/hooks/useChangeTheme'
+import useRootTheme from '@/hooks/useRootTheme'
 import { IconButton } from '@mui/material'
 import { Nightlight, Brightness5 } from '@mui/icons-material'
 
 export default function ThemeModeToggle() {
   const [mounted, setMounted] = React.useState(false)
-  const { theme, toggleTheme } = useChangeTheme()
+  const { theme, toggleTheme } = useRootTheme()
 
   const Icon = !mounted
     ? null
@@ -22,7 +22,10 @@ export default function ThemeModeToggle() {
   if (!mounted) return null
 
   return (
-    <IconButton color="primary" onClick={toggleTheme}>
+    <IconButton
+      sx={(theme) => ({ color: theme.palette.text.primary })}
+      onClick={toggleTheme}
+    >
       {Icon}
     </IconButton>
   )

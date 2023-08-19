@@ -2,7 +2,11 @@ import React from 'react'
 import { PaletteMode } from '@mui/material'
 import { ThemeActionType, ThemeDispatchContext } from '@/context/theme'
 
-export default function useChangeTheme() {
+/**
+ * Modifies the theme in the top level theme provider.
+ * @returns Actions to get / set the top level theme.
+ */
+export default function useRootTheme() {
   const [themeState, dispatch] = React.useContext(ThemeDispatchContext)
 
   const setThemeMode = (mode: PaletteMode) => {
