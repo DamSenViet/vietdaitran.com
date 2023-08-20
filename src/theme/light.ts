@@ -1,5 +1,6 @@
 import { Shadows, createTheme } from '@mui/material'
 import { primary, secondary } from './palette'
+import typography from './typography'
 
 export const defaultLightTheme = createTheme({
   palette: {
@@ -13,9 +14,10 @@ export default createTheme({
     primary,
     secondary,
     background: {
-      default: '#fafafa',
+      default: '#fffff',
       paper: '#ffffff',
     },
   },
   shadows: defaultLightTheme.shadows.map(() => 'none') as Shadows,
+  typography,
 })
