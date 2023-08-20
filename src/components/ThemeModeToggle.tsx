@@ -1,7 +1,7 @@
 import React from 'react'
 import useRootTheme from '@/hooks/useRootTheme'
 import { IconButton } from '@mui/material'
-import { Nightlight, Brightness5 } from '@mui/icons-material'
+import { NightlightOutlined, LightModeOutlined } from '@mui/icons-material'
 
 export default function ThemeModeToggle() {
   const [mounted, setMounted] = React.useState(false)
@@ -10,8 +10,8 @@ export default function ThemeModeToggle() {
   const Icon = !mounted
     ? null
     : {
-        light: <Nightlight />,
-        dark: <Brightness5 />,
+        light: <NightlightOutlined />,
+        dark: <LightModeOutlined />,
       }[theme as string]
 
   React.useEffect(() => {
