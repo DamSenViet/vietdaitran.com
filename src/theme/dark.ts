@@ -14,8 +14,12 @@ export default createTheme({
     primary,
     secondary,
     background: {
-      default: '#000000',
-      paper: '#000000',
+      default: '#233831',
+      paper: '#8fdcc20d',
+    },
+    text: {
+      primary: '#8fdcc2',
+      secondary: '#d4ede4',
     },
   },
   shadows: defaultDarkTheme.shadows.map(() => 'none') as Shadows,

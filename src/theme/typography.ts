@@ -1,54 +1,50 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography'
-import { roboto, rubik } from './fonts'
+import { poppins } from './fonts'
 
 export default {
-  fontFamily: roboto.style.fontFamily,
+  fontFamily: poppins.style.fontFamily,
   h1: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
     fontWeight: 500,
-    fontSize: '3.75rem',
   },
   h2: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
     fontWeight: 500,
-    fontSize: '2.5rem',
   },
   h3: {
-    fontFamily: rubik.style.fontFamily,
-    fontSize: '1.25rem',
+    fontFamily: poppins.style.fontFamily,
   },
   h4: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   h5: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   h6: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   subtitle1: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   subtitle2: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   body1: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   body2: {
-    fontFamily: roboto.style.fontFamily,
-    fontSize: '0.875rem',
+    fontFamily: poppins.style.fontFamily,
   },
   button: {
-    fontFamily: rubik.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
     fontWeight: 400,
     textTransform: 'none',
   },
   caption: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
   overline: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
     fontWeight: 400,
     textTransform: 'none',
     fontSize: '1rem',
