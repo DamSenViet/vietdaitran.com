@@ -1,11 +1,11 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography'
-import { poppins } from './fonts'
+import { poppins, righteous } from './fonts'
 
 export default {
   fontFamily: poppins.style.fontFamily,
   h1: {
     fontFamily: poppins.style.fontFamily,
-    fontWeight: 500,
+    fontWeight: 400,
   },
   h2: {
     fontFamily: poppins.style.fontFamily,

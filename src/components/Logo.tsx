@@ -1,7 +1,13 @@
 import { Box } from '@mui/material'
 import { permanent_marker } from '@/theme/fonts'
+import Image from 'next/image'
+import profile from '@/assets/2023 Profile.jpg'
 
-export default function Logo() {
+export interface LogoProps {
+  image?: boolean
+}
+
+export default function Logo(props: LogoProps) {
   return (
     <Box
       component={'span'}
@@ -19,7 +25,17 @@ export default function Logo() {
         color: theme.palette.background.default,
       })}
     >
-      VT
+      {props.image ? (
+        <Image
+          src={profile}
+          width={56}
+          height={56}
+          alt="Profile picture"
+          style={{ borderRadius: 100, border: '3px solid white' }}
+        />
+      ) : (
+        'VT'
+      )}
     </Box>
   )
 }
