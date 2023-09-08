@@ -10,8 +10,8 @@ export default function ThemeModeToggle() {
   const Icon = !mounted
     ? null
     : {
-        light: <NightlightOutlined />,
-        dark: <LightModeOutlined />,
+        light: <NightlightOutlined fontSize="small" />,
+        dark: <LightModeOutlined fontSize="small" />,
       }[theme as string]
 
   React.useEffect(() => {
@@ -23,7 +23,10 @@ export default function ThemeModeToggle() {
 
   return (
     <IconButton
-      sx={(theme) => ({ color: theme.palette.text.primary })}
+      sx={(theme) => ({
+        color: theme.palette.primary.contrastText,
+        backgroundColor: theme.palette.primary.main,
+      })}
       onClick={toggleTheme}
     >
       {Icon}

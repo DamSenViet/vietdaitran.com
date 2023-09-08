@@ -1,5 +1,5 @@
 import { Shadows, createTheme } from '@mui/material'
-import { primary, secondary } from './palette'
+import { secondary } from './palette'
 import typography from './typography'
 
 export const defaultDarkTheme = createTheme({
@@ -11,13 +11,24 @@ export const defaultDarkTheme = createTheme({
 export default createTheme({
   palette: {
     mode: 'dark',
-    primary,
+    primary: {
+      main: '#1C1C1C',
+      contrastText: '#ffffff',
+    },
     secondary,
     background: {
-      default: '#111111',
-      // default: '#1a1a1a',
-      paper: '#111111',
-      // paper: '#242424',
+      default: '#080808',
+      paper: '#080808',
+    },
+    text: {
+      secondary: '#8e8e8e',
+      disabled: '#212121',
+    },
+  },
+  breakpoints: {
+    values: {
+      ...defaultDarkTheme.breakpoints.values,
+      xl: 1043,
     },
   },
   shadows: defaultDarkTheme.shadows.map(() => 'none') as Shadows,

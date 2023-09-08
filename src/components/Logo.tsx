@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
-import { permanent_marker } from '@/theme/fonts'
 import Image from 'next/image'
 import profile from '@/assets/2023 Profile.jpg'
+import { Typography } from '@mui/material'
 
 export interface LogoProps {
   image?: boolean
@@ -12,17 +12,12 @@ export default function Logo(props: LogoProps) {
     <Box
       component={'span'}
       sx={(theme) => ({
-        height: 56,
-        width: 56,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 100,
-        backgroundColor: theme.palette.text.primary,
-        fontFamily: permanent_marker.style.fontFamily,
-        fontSize: '1.3rem',
-        color: theme.palette.background.default,
+        color: theme.palette.text.primary,
       })}
     >
       {props.image ? (
@@ -31,10 +26,18 @@ export default function Logo(props: LogoProps) {
           width={56}
           height={56}
           alt="Profile picture"
-          style={{ borderRadius: 100, border: '3px solid white' }}
+          style={{ borderRadius: 100, border: '2px solid white' }}
         />
       ) : (
-        'VT'
+        <Typography
+          component={'span'}
+          variant="body1"
+          sx={{
+            fontWeight: 500,
+          }}
+        >
+          Viet Tran
+        </Typography>
       )}
     </Box>
   )

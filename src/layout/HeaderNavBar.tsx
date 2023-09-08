@@ -1,12 +1,11 @@
-import { styled, Box, List, ListItem, lighten } from '@mui/material'
+import { styled, Box, List, ListItem } from '@mui/material'
 import { NavLink } from '@/components/NavLink'
-import useByThemeMode from '@/hooks/useByThemeMode'
 
 const navLinks = {
-  Home: '/',
+  // Home: '/',
+  About: '/about',
   Work: '/work',
   Blog: '/blog',
-  About: '/about',
   Contact: '/contact',
 }
 
@@ -16,11 +15,6 @@ const MyList = styled(List)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  backgroundColor: `${lighten(
-    theme.palette.background.default,
-    useByThemeMode(0.1, 0.4)
-  )}`,
-  backdropFilter: 'blur(20)px saturate(1.7)',
 }))
 
 export default function HeaderNavBar() {

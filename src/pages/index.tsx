@@ -3,14 +3,7 @@ import AppHeader from '@/layout/AppHeader'
 import Hero from '@/components/Hero'
 import { Box, Container, styled } from '@mui/material'
 import { transparentize } from 'color2k'
-
-const VerticalLine = styled(Box)(({ theme }) => ({
-  width: '.0625rem',
-  minWidth: 2,
-  maxWidth: 3,
-  height: '100%',
-  background: transparentize(theme.palette.text.primary, 0.95),
-}))
+import useByThemeMode from '@/hooks/useByThemeMode'
 
 export default function Home() {
   return (
@@ -22,7 +15,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader />
-      <Container></Container>
       <Box
         className={'bg-grid'}
         sx={{
@@ -32,22 +24,7 @@ export default function Home() {
           width: '100%',
           height: '100%',
         }}
-      >
-        <Container
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            justifyContent: 'space-between',
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <VerticalLine />
-          <VerticalLine />
-          <VerticalLine />
-          <VerticalLine />
-        </Container>
-      </Box>
+      ></Box>
       <main>
         <Hero />
       </main>

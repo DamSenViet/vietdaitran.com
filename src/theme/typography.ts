@@ -1,50 +1,63 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography'
-import { poppins, righteous } from './fonts'
+import { manrope } from './fonts'
 
 export default {
-  fontFamily: poppins.style.fontFamily,
+  fontFamily: manrope.style.fontFamily,
   h1: {
-    fontFamily: poppins.style.fontFamily,
-    fontWeight: 400,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    fontSize: '5rem',
+    letterSpacing: -0.5,
   },
   h2: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
+    letterSpacing: -0.5,
   },
   h3: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    letterSpacing: -0.5,
   },
   h4: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    fontSize: '1.875rem',
+    letterSpacing: -0.5,
   },
   h5: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    letterSpacing: -0.5,
   },
   h6: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    letterSpacing: -0.5,
   },
   subtitle1: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
   },
   subtitle2: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
   },
   body1: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
   },
   body2: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
   },
   button: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
     fontWeight: 400,
     textTransform: 'none',
   },
   caption: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
   },
   overline: {
-    fontFamily: poppins.style.fontFamily,
+    fontFamily: manrope.style.fontFamily,
     fontWeight: 400,
     textTransform: 'none',
     fontSize: '1rem',

@@ -1,8 +1,7 @@
-import useByThemeMode from '@/hooks/useByThemeMode'
 import {
   Link as MuiLink,
   LinkProps as MuiLinkProps,
-  lighten,
+  Typography,
 } from '@mui/material'
 import { useRouter } from 'next/router'
 
@@ -24,21 +23,14 @@ export function NavLink(props: MuiLinkProps) {
     <MuiLink
       className={className}
       {...other}
+      variant="subtitle2"
+      color="text.primary"
       sx={(theme) => ({
-        fontWeight: 400,
+        fontWeight: shouldBeActive ? 500 : 400,
         textDecoration: 'none',
         paddingX: 2,
         paddingY: 1,
         borderRadius: 100,
-        backgroundColor: shouldBeActive
-          ? `${lighten(
-              theme.palette.background.default,
-              useByThemeMode(0.2, 0.7, theme)
-            )}`
-          : 'transparent',
-        color: shouldBeActive
-          ? theme.palette.text.secondary
-          : theme.palette.text.secondary,
       })}
     />
   )
