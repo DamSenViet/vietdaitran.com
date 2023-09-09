@@ -29,7 +29,7 @@ export default function Hero() {
           }}
         >
           <Typography component="h1" variant="h4" sx={{ fontWeight: 500 }}>
-            I'm a developer building applications and tools in San Jose,
+            I'm a developer crafting applications and tools in San Jose,
             California.
           </Typography>
           <Typography
