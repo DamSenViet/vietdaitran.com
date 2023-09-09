@@ -12,17 +12,17 @@ export default createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#f6f6f6',
-      contrastText: '#000000',
+      main: 'hsla(0, 0%, 100%, .5)',
+      contrastText: 'hsla(172, 95%, 18%, 1)',
     },
     secondary,
     background: {
-      default: '#ffffff',
-      paper: '#ffffff',
+      default: '#ece7df',
+      paper: '#f6f2ee',
     },
     text: {
-      primary: 'rgba(0, 0, 0, 0.875)',
-      secondary: 'rgba(54, 54, 54, 0.75)',
+      primary: '#025a4e',
+      secondary: '#4c6763',
       disabled: 'rgba(0, 0, 0, 0.08)',
     },
   },
