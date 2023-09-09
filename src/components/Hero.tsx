@@ -4,7 +4,6 @@ export default function Hero() {
   return (
     <Container
       sx={(theme) => ({
-        maxWidth: { lg: 1384 },
         pt: 34,
         pb: 24,
         position: 'relative',
