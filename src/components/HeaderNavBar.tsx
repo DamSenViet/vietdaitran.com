@@ -25,7 +25,7 @@ export default function HeaderNavBar() {
   ))
   return (
     <Box component={'nav'}>
-      <MyList sx={(theme) => ({})}>{NavLinks}</MyList>
+      <MyList>{NavLinks}</MyList>
     </Box>
   )
 }

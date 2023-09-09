@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import AppHeader from '@/layout/AppHeader'
+import AppHeader from '@/components/AppHeader'
 import Hero from '@/components/Hero'
-import { Box, Container, styled } from '@mui/material'
-import { transparentize } from 'color2k'
-import useByThemeMode from '@/hooks/useByThemeMode'
+import { Box } from '@mui/material'
 
 export default function Home() {
   return (

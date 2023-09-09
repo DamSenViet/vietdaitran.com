@@ -8,7 +8,7 @@ import {
   useMediaQuery,
 } from '@mui/material'
 import ThemeModeToggle from '@/components/ThemeModeToggle'
-import HeaderNavDropdown from './HeaderNavDropdown'
+import HeaderNavDropdown from '@/components/HeaderNavDropdown'
 import HeaderNavBar from './HeaderNavBar'
 import Logo from '@/components/Logo'
 

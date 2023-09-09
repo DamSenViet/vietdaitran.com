@@ -1,17 +1,10 @@
 import React from 'react'
-import {
-  IconButton,
-  Box,
-  Container,
-  ClickAwayListener,
-  useTheme,
-} from '@mui/material'
-import { SvgHamburgerIcon } from './SvgHamburgerIcon'
+import { IconButton, Box, Container, ClickAwayListener } from '@mui/material'
+import { SvgHamburgerIcon } from '@/components/SvgHamburgerIcon'
 
 export default function HeaderNavDropdown() {
   const [open, setOpen] = React.useState<boolean>(false)
   const hamburgerRef = React.useRef<HTMLButtonElement | null>(null)
-  const theme = useTheme()
 
   return (
     <React.Fragment>
@@ -20,10 +13,10 @@ export default function HeaderNavDropdown() {
         ref={hamburgerRef}
         disableRipple
         onClick={() => setOpen((value) => !value)}
-        sx={(theme) => ({
+        sx={{
           borderRadius: 3,
           padding: 2,
-        })}
+        }}
       >
         {<SvgHamburgerIcon open={open} />}
       </IconButton>
