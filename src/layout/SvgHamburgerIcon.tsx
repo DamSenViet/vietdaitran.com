@@ -6,7 +6,7 @@ const Rect = styled('rect')(({ theme }) => ({
   transformOrigin: 'center',
   transition: '200ms',
   width: 14,
-  height: 1.5,
+  height: 1,
 }))
 
 interface SvgHamburgerIconProps {
