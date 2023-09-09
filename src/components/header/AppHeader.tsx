@@ -11,6 +11,7 @@ import ThemeModeToggle from '@/components/ThemeModeToggle'
 import HeaderNavDropdown from '@/components/header/HeaderNavDropdown'
 import HeaderNavBar from './HeaderNavBar'
 import Logo from '@/components/header/Logo'
+import { transparentize } from 'color2k'
 
 // Header must be a static height for reservation of space
 const MOBILE_NAVBAR_HEIGHT = 74
@@ -49,7 +50,10 @@ export default function AppHeader() {
           borderLeft: `1px solid ${theme.palette.text.disabled}`,
           borderBottom: `1px solid ${theme.palette.text.disabled}`,
           borderRight: `1px solid ${theme.palette.text.disabled}`,
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: transparentize(
+            theme.palette.background.default,
+            0.1
+          ),
           backdropFilter: 'blur(10px)',
         })}
       >
@@ -76,7 +80,7 @@ export default function AppHeader() {
           <Typography color="text.primary" variant="body2">
             Software Engineer
             <br />
-            UI/UX Designer
+            UX / UX Designer
           </Typography>
         </Box>
         <Box

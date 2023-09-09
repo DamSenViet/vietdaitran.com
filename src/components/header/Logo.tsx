@@ -33,6 +33,7 @@ export default function Logo(props: LogoProps) {
           component={'span'}
           variant="body1"
           sx={{
+            fontSize: '1.125rem',
             fontWeight: 500,
           }}
         >
