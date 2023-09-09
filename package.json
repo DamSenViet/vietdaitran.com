@@ -29,6 +29,7 @@
     "@types/request-ip": "^0.0.37",
     "axios": "^0.21.0",
     "color2k": "^2.0.2",
+    "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.20",
     "next": "^13.3.4",
