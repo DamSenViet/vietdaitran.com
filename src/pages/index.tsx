@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import AppHeader from '@/components/AppHeader'
-import Hero from '@/components/Hero'
+import AppHeader from '@/components/header/AppHeader'
+import Hero from '@/components/home/Hero'
 import { Box } from '@mui/material'
 
 export default function Home() {

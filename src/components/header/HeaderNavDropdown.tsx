@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconButton, Box, Container, ClickAwayListener } from '@mui/material'
-import { SvgHamburgerIcon } from '@/components/SvgHamburgerIcon'
+import { SvgHamburgerIcon } from '@/components/header/SvgHamburgerIcon'
 
 export default function HeaderNavDropdown() {
   const [open, setOpen] = React.useState<boolean>(false)

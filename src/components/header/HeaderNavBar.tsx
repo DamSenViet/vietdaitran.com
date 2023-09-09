@@ -1,5 +1,5 @@
 import { styled, Box, List, ListItem } from '@mui/material'
-import { NavLink } from '@/components/NavLink'
+import { NavLink } from '@/components/header/NavLink'
 
 const navLinks = {
   // Home: '/',

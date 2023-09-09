@@ -8,9 +8,9 @@ import {
   useMediaQuery,
 } from '@mui/material'
 import ThemeModeToggle from '@/components/ThemeModeToggle'
-import HeaderNavDropdown from '@/components/HeaderNavDropdown'
+import HeaderNavDropdown from '@/components/header/HeaderNavDropdown'
 import HeaderNavBar from './HeaderNavBar'
-import Logo from '@/components/Logo'
+import Logo from '@/components/header/Logo'
 
 // Header must be a static height for reservation of space
 const MOBILE_NAVBAR_HEIGHT = 74
