@@ -42,10 +42,12 @@ export default function AppHeader() {
         styles={{ ':root': { '--header-height': `${headerHeight}px` } }}
       />
       <Container
+        disableGutters
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
+          paddingX: 4,
           minHeight: headerHeight,
           borderLeft: `1px solid ${theme.palette.text.disabled}`,
           borderBottom: `1px solid ${theme.palette.text.disabled}`,

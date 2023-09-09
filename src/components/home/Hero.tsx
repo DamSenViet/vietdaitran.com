@@ -3,10 +3,12 @@ import { Box, Container, Stack, Button, Typography } from '@mui/material'
 export default function Hero() {
   return (
     <Container
+      disableGutters
       sx={(theme) => ({
-        pt: 34,
-        pb: 24,
         position: 'relative',
+        paddingTop: 34,
+        paddingBottom: 24,
+        paddingX: 4,
         borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,
