@@ -7,7 +7,6 @@ export default function Hero() {
         pt: 34,
         pb: 24,
         position: 'relative',
-        borderTop: `1px solid ${theme.palette.text.disabled}`,
         borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,
@@ -40,7 +39,7 @@ export default function Hero() {
             }}
           >
             Passionate about empowering others to participate in their
-            communities through digital experience and design.
+            communities through crafted digital experiences.
           </Typography>
           <Button
             variant="contained"
