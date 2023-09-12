@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import AppHeader from '@/components/header/AppHeader'
+import AppFooter from '@/components/footer/AppFooter'
 import Hero from '@/components/home/Hero'
-import { Box } from '@mui/material'
+import WorkPreview from '@/components/home/WorkPreview'
+import BlogPreview from '@/components/home/BlogPreview'
+import Services from '@/components/home/Services'
 
 export default function Home() {
   return (
@@ -15,7 +18,11 @@ export default function Home() {
       <AppHeader />
       <main>
         <Hero />
+        <WorkPreview />
+        <BlogPreview />
+        <Services />
       </main>
+      <AppFooter />
     </>
   )
 }

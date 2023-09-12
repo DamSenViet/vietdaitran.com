@@ -6,7 +6,6 @@ const navLinks = {
   About: '/about',
   Work: '/work',
   Blog: '/blog',
-  Contact: '/contact',
 }
 
 const MyList = styled(List)(({ theme }) => ({

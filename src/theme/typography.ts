@@ -37,10 +37,13 @@ export default {
   },
   subtitle1: {
     fontFamily: manrope.style.fontFamily,
+    fontSize: '1.125rem',
     fontWeight: 500,
+    lineHeight: 'normal',
   },
   subtitle2: {
     fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
   },
   body1: {
     fontFamily: manrope.style.fontFamily,
