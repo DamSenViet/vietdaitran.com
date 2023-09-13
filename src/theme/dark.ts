@@ -25,12 +25,6 @@ export default createTheme({
       disabled: '#212121',
     },
   },
-  breakpoints: {
-    values: {
-      ...defaultDarkTheme.breakpoints.values,
-      xl: 1043,
-    },
-  },
   shadows: defaultDarkTheme.shadows.map(() => 'none') as Shadows,
   typography,
 })
