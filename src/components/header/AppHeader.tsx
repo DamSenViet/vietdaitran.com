@@ -11,6 +11,7 @@ import ThemeModeToggle from '@/components/ThemeModeToggle'
 import HeaderNavDropdown from '@/components/header/HeaderNavDropdown'
 import HeaderNavBar from './HeaderNavBar'
 import Logo from '@/components/header/Logo'
+import containerSx from '@/components/constants/containerSx'
 import { transparentize } from 'color2k'
 
 // Header must be a static height for reservation of space
@@ -43,12 +44,13 @@ export default function AppHeader() {
       />
       <Container
         disableGutters
+        maxWidth={false}
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          paddingX: 4,
-          minHeight: headerHeight,
+          ...containerSx,
+          maxHeight: headerHeight,
           borderLeft: `1px solid ${theme.palette.text.disabled}`,
           borderBottom: `1px solid ${theme.palette.text.disabled}`,
           borderRight: `1px solid ${theme.palette.text.disabled}`,

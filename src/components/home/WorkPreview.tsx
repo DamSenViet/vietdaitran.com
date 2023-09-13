@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 import { Container, Link, Stack, Grid, Typography } from '@mui/material'
 import WorkGridItem from '@/components/work/WorkGridItem'
+import containerSx from '@/components/constants/containerSx'
 import profile2018 from '@/assets/2018 Profile.jpg'
 import testImage from '@/assets/2023 Profile.jpg'
 
@@ -8,8 +9,9 @@ export default function WorkPreview() {
   return (
     <Container
       disableGutters
+      maxWidth={false}
       sx={(theme) => ({
-        padding: 4,
+        ...containerSx,
         borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,

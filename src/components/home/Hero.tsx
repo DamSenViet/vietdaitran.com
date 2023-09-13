@@ -1,14 +1,16 @@
 import { Box, Container, Stack, Button, Typography } from '@mui/material'
+import containerSx from '@/components/constants/containerSx'
 
 export default function Hero() {
   return (
     <Container
       disableGutters
+      maxWidth={false}
       sx={(theme) => ({
+        ...containerSx,
         position: 'relative',
         paddingTop: 34,
-        paddingBottom: 24,
-        paddingX: 4,
+        paddingBottom: 22,
         borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,
@@ -24,8 +26,8 @@ export default function Hero() {
         <Box
           sx={{
             maxWidth: { xs: 'initial', sm: 330 },
-            mt: { xs: 2, sm: 0 },
-            marginRight: { xs: 0, md: 8, lg: 24, xl: 32 },
+            margintTop: { xs: 2, sm: 0 },
+            marginRight: { xs: 0, md: 8, lg: 24, xl: 28 },
           }}
         >
           <Typography component="h1" variant="h4" sx={{ fontWeight: 500 }}>
