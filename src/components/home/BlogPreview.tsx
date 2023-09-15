@@ -1,22 +1,13 @@
 import NextLink from 'next/link'
-import { Container, Grid, Link, Stack, Typography } from '@mui/material'
+import { Grid, Link, Stack, Typography } from '@mui/material'
 import ArticleGridItem from '@/components/blog/ArticleGridItem'
-import containerSx from '@/components/constants/containerSx'
+import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
 import testImage from '@/assets/2023 Profile.jpg'
 
 export default function BlogPreview() {
   return (
-    <Container
-      disableGutters
-      maxWidth={false}
-      sx={(theme) => ({
-        ...containerSx,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
-        borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        borderLeft: `1px solid ${theme.palette.text.disabled}`,
-      })}
-    >
+    <Section>
       <Stack
         flexDirection={{
           xs: 'column',
@@ -81,6 +72,6 @@ export default function BlogPreview() {
         <ArticleGridItem src={profile2018} date={new Date()} />
         <ArticleGridItem src={profile2018} date={new Date()} />
       </Grid>
-    </Container>
+    </Section>
   )
 }

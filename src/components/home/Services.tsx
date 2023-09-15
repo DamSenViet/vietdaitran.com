@@ -1,5 +1,5 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
-import containerSx from '@/components/constants/containerSx'
+import { Box, Stack, Typography } from '@mui/material'
+import Section from '@/components/Section'
 
 const services = [
   {
@@ -49,16 +49,7 @@ const ServiceItems = ({ name, description }: ServiceProps) => {
 
 export default function Services() {
   return (
-    <Container
-      disableGutters
-      maxWidth={false}
-      sx={(theme) => ({
-        ...containerSx,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
-        borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        borderLeft: `1px solid ${theme.palette.text.disabled}`,
-      })}
-    >
+    <Section>
       <Stack
         useFlexGap
         rowGap={{
@@ -104,6 +95,6 @@ export default function Services() {
           ))}
         </Stack>
       </Stack>
-    </Container>
+    </Section>
   )
 }

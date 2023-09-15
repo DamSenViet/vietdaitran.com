@@ -8,8 +8,7 @@ import {
   Typography,
 } from '@mui/material'
 import FooterNavLink from '@/components/footer/FooterNavLink'
-import containerSx from '@/components/constants/containerSx'
-import { omit } from 'lodash'
+import sectionPadding from '@/components/constants/sectionPadding'
 
 const navLinks: Record<string, string> = {
   About: '/about',
@@ -27,7 +26,7 @@ export default function FooterNav() {
   return (
     <Box
       sx={(theme) => ({
-        ...omit(containerSx, ['maxWidth']),
+        ...sectionPadding,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
       })}
     >

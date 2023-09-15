@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '@/createEmotionCache'
 import ThemeContext from '@/providers/ThemeContext'
+import '@/styles/global.css'
 
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache

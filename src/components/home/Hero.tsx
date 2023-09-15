@@ -1,21 +1,9 @@
-import { Box, Container, Stack, Button, Typography } from '@mui/material'
-import containerSx from '@/components/constants/containerSx'
+import { Box, Stack, Button, Typography } from '@mui/material'
+import Section from '@/components/Section'
 
 export default function Hero() {
   return (
-    <Container
-      disableGutters
-      maxWidth={false}
-      sx={(theme) => ({
-        ...containerSx,
-        position: 'relative',
-        paddingTop: 34,
-        paddingBottom: 22,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
-        borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        borderLeft: `1px solid ${theme.palette.text.disabled}`,
-      })}
-    >
+    <Section sx={{ paddingTop: 22, paddingBottom: 22 }}>
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent={'space-between'}
@@ -55,6 +43,6 @@ export default function Hero() {
           </Button>
         </Box>
       </Stack>
-    </Container>
+    </Section>
   )
 }

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import AppHeader from '@/components/header/AppHeader'
-import AppFooter from '@/components/footer/AppFooter'
+import AppMain from '@/components/AppMain'
 import Hero from '@/components/home/Hero'
 import WorkPreview from '@/components/home/WorkPreview'
 import BlogPreview from '@/components/home/BlogPreview'
@@ -16,13 +16,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader />
-      <main>
+      <AppMain>
         <Hero />
         <WorkPreview />
         <BlogPreview />
         <Services />
-      </main>
-      <AppFooter />
+      </AppMain>
     </>
   )
 }
