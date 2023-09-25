@@ -1,9 +1,18 @@
 import NextLink from 'next/link'
-import { Link, Box, Stack, Typography } from '@mui/material'
-import WorkGridItem from '@/components/work/WorkGridItem'
+import { Link, Stack, Typography } from '@mui/material'
+import WorkGrid from '@/components/work/WorkGrid'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
 import testImage from '@/assets/2023 Profile.jpg'
+
+const works = [
+  { src: profile2018 },
+  { src: testImage },
+  { src: profile2018 },
+  { src: profile2018 },
+  { src: profile2018 },
+  { src: profile2018 },
+]
 
 export default function WorkPreview() {
   return (
@@ -53,31 +62,7 @@ export default function WorkPreview() {
           </Link>
         </Stack>
       </Stack>
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
-          },
-          columnGap: {
-            xs: 2,
-            md: 3,
-          },
-          rowGap: 5,
-          marginTop: {
-            xs: 2,
-            md: 11,
-          },
-        }}
-      >
-        <WorkGridItem src={profile2018} />
-        <WorkGridItem src={testImage} />
-        <WorkGridItem src={profile2018} />
-        <WorkGridItem src={profile2018} />
-        <WorkGridItem src={profile2018} />
-        <WorkGridItem src={profile2018} />
-      </Box>
+      <WorkGrid works={works}></WorkGrid>
     </Section>
   )
 }

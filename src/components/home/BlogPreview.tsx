@@ -1,9 +1,27 @@
 import NextLink from 'next/link'
-import { Box, Link, Stack, Typography } from '@mui/material'
-import ArticleGridItem from '@/components/blog/ArticleGridItem'
+import { Link, Stack, Typography } from '@mui/material'
+import ArticleGrid from '@/components/blog/ArticleGrid'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
-import testImage from '@/assets/2023 Profile.jpg'
+
+const articles = [
+  {
+    src: profile2018,
+    date: new Date(),
+  },
+  {
+    src: profile2018,
+    date: new Date(),
+  },
+  {
+    src: profile2018,
+    date: new Date(),
+  },
+  {
+    src: profile2018,
+    date: new Date(),
+  },
+]
 
 export default function BlogPreview() {
   return (
@@ -53,30 +71,7 @@ export default function BlogPreview() {
           </Link>
         </Stack>
       </Stack>
-      <Box
-        sx={{
-          display: 'grid',
-          alignItems: 'flex-start',
-          gridTemplateColumns: {
-            xs: 'repeat(2, 1fr)',
-            md: 'repeat(4, 1fr)',
-          },
-          columnGap: {
-            xs: 2,
-            md: 3,
-          },
-          rowGap: 5,
-          marginTop: {
-            xs: 2,
-            md: 11,
-          },
-        }}
-      >
-        <ArticleGridItem src={profile2018} date={new Date()} />
-        <ArticleGridItem src={testImage} date={new Date()} />
-        <ArticleGridItem src={profile2018} date={new Date()} />
-        <ArticleGridItem src={profile2018} date={new Date()} />
-      </Box>
+      <ArticleGrid articles={articles} />
     </Section>
   )
 }

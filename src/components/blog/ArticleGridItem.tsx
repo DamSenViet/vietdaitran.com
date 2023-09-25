@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { format } from 'date-fns'
 
-export interface ArticleGridItem {
+export interface ArticleGridItemProps {
   date?: Date
   src: ImageProps['src']
   alt?: ImageProps['alt']
@@ -21,13 +21,14 @@ export default function ArticleGridItem({
   src,
   alt = 'Image preview',
   date,
-}: ArticleGridItem) {
+}: ArticleGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>
         <Image
           src={src}
           alt={alt}
+          width={200}
           sx={{
             width: '100%',
             height: 'auto',

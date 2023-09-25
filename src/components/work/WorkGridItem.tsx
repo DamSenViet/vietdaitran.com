@@ -2,7 +2,6 @@ import NextImage from 'next/image'
 import { ImageProps } from 'next/dist/shared/lib/get-img-props'
 import {
   Grid,
-  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -27,6 +26,7 @@ export default function WorkGridItem({
         <CardActionArea>
           <Image
             src={src}
+            width={200}
             alt={alt}
             sx={{
               width: '100%',
