@@ -1,5 +1,5 @@
 import NextLink from 'next/link'
-import { Grid, Link, Stack, Typography } from '@mui/material'
+import { Box, Link, Stack, Typography } from '@mui/material'
 import ArticleGridItem from '@/components/blog/ArticleGridItem'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
@@ -53,14 +53,19 @@ export default function BlogPreview() {
           </Link>
         </Stack>
       </Stack>
-      <Grid
-        container
-        columnSpacing={{
-          xs: 2,
-          md: 3,
-        }}
-        rowGap={5}
+      <Box
         sx={{
+          display: 'grid',
+          alignItems: 'flex-start',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+          },
+          columnGap: {
+            xs: 2,
+            md: 3,
+          },
+          rowGap: 5,
           marginTop: {
             xs: 2,
             md: 11,
@@ -71,7 +76,7 @@ export default function BlogPreview() {
         <ArticleGridItem src={testImage} date={new Date()} />
         <ArticleGridItem src={profile2018} date={new Date()} />
         <ArticleGridItem src={profile2018} date={new Date()} />
-      </Grid>
+      </Box>
     </Section>
   )
 }

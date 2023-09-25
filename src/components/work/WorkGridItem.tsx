@@ -2,6 +2,7 @@ import NextImage from 'next/image'
 import { ImageProps } from 'next/dist/shared/lib/get-img-props'
 import {
   Grid,
+  Box,
   Card,
   CardActionArea,
   CardContent,

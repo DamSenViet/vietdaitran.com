@@ -1,5 +1,5 @@
 import NextLink from 'next/link'
-import { Link, Stack, Grid, Typography } from '@mui/material'
+import { Link, Box, Stack, Typography } from '@mui/material'
 import WorkGridItem from '@/components/work/WorkGridItem'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
@@ -53,14 +53,18 @@ export default function WorkPreview() {
           </Link>
         </Stack>
       </Stack>
-      <Grid
-        container
-        columnSpacing={{
-          xs: 2,
-          md: 3,
-        }}
-        rowGap={5}
+      <Box
         sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          },
+          columnGap: {
+            xs: 2,
+            md: 3,
+          },
+          rowGap: 5,
           marginTop: {
             xs: 2,
             md: 11,
@@ -73,7 +77,7 @@ export default function WorkPreview() {
         <WorkGridItem src={profile2018} />
         <WorkGridItem src={profile2018} />
         <WorkGridItem src={profile2018} />
-      </Grid>
+      </Box>
     </Section>
   )
 }
