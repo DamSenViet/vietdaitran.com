@@ -3,16 +3,12 @@ import { Link, Stack, Typography } from '@mui/material'
 import WorkGrid from '@/components/work/WorkGrid'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
-import testImage from '@/assets/2023 Profile.jpg'
 
-const works = [
-  { src: profile2018 },
-  { src: testImage },
-  { src: profile2018 },
-  { src: profile2018 },
-  { src: profile2018 },
-  { src: profile2018 },
-]
+const works = new Array(6).fill(null).map((_, i) => ({
+  title: `A test in the projects of Harlem (${i})`,
+  tags: 'Branding, Vision',
+  src: profile2018,
+}))
 
 export default function WorkPreview() {
   return (

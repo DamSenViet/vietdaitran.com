@@ -10,6 +10,8 @@ import {
 } from '@mui/material'
 
 export interface WorkGridItemProps {
+  title: string
+  tags?: string
   src: ImageProps['src']
   alt?: ImageProps['alt']
 }
@@ -17,6 +19,8 @@ export interface WorkGridItemProps {
 const Image = styled(NextImage)({})
 
 export default function WorkGridItem({
+  title,
+  tags,
   src,
   alt = 'Image preview',
 }: WorkGridItemProps) {
@@ -51,16 +55,18 @@ export default function WorkGridItem({
             variant="subtitle1"
             textOverflow={'break-word'}
           >
-            A test in the projects of Harlem
+            {title}
           </Typography>
-          <Typography
-            component={'p'}
-            color={'text.secondary'}
-            variant={'body2'}
-            textOverflow={'ellipsis'}
-          >
-            Branding, Product Design
-          </Typography>
+          {tags && (
+            <Typography
+              component={'p'}
+              color={'text.secondary'}
+              variant={'body2'}
+              textOverflow={'ellipsis'}
+            >
+              {tags}
+            </Typography>
+          )}
         </CardContent>
       </Card>
     </Grid>

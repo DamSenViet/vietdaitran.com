@@ -10,6 +10,8 @@ import {
 import { format } from 'date-fns'
 
 export interface ArticleGridItemProps {
+  title: string
+  tags?: string
   date?: Date
   src: ImageProps['src']
   alt?: ImageProps['alt']
@@ -18,6 +20,8 @@ export interface ArticleGridItemProps {
 const Image = styled(NextImage)({})
 
 export default function ArticleGridItem({
+  title,
+  tags,
   src,
   alt = 'Image preview',
   date,
@@ -50,16 +54,18 @@ export default function ArticleGridItem({
           variant="body1"
           sx={{ marginTop: 2 }}
         >
-          The Future of User Interface Design
+          {title}
         </Typography>
-        <Typography
-          component={'p'}
-          color={'text.secondary'}
-          variant={'body2'}
-          textOverflow={'ellipsis'}
-        >
-          Branding, Product Design
-        </Typography>
+        {tags && (
+          <Typography
+            component={'p'}
+            color={'text.secondary'}
+            variant={'body2'}
+            textOverflow={'ellipsis'}
+          >
+            {tags}
+          </Typography>
+        )}
         {date && (
           <Typography
             component={'span'}

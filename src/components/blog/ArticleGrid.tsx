@@ -27,7 +27,7 @@ export default function ArticleGrid({ articles = [] }: ArticleGridProps) {
       }}
     >
       {articles.map((article) => (
-        <ArticleGridItem {...article} />
+        <ArticleGridItem key={article.title} {...article} />
       ))}
     </Box>
   )

@@ -26,7 +26,7 @@ export default function WorkGrid({ works = [] }: WorkGridProps) {
       }}
     >
       {works.map((work) => (
-        <WorkGridItem {...work} />
+        <WorkGridItem key={work.title} {...work} />
       ))}
     </Box>
   )
