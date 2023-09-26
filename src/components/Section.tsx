@@ -8,8 +8,6 @@ export interface SectionProps extends BoxProps {
   sx?: SystemStyleObject<Theme>
 }
 
-export type Hold = (theme: Theme) => SystemStyleObject<Theme>
-
 const Section = React.forwardRef<HTMLDivElement, SectionProps>(function Section(
   { children, sx, ...other }: SectionProps,
   ref
