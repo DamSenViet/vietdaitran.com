@@ -26,7 +26,10 @@ const PostGrid = React.forwardRef(function PostGrid(
           xs: 2,
           md: 3,
         },
-        rowGap: 5,
+        rowGap: {
+          xs: 5,
+          md: 7,
+        },
         ...sx,
       }}
     >
