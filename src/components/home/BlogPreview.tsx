@@ -59,7 +59,15 @@ export default function BlogPreview() {
           </Link>
         </Stack>
       </Stack>
-      <PostGrid articles={articles} />
+      <PostGrid
+        articles={articles}
+        sx={{
+          marginTop: {
+            xs: 2,
+            md: 11,
+          },
+        }}
+      />
     </Section>
   )
 }

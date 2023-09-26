@@ -1,13 +1,20 @@
-import { Box } from '@mui/material'
+import React from 'react'
+import { Box, Theme } from '@mui/material'
+import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import PostGridItem, { PostGridItemProps } from './PostGridItem'
 
 export interface PostGridProps {
   articles?: PostGridItemProps[]
+  sx?: SystemStyleObject<Theme>
 }
 
-export default function PostGrid({ articles = [] }: PostGridProps) {
+const PostGrid = React.forwardRef(function PostGrid(
+  { articles = [], sx }: PostGridProps,
+  ref
+) {
   return (
     <Box
+      ref={ref}
       sx={{
         display: 'grid',
         alignItems: 'flex-start',
@@ -20,10 +27,7 @@ export default function PostGrid({ articles = [] }: PostGridProps) {
           md: 3,
         },
         rowGap: 5,
-        marginTop: {
-          xs: 2,
-          md: 11,
-        },
+        ...sx,
       }}
     >
       {articles.map((article) => (
@@ -31,4 +35,6 @@ export default function PostGrid({ articles = [] }: PostGridProps) {
       ))}
     </Box>
   )
-}
+})
+
+export default PostGrid

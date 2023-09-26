@@ -1,13 +1,20 @@
-import { Box } from '@mui/material'
+import React from 'react'
+import { Box, Theme } from '@mui/material'
+import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import WorkGridItem, { WorkGridItemProps } from './WorkGridItem'
 
 export interface WorkGridProps {
   works?: WorkGridItemProps[]
+  sx?: SystemStyleObject<Theme>
 }
 
-export default function WorkGrid({ works = [] }: WorkGridProps) {
+const WorkGrid = React.forwardRef(function WorkGrid(
+  { works = [], sx }: WorkGridProps,
+  ref
+) {
   return (
     <Box
+      ref={ref}
       sx={{
         display: 'grid',
         gridTemplateColumns: {
@@ -19,10 +26,7 @@ export default function WorkGrid({ works = [] }: WorkGridProps) {
           md: 3,
         },
         rowGap: 5,
-        marginTop: {
-          xs: 2,
-          md: 11,
-        },
+        ...sx,
       }}
     >
       {works.map((work) => (
@@ -30,4 +34,6 @@ export default function WorkGrid({ works = [] }: WorkGridProps) {
       ))}
     </Box>
   )
-}
+})
+
+export default WorkGrid

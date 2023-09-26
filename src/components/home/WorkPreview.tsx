@@ -58,7 +58,15 @@ export default function WorkPreview() {
           </Link>
         </Stack>
       </Stack>
-      <WorkGrid works={works}></WorkGrid>
+      <WorkGrid
+        works={works}
+        sx={{
+          marginTop: {
+            xs: 2,
+            md: 11,
+          },
+        }}
+      />
     </Section>
   )
 }

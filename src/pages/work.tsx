@@ -2,6 +2,7 @@ import Head from 'next/head'
 import AppHeader from '@/components/header/AppHeader'
 import AppMain from '@/components/AppMain'
 import HeroWorks from '@/components/work/HeroWorks'
+import WorksShowcase from '@/components/work/WorksShowcase'
 
 export default function Blog() {
   return (
@@ -15,6 +16,7 @@ export default function Blog() {
       <AppHeader />
       <AppMain>
         <HeroWorks />
+        <WorksShowcase />
       </AppMain>
     </>
   )
