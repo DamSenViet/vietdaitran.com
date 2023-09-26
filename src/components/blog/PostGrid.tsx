@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
-import ArticleGridItem, { ArticleGridItemProps } from './ArticleGridItem'
+import PostGridItem, { PostGridItemProps } from './PostGridItem'
 
-export interface ArticleGridProps {
-  articles?: ArticleGridItemProps[]
+export interface PostGridProps {
+  articles?: PostGridItemProps[]
 }
 
-export default function ArticleGrid({ articles = [] }: ArticleGridProps) {
+export default function PostGrid({ articles = [] }: PostGridProps) {
   return (
     <Box
       sx={{
@@ -27,7 +27,7 @@ export default function ArticleGrid({ articles = [] }: ArticleGridProps) {
       }}
     >
       {articles.map((article) => (
-        <ArticleGridItem key={article.title} {...article} />
+        <PostGridItem key={article.title} {...article} />
       ))}
     </Box>
   )
