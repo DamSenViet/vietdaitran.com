@@ -8,7 +8,7 @@ export default function Hero() {
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent={'space-between'}
       >
-        <Typography component={'span'} variant="body1" color="text.secondary">
+        <Typography component={'h1'} variant="body1" color="text.secondary">
           Intro
         </Typography>
         <Box
@@ -18,7 +18,7 @@ export default function Hero() {
             marginRight: { xs: 0, md: 8, lg: 24, xl: 28 },
           }}
         >
-          <Typography component="h1" variant="h4" sx={{ fontWeight: 500 }}>
+          <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
             I'm a developer crafting applications and tools in San Jose,
             California.
           </Typography>
