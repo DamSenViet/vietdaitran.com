@@ -9,17 +9,12 @@ import {
 } from '@mui/material'
 import FooterNavLink from '@/components/footer/FooterNavLink'
 import sectionPadding from '@/components/constants/sectionPadding'
+import socialLinks from '@/data/socialLinks'
 
 const navLinks: Record<string, string> = {
   About: '/about',
   Work: '/work',
   Blog: '/blog',
-}
-
-const socialLinks: Record<string, string> = {
-  Github: 'https://github.com/DamSenViet',
-  Dribble: 'https://dribbble.com/DamSenViet',
-  LinkedIn: 'https://www.linkedin.com/in/viet-tran-b33485151/',
 }
 
 export default function FooterNav() {
@@ -61,7 +56,7 @@ export default function FooterNav() {
             <Button
               variant="contained"
               color="primary"
-              href="/about"
+              href={socialLinks.LinkedIn}
               sx={{ mt: 3, borderRadius: 5, px: 2.5, pt: 0.875, pb: 1 }}
             >
               Let's talk
