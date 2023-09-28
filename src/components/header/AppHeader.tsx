@@ -46,9 +46,15 @@ export default function AppHeader() {
         ...containerSx,
         paddingX: sectionPadding.paddingX,
         maxHeight: headerHeight,
-        borderLeft: `1px solid ${theme.palette.text.disabled}`,
+        borderLeft: {
+          xs: 'none',
+          md: `1px solid ${theme.palette.text.disabled}`,
+        },
+        borderRight: {
+          xs: 'none',
+          md: `1px solid ${theme.palette.text.disabled}`,
+        },
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
         backgroundColor: transparentize(theme.palette.background.default, 0.1),
         backdropFilter: 'blur(10px)',
       })}

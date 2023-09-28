@@ -15,8 +15,14 @@ export default function AppMain({ children }: AppMainProps) {
         flexDirection: 'column',
         minHeight: '100vh',
         ...containerSx,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
-        borderLeft: `1px solid ${theme.palette.text.disabled}`,
+        borderRight: {
+          xs: 'initial',
+          md: `1px solid ${theme.palette.text.disabled}`,
+        },
+        borderLeft: {
+          xs: 'initial',
+          md: `1px solid ${theme.palette.text.disabled}`,
+        },
         marginX: 'auto',
       })}
     >
