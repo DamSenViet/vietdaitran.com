@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Stack,
-  List,
-  ListItem,
-  Typography,
-} from '@mui/material'
+import { Box, Button, Stack, List, ListItem, Typography } from '@mui/material'
 import FooterNavLink from '@/components/footer/FooterNavLink'
 import sectionPadding from '@/components/constants/sectionPadding'
 import socialLinks from '@/data/socialLinks'
@@ -25,29 +17,28 @@ export default function FooterNav() {
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
       })}
     >
-      <Grid
-        container
-        rowSpacing={{
+      <Box
+        display={'grid'}
+        rowGap={{
           xs: 4,
           md: 34,
         }}
       >
-        <Grid item>
-          <Typography color="text.secondary" component={'h2'} variant="body1">
-            Contact
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          container
-          justifyContent={'space-between'}
-          direction={{
-            xs: 'column',
-            md: 'row',
+        <Typography color="text.secondary" component={'h2'} variant="body1">
+          Contact
+        </Typography>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'none',
+              md: '8fr 4fr',
+            },
+            rowGap: 15,
+            justifyContent: 'space-between',
           }}
-          rowSpacing={15}
         >
-          <Grid item md={8}>
+          <Box>
             <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
               Have a project in mind?
               <br />
@@ -61,8 +52,8 @@ export default function FooterNav() {
             >
               Let's talk
             </Button>
-          </Grid>
-          <Grid component={'nav'} item md={4} aria-label="secondary">
+          </Box>
+          <Box component={'nav'}>
             <Stack direction={'row'}>
               <List disablePadding sx={{ flexGrow: 1 }}>
                 {Object.entries(navLinks).map(([name, url]) => (
@@ -79,9 +70,9 @@ export default function FooterNav() {
                 ))}
               </List>
             </Stack>
-          </Grid>
-        </Grid>
-      </Grid>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   )
 }
