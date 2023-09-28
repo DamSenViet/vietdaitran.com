@@ -17,6 +17,7 @@ export default {
   h3: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
+    fontSize: '2.375rem',
     letterSpacing: -0.5,
   },
   h4: {
@@ -43,6 +44,7 @@ export default {
   },
   subtitle2: {
     fontFamily: manrope.style.fontFamily,
+    fontSize: '0.875rem',
     fontWeight: 500,
   },
   body1: {
