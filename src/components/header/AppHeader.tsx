@@ -44,7 +44,7 @@ export default function AppHeader() {
         flexDirection: 'row',
         alignItems: 'center',
         ...containerSx,
-        ...sectionPadding,
+        paddingX: sectionPadding.paddingX,
         maxHeight: headerHeight,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
