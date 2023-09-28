@@ -16,7 +16,6 @@ export default function ThemeModeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
-    console.log('ready')
   }, [])
 
   if (!mounted) return null
