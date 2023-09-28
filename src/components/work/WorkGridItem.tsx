@@ -25,50 +25,48 @@ export default function WorkGridItem({
   alt = 'Image preview',
 }: WorkGridItemProps) {
   return (
-    <Grid item xs={6} md={4}>
-      <Card raised={false} sx={{ background: 'transparent' }}>
-        <CardActionArea>
-          <Image
-            src={src}
-            width={200}
-            alt={alt}
-            sx={{
-              width: '100%',
-              height: 'auto',
-              borderRadius: 1,
-            }}
-          />
-        </CardActionArea>
-
-        <CardContent
+    <Card raised={false} sx={{ background: 'transparent' }}>
+      <CardActionArea>
+        <Image
+          src={src}
+          width={200}
+          alt={alt}
           sx={{
-            padding: 0,
-            '&:last-child': {
-              padding: 0,
-            },
-            marginTop: 2,
+            width: '100%',
+            height: 'auto',
+            borderRadius: 1,
           }}
+        />
+      </CardActionArea>
+
+      <CardContent
+        sx={{
+          padding: 0,
+          '&:last-child': {
+            padding: 0,
+          },
+          marginTop: 2,
+        }}
+      >
+        <Typography
+          component={'p'}
+          color={'text.primary'}
+          variant="subtitle1"
+          textOverflow={'break-word'}
         >
+          {title}
+        </Typography>
+        {tags && (
           <Typography
             component={'p'}
-            color={'text.primary'}
-            variant="subtitle1"
-            textOverflow={'break-word'}
+            color={'text.secondary'}
+            variant={'body2'}
+            textOverflow={'ellipsis'}
           >
-            {title}
+            {tags}
           </Typography>
-          {tags && (
-            <Typography
-              component={'p'}
-              color={'text.secondary'}
-              variant={'body2'}
-              textOverflow={'ellipsis'}
-            >
-              {tags}
-            </Typography>
-          )}
-        </CardContent>
-      </Card>
-    </Grid>
+        )}
+      </CardContent>
+    </Card>
   )
 }
