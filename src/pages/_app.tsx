@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '@/createEmotionCache'
 import ThemeContext from '@/providers/ThemeContext'
+import DefaultLayout from '@/layout/DefaultLayout'
 import '@/styles/global.css'
 
 export interface MyAppProps extends AppProps {
@@ -22,7 +23,9 @@ export default function MyApp({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeContext>
-        <Component {...pageProps} />
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
       </ThemeContext>
     </CacheProvider>
   )
