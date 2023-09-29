@@ -22,7 +22,7 @@ export function NavLink(props: NavLinkProps) {
       className="active"
       href={href}
       sx={{
-        typography: 'subtile2',
+        typography: 'subtitle2',
         color: shouldBeActive ? 'text.primary' : 'text.secondary',
         textDecoration: 'none',
         paddingX: 2,
