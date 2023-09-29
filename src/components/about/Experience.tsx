@@ -43,7 +43,7 @@ const experiences: Experience[] = [
     iconBackground: '#f7f7f7',
     role: 'Frontend Developer',
     interval: {
-      start: new Date('June 17, 2023 00:00:00'),
+      start: new Date('June 17, 2022 00:00:00'),
       end: new Date(),
     },
   },
