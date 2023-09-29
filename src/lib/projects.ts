@@ -43,7 +43,12 @@ const sort = (a: ProjectDatum, b: ProjectDatum) => {
   else return -1
 }
 
-export const projectsDirectory = path.join(process.cwd(), 'src', 'projects')
+export const projectsDirectory = path.join(
+  process.cwd(),
+  'src',
+  'posts',
+  'work'
+)
 
 export const getAllProjectIds = async () => {
   // the basename of the filename serves as the id
