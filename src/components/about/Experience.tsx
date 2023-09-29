@@ -1,16 +1,17 @@
-import NextImage from 'next/image'
+import NextImage, { StaticImageData } from 'next/image'
 import { Box, Typography, styled } from '@mui/material'
 import Section from '@/components/Section'
 import { getYear, Interval } from 'date-fns'
 import immerseLogo from '@/assets/experiences/Immerse.svg'
 import planviewLogo from '@/assets/experiences/Planview.svg'
-import { StaticImageData } from 'next/image'
+import enrichLogo from '@/assets/experiences/Enrich.png'
 
 interface Experience {
   company: string
   role: string
   interval: Interval
   icon: StaticImageData
+  iconSize?: number
   iconBackground?: string | undefined
 }
 
@@ -27,8 +28,9 @@ const experiences: Experience[] = [
   },
   {
     company: 'Enrich',
-    icon: '',
-    iconBackground: '#de9f4a',
+    icon: enrichLogo,
+    iconSize: 0.8,
+    iconBackground: '#FFFFFF',
     role: 'Frontend Developer',
     interval: {
       start: new Date('February 17, 2021 00:00:00'),
@@ -99,8 +101,10 @@ export default function Experience() {
                 alt={experience.company}
                 width={54}
                 sx={{
-                  width: '60%',
-                  height: '60%',
+                  width: experience.iconSize
+                    ? `${experience.iconSize * 100}%`
+                    : '60%',
+                  height: 'auto',
                 }}
               />
             </Box>
