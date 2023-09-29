@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths<WorkPageParams> = async () => {
   const paths = projectIds.map((projectId) => ({ params: { projectId } }))
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
