@@ -1,12 +1,7 @@
 import { Shadows, createTheme } from '@mui/material'
 import { secondary } from './palette'
 import typography from './typography'
-
-export const defaultDarkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-})
+import { defaultDarkTheme } from './base'
 
 export default createTheme({
   palette: {

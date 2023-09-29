@@ -1,9 +1,6 @@
-import { createTheme } from '@mui/material'
 import { TypographyOptions } from '@mui/material/styles/createTypography'
 import { manrope } from './fonts'
-
-// we'll use this to construct responsive typography
-const theme = createTheme()
+import { defaultLightTheme } from './base'
 
 export default {
   fontFamily: manrope.style.fontFamily,
@@ -18,7 +15,7 @@ export default {
     fontWeight: 500,
     letterSpacing: -0.5,
     fontSize: '3rem',
-    [theme.breakpoints.up('md')]: {
+    [defaultLightTheme.breakpoints.up('md')]: {
       fontSize: '3.75rem',
     },
   },
@@ -27,7 +24,7 @@ export default {
     fontWeight: 500,
     fontSize: '2.25rem',
     letterSpacing: -0.5,
-    [theme.breakpoints.up('md')]: {
+    [defaultLightTheme.breakpoints.up('md')]: {
       fontSize: '2.375rem',
     },
   },
@@ -36,7 +33,7 @@ export default {
     fontWeight: 500,
     fontSize: '1.75rem',
     letterSpacing: -0.5,
-    [theme.breakpoints.up('md')]: {
+    [defaultLightTheme.breakpoints.up('md')]: {
       fontSize: '1.875rem',
     },
   },
@@ -84,4 +81,4 @@ export default {
   allVariants: {
     scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 72px)',
   },
-} as TypographyOptions
+} satisfies TypographyOptions as TypographyOptions
