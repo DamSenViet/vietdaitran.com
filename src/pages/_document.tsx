@@ -9,7 +9,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="stylesheet" href="/highlight.min.css" />
+          {/* <link rel="stylesheet" href="/highlight-light.min.css" /> */}
+          <link rel="stylesheet" href="/highlight-dark.min.css" />
         </Head>
         <body>
           <Main />
