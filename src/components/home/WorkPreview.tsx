@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
 import { Link, Stack, Typography } from '@mui/material'
-import WorkGrid from '@/components/work/WorkGrid'
+import PostGrid from '@/components/work/PostGrid'
 import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
 
@@ -55,7 +55,7 @@ export default function WorkPreview() {
           </Link>
         </Stack>
       </Stack>
-      <WorkGrid
+      <PostGrid
         works={works}
         sx={{
           marginTop: {

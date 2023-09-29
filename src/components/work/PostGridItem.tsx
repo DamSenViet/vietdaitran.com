@@ -1,7 +1,6 @@
 import NextImage from 'next/image'
 import { ImageProps } from 'next/dist/shared/lib/get-img-props'
 import {
-  Grid,
   Card,
   CardActionArea,
   CardContent,
@@ -9,7 +8,7 @@ import {
   styled,
 } from '@mui/material'
 
-export interface WorkGridItemProps {
+export interface PostGridItemProps {
   title: string
   tags?: string
   src: ImageProps['src']
@@ -18,12 +17,12 @@ export interface WorkGridItemProps {
 
 const Image = styled(NextImage)({})
 
-export default function WorkGridItem({
+export default function PostGridItem({
   title,
   tags,
   src,
   alt = 'Image preview',
-}: WorkGridItemProps) {
+}: PostGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>

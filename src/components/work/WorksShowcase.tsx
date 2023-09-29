@@ -1,5 +1,5 @@
 import Section from '../Section'
-import WorkGrid from './WorkGrid'
+import PostGrid from './PostGrid'
 import profile2018 from '@/assets/2018 Profile.jpg'
 
 const works = new Array(6).fill(null).map((_, i) => ({
@@ -11,7 +11,7 @@ const works = new Array(6).fill(null).map((_, i) => ({
 export default function WorksShowcase() {
   return (
     <Section>
-      <WorkGrid works={works} />
+      <PostGrid works={works} />
     </Section>
   )
 }

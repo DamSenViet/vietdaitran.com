@@ -18,26 +18,26 @@ export interface Frontmatter {
   hidden?: boolean
 }
 
-export interface ProjectDatum extends Frontmatter {
+export interface WorkPostDatum extends Frontmatter {
   id: string
 }
 
-export interface ProjectContent {
+export interface WorkPostContent {
   scope: Record<string, string>
   serialized: MDXRemoteSerializeResult<Frontmatter, Frontmatter>
 }
 
-export interface Project {
-  datum: ProjectDatum
-  content: ProjectContent
+export interface WorkPost {
+  datum: WorkPostDatum
+  content: WorkPostContent
 }
 
 const getBasename = (filename: string) => filename.replace(/\.mdx$/, '')
 
-const resolvedDate = (project: ProjectDatum) =>
+const resolvedDate = (project: WorkPostDatum) =>
   new Date(project.endDate) || new Date(project?.startDate || '2000-01-01')
 
-const sort = (a: ProjectDatum, b: ProjectDatum) => {
+const sort = (a: WorkPostDatum, b: WorkPostDatum) => {
   if (resolvedDate(a) === resolvedDate(b)) return 0
   else if (resolvedDate(a) < resolvedDate(b)) return 1
   else return -1
@@ -50,7 +50,7 @@ export const projectsDirectory = path.join(
   'work'
 )
 
-export const getAllProjectIds = async () => {
+export const getAllWorkPostIds = async () => {
   // the basename of the filename serves as the id
   const filenames = fs
     .readdirSync(projectsDirectory)
@@ -59,7 +59,7 @@ export const getAllProjectIds = async () => {
 }
 
 // full individual project data
-export const getProject = async (id: string): Promise<Project> => {
+export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const fullPath = path.join(projectsDirectory, `${id}.mdx`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
