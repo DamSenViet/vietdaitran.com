@@ -1,5 +1,9 @@
+import { createTheme } from '@mui/material'
 import { TypographyOptions } from '@mui/material/styles/createTypography'
 import { manrope } from './fonts'
+
+// we'll use this to construct responsive typography
+const theme = createTheme()
 
 export default {
   fontFamily: manrope.style.fontFamily,
@@ -13,18 +17,28 @@ export default {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
     letterSpacing: -0.5,
+    fontSize: '3rem',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '3.75rem',
+    },
   },
   h3: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
-    fontSize: '2.375rem',
+    fontSize: '2.25rem',
     letterSpacing: -0.5,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.375rem',
+    },
   },
   h4: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
-    fontSize: '1.875rem',
+    fontSize: '1.75rem',
     letterSpacing: -0.5,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.875rem',
+    },
   },
   h5: {
     fontFamily: manrope.style.fontFamily,

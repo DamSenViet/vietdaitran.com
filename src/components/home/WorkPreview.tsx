@@ -25,10 +25,7 @@ export default function WorkPreview() {
           md: 'flex-end',
         }}
       >
-        <Typography
-          component={'h2'}
-          sx={{ typography: { xs: 'h3', md: 'h2' } }}
-        >
+        <Typography component={'h2'} variant="h2">
           Work
           <Typography
             color="text.secondary"

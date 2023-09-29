@@ -26,10 +26,7 @@ export default function BlogPreview() {
           md: 'flex-end',
         }}
       >
-        <Typography
-          component={'h2'}
-          sx={{ typography: { xs: 'h3', md: 'h2' } }}
-        >
+        <Typography component={'h2'} variant="h2">
           Blog
           <Typography
             color="text.secondary"
