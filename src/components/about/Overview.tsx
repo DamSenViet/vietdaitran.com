@@ -1,9 +1,9 @@
-// import NextImage from 'next/image'
+import NextImage from 'next/image'
 import { Box, Typography, styled } from '@mui/material'
 import Section from '@/components/Section'
-// import aboutImg from '@/assets/seattle.jpeg'
+import aboutImg from '@/assets/aboutBanner.jpeg'
 
-// const Image = styled(NextImage)({})
+const Image = styled(NextImage)({})
 
 export default function Overview() {
   return (
@@ -16,7 +16,7 @@ export default function Overview() {
         },
       }}
     >
-      {/* <Image
+      <Image
         src={aboutImg}
         alt={'banner'}
         sx={{
@@ -24,7 +24,7 @@ export default function Overview() {
           height: 'auto',
           justifySelf: 'flex-start',
         }}
-      /> */}
+      />
       <Box
         sx={{
           display: 'grid',
