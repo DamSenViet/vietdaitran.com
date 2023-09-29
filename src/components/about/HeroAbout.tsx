@@ -31,7 +31,7 @@ export default function HeroAbout() {
           marginTop: 1,
         }}
       >
-        Viet is a software engineer&nbsp;
+        Viet Tran is a creative developer&nbsp;
         <Box component="br" display={{ xs: 'none', md: 'initial' }} />
         crafting apps and tools for&nbsp;
         <Box component="br" display={{ xs: 'none', md: 'initial' }} />
