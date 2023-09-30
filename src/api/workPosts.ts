@@ -16,6 +16,7 @@ import { getBasename, workPostsDirectory } from '@/utils/mdxFs'
 export interface Frontmatter {
   title: string
   previewImg: string
+  tags?: string[]
   startDate?: string
   endDate: string
   hidden?: boolean

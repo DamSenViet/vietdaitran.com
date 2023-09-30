@@ -9,9 +9,7 @@ import {
 } from '@mui/material'
 import { WorkPostDatum } from '@/api/workPosts'
 
-export interface WorkPostGridItemProps extends WorkPostDatum {
-  tags?: string[]
-}
+export interface WorkPostGridItemProps extends WorkPostDatum {}
 
 const Image = styled(NextImage)({})
 
