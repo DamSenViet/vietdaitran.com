@@ -18,6 +18,7 @@ export interface Frontmatter {
   startDate?: string
   endDate: string
   hidden?: boolean
+  showcase?: boolean
 }
 
 export interface WorkPostDatum extends Frontmatter {
@@ -56,6 +57,27 @@ export const getAllWorkPostIds = () => {
     .readdirSync(projectsDirectory)
     .filter((filename) => filename.match(/\.mdx$/))
   return filenames.map(getBasename)
+}
+
+export const getVisibleWorkPostIds = (
+  {
+    visible = true,
+    showcase = false,
+  }: {
+    visible?: boolean
+    showcase?: boolean
+  } = {
+    visible: true,
+    showcase: false,
+  }
+) => {
+  const postIds = getAllWorkPostIds()
+  const postsData = postIds.map(getWorkPostDatum)
+
+  return postsData
+    .filter((postDatum) => (visible ? postDatum.hidden !== true : true))
+    .filter((postDatum) => (showcase ? postDatum.showcase : true))
+    .map((postDatum) => postDatum.id)
 }
 
 export const getWorkPostDatum = (id: string): WorkPostDatum => {
