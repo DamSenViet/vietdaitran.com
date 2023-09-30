@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { format } from 'date-fns'
 
-export interface PostGridItemProps {
+export interface BlogPostGridItemProps {
   title: string
   tags?: string
   date?: Date
@@ -19,13 +19,13 @@ export interface PostGridItemProps {
 
 const Image = styled(NextImage)({})
 
-export default function PostGridItem({
+export default function BlogPostGridItem({
   title,
   tags,
   src,
   alt = 'Image preview',
   date,
-}: PostGridItemProps) {
+}: BlogPostGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>

@@ -1,5 +1,5 @@
 import Section from '../Section'
-import PostGrid from './PostGrid'
+import BlogPostGrid from './BlogPostGrid'
 import profile2018 from '@/assets/2018 Profile.jpg'
 
 const articles = new Array(4).fill(0).map((_, i) => ({
@@ -9,10 +9,10 @@ const articles = new Array(4).fill(0).map((_, i) => ({
   date: new Date(),
 }))
 
-export default function PostsShowcase() {
+export default function BlogShowcase() {
   return (
     <Section>
-      <PostGrid articles={articles} />
+      <BlogPostGrid articles={articles} />
     </Section>
   )
 }

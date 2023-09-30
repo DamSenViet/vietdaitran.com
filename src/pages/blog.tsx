@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import HeroBlog from '@/components/blog/HeroBlog'
-import PostsShowcase from '@/components/blog/PostsShowcase'
+import BlogShowcase from '@/components/blog/BlogShowcase'
 
 export default function Blog() {
   return (
@@ -12,7 +12,7 @@ export default function Blog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroBlog />
-      <PostsShowcase />
+      <BlogShowcase />
     </>
   )
 }

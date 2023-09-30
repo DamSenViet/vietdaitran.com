@@ -1,15 +1,15 @@
 import React from 'react'
 import { Box, Theme } from '@mui/material'
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
-import PostGridItem, { PostGridItemProps } from './PostGridItem'
+import BlogPostGridItem, { BlogPostGridItemProps } from './BlogPostGridItem'
 
-export interface PostGridProps {
-  articles?: PostGridItemProps[]
+export interface BlogPostGridProps {
+  articles?: BlogPostGridItemProps[]
   sx?: SystemStyleObject<Theme>
 }
 
-const PostGrid = React.forwardRef(function PostGrid(
-  { articles = [], sx }: PostGridProps,
+const BlogPostGrid = React.forwardRef(function BlogPostGrid(
+  { articles = [], sx }: BlogPostGridProps,
   ref
 ) {
   return (
@@ -34,10 +34,10 @@ const PostGrid = React.forwardRef(function PostGrid(
       }}
     >
       {articles.map((article) => (
-        <PostGridItem key={article.title} {...article} />
+        <BlogPostGridItem key={article.title} {...article} />
       ))}
     </Box>
   )
 })
 
-export default PostGrid
+export default BlogPostGrid
