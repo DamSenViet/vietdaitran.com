@@ -1,5 +1,4 @@
 import NextImage from 'next/image'
-import { ImageProps } from 'next/dist/shared/lib/get-img-props'
 import {
   Card,
   CardActionArea,
@@ -7,12 +6,10 @@ import {
   Typography,
   styled,
 } from '@mui/material'
+import { WorkPostDatum } from '@/api/workPosts'
 
-export interface WorkPostGridItemProps {
-  title: string
+export interface WorkPostGridItemProps extends WorkPostDatum {
   tags?: string
-  src: ImageProps['src']
-  alt?: ImageProps['alt']
 }
 
 const Image = styled(NextImage)({})
@@ -20,16 +17,16 @@ const Image = styled(NextImage)({})
 export default function WorkPostGridItem({
   title,
   tags,
-  src,
-  alt = 'Image preview',
+  previewImg,
 }: WorkPostGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>
         <Image
-          src={src}
+          src={previewImg}
+          height={1000}
           width={200}
-          alt={alt}
+          alt={title}
           sx={{
             width: '100%',
             height: 'auto',

@@ -1,8 +1,28 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import HeroWorks from '@/components/work/HeroWorks'
 import WorksShowcase from '@/components/work/WorksShowcase'
+import {
+  getWorkPostDatum,
+  getWorkPostIds,
+  WorkPostDatum,
+} from '@/api/workPosts'
 
-export default function Blog() {
+export interface WorkPageProps {
+  postData: WorkPostDatum[]
+}
+
+export const getStaticProps: GetStaticProps<WorkPageProps> = async () => {
+  const postIds = getWorkPostIds().reverse()
+  const postData = postIds.map(getWorkPostDatum)
+  return {
+    props: {
+      postData,
+    },
+  }
+}
+
+export default function WorkPage({ postData }: WorkPageProps) {
   return (
     <>
       <Head>
@@ -12,7 +32,7 @@ export default function Blog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroWorks />
-      <WorksShowcase />
+      <WorksShowcase postData={postData} />
     </>
   )
 }

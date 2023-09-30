@@ -9,7 +9,7 @@ export interface WorkPostGridProps {
 }
 
 const WorkPostGrid = React.forwardRef(function WorkPostGrid(
-  { postData: works = [], sx }: WorkPostGridProps,
+  { postData = [], sx }: WorkPostGridProps,
   ref
 ) {
   return (
@@ -32,8 +32,8 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
         ...sx,
       }}
     >
-      {works.map((work) => (
-        <WorkPostGridItem key={work.title} {...work} />
+      {postData.map((postDatum) => (
+        <WorkPostGridItem key={postDatum.title} {...postDatum} />
       ))}
     </Box>
   )

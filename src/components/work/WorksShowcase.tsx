@@ -1,14 +1,9 @@
 import Section from '../Section'
-import WorkPostGrid from './WorkPostGrid'
-import profile2018 from '@/assets/2018 Profile.jpg'
+import WorkPostGrid, { WorkPostGridProps } from './WorkPostGrid'
 
-const postData = new Array(6).fill(null).map((_, i) => ({
-  title: `A test in the projects of Harlem (${i})`,
-  tags: 'Branding, Vision',
-  src: profile2018,
-}))
+export interface WorksShowcaseProps extends WorkPostGridProps {}
 
-export default function WorksShowcase() {
+export default function WorksShowcase({ postData }: WorksShowcaseProps) {
   return (
     <Section>
       <WorkPostGrid postData={postData} />
