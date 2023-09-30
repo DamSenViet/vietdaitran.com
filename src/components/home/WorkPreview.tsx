@@ -1,16 +1,16 @@
 import NextLink from 'next/link'
 import { Link, Stack, Typography } from '@mui/material'
-import WorkPostGrid from '@/components/work/WorkPostGrid'
+import WorkPostGrid, { WorkPostGridProps } from '@/components/work/WorkPostGrid'
 import Section from '@/components/Section'
-import profile2018 from '@/assets/2018 Profile.jpg'
 
-const works = new Array(6).fill(null).map((_, i) => ({
-  title: `A test in the projects of Harlem (${i})`,
-  tags: 'Branding, Vision',
-  src: profile2018,
-}))
+export interface WorkPreviewProps extends WorkPostGridProps {
+  totalPostCount: number
+}
 
-export default function WorkPreview() {
+export default function WorkPreview({
+  totalPostCount,
+  postData,
+}: WorkPreviewProps) {
   return (
     <Section>
       <Stack
@@ -33,7 +33,7 @@ export default function WorkPreview() {
             variant={'body1'}
             sx={{ ml: 0.5, verticalAlign: 'top' }}
           >
-            (Project count Here)
+            ({totalPostCount})
           </Typography>
         </Typography>
         <Stack
@@ -56,7 +56,7 @@ export default function WorkPreview() {
         </Stack>
       </Stack>
       <WorkPostGrid
-        postData={works}
+        postData={postData}
         sx={{
           marginTop: {
             xs: 2,
