@@ -9,7 +9,8 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeColorChips from 'rehype-color-chips'
-import { pickBy, isString } from 'lodash'
+import { isString, pickBy, sortBy } from 'lodash'
+import { getBasename, workPostsDirectory } from '@/utils/mdxFs'
 
 /** All possible front matter properties after extraction. */
 export interface Frontmatter {
@@ -30,36 +31,18 @@ export interface WorkPost {
   mdxSource: MDXRemoteSerializeResult<Frontmatter, Frontmatter>
 }
 
-const getBasename = (filename: string) => filename.replace(/\.mdx$/, '')
-
-const resolvedDate = (project: WorkPostDatum) =>
-  new Date(project.endDate) || new Date(project?.startDate || '2000-01-01')
-
-const sort = (a: WorkPostDatum, b: WorkPostDatum) => {
-  if (resolvedDate(a) === resolvedDate(b)) return 0
-  else if (resolvedDate(a) < resolvedDate(b)) return 1
-  else return -1
-}
-
-export const projectsDirectory = path.join(
-  process.cwd(),
-  'src',
-  'posts',
-  'work'
-)
-
-export const getWorkPostFilePath = (id: string) =>
-  path.join(projectsDirectory, `${id}.mdx`)
-
 export const getAllWorkPostIds = () => {
   // the basename of the filename serves as the id
   const filenames = fs
-    .readdirSync(projectsDirectory)
+    .readdirSync(workPostsDirectory)
     .filter((filename) => filename.match(/\.mdx$/))
   return filenames.map(getBasename)
 }
 
-export const getVisibleWorkPostIds = (
+export const getWorkPostFilePath = (id: string) =>
+  path.join(workPostsDirectory, `${id}.mdx`)
+
+export const getWorkPostIds = (
   {
     visible = true,
     showcase = false,
@@ -74,10 +57,16 @@ export const getVisibleWorkPostIds = (
   const postIds = getAllWorkPostIds()
   const postsData = postIds.map(getWorkPostDatum)
 
-  return postsData
-    .filter((postDatum) => (visible ? postDatum.hidden !== true : true))
-    .filter((postDatum) => (showcase ? postDatum.showcase : true))
-    .map((postDatum) => postDatum.id)
+  const resolvedDate = (workPostDatum: WorkPostDatum) =>
+    new Date(workPostDatum.endDate) ||
+    new Date(workPostDatum?.startDate || '2000-01-01')
+
+  return sortBy(
+    postsData
+      .filter((postDatum) => (visible ? postDatum.hidden !== true : true))
+      .filter((postDatum) => (showcase ? postDatum.showcase : true)),
+    [(postDatum) => resolvedDate(postDatum).getTime()]
+  ).map((postDatum) => postDatum.id)
 }
 
 export const getWorkPostDatum = (id: string): WorkPostDatum => {
@@ -93,6 +82,9 @@ export const getWorkPostDatum = (id: string): WorkPostDatum => {
     ...frontmatter,
   }
 }
+
+export const getWorkPostData = (postIds: string[]): WorkPostDatum[] =>
+  postIds.map(getWorkPostDatum)
 
 // full individual project data
 export const getWorkPost = async (id: string): Promise<WorkPost> => {

@@ -3,14 +3,14 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import MDXContent from '@/components/MDXContent'
-import { getVisibleWorkPostIds, getWorkPost, WorkPost } from '@/api/workPosts'
+import { getWorkPostIds, getWorkPost, WorkPost } from '@/api/workPosts'
 
 export interface WorkPostPageParams extends ParsedUrlQuery {
   postId: string
 }
 
 export const getStaticPaths: GetStaticPaths<WorkPostPageParams> = async () => {
-  const postIds = getVisibleWorkPostIds({ visible: true })
+  const postIds = getWorkPostIds({ visible: true })
   const paths = postIds.map((postId) => ({ params: { postId } }))
   return {
     paths,
