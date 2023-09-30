@@ -11,6 +11,8 @@ import {
   WorkPostDatum,
   getWorkPostDatum,
 } from '@/api/workPosts'
+import Section from '@/components/Section'
+import WorkPostGrid from '@/components/work/WorkPostGrid'
 
 export interface WorkPostPageParams extends ParsedUrlQuery {
   postId: string
@@ -37,15 +39,15 @@ export const getStaticProps: GetStaticProps<
   const workPost = await getWorkPost(params!.postId)
 
   // calculate recommendations here
-  const postIds = getWorkPostIds()
-  const postIdsIndex = postIds.findIndex((postId) => params!.postId)
+  const postIds = getWorkPostIds().reverse()
+  const postIdsIndex = postIds.findIndex((postId) => postId === params!.postId)
 
-  //  revolving slice
-  const recommendedPostIds = postIds.slice(
-    (postIdsIndex + 1) % postIds.length,
-    (postIdsIndex + 1 + 3) % postIds.length
-  )
+  // calculating slices for a rotation where our postIndexId is the last
+  // we can start taking from the start for the recommendations
+  const startingSlice = postIds.slice(0, postIdsIndex + 1)
+  const endingSlice = postIds.slice(postIdsIndex + 1, postIds.length)
 
+  const recommendedPostIds = [...endingSlice, ...startingSlice].slice(0, 3)
   const recommendedWorkPostData = recommendedPostIds.map(getWorkPostDatum)
 
   return {
