@@ -63,9 +63,13 @@ export default function FooterNav() {
                 ))}
               </List>
               <List disablePadding sx={{ flexGrow: 1 }}>
-                {socialLinks.map(({ label, href }) => (
+                {socialLinks.map(({ label, href, Icon }) => (
                   <ListItem key={label} disablePadding>
-                    <FooterNavLink href={href}>{label}</FooterNavLink>
+                    <FooterNavLink
+                      href={href}
+                      icon={<Icon />}
+                      children={label}
+                    />
                   </ListItem>
                 ))}
               </List>
