@@ -32,7 +32,7 @@ export default function WorkPostPage({ datum, mdxSource }: WorkPostPageProps) {
   return (
     <>
       <Head>
-        <title>{`${datum.name} - Viet Tran`}</title>
+        <title>{`${datum.title} - Viet Tran`}</title>
       </Head>
       <MDXContent mdxSource={mdxSource} />
     </>
