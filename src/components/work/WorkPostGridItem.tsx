@@ -28,6 +28,7 @@ export default function WorkPostGridItem({
             height={500}
             width={500}
             alt={title}
+            priority
             sx={{
               width: '100%',
               height: 'auto',
