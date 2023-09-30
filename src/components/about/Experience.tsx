@@ -59,9 +59,7 @@ export default function Experience() {
         rowGap: 4,
         gridTemplateColumns: {
           xs: 'none',
-          md: '1fr 446px',
-          lg: '1fr 464px',
-          xl: '1fr 494px',
+          md: '1fr 1fr',
         },
       }}
     >
