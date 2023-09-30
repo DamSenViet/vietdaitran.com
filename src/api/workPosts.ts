@@ -4,6 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
+import remarkGfm from 'remark-gfm'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
@@ -22,14 +23,9 @@ export interface WorkPostDatum extends Frontmatter {
   id: string
 }
 
-export interface WorkPostContent {
-  scope: Record<string, string>
-  serialized: MDXRemoteSerializeResult<Frontmatter, Frontmatter>
-}
-
 export interface WorkPost {
   datum: WorkPostDatum
-  content: WorkPostContent
+  mdxSource: MDXRemoteSerializeResult<Frontmatter, Frontmatter>
 }
 
 const getBasename = (filename: string) => filename.replace(/\.mdx$/, '')
@@ -50,7 +46,10 @@ export const projectsDirectory = path.join(
   'work'
 )
 
-export const getAllWorkPostIds = async () => {
+export const getWorkPostFilePath = (id: string) =>
+  path.join(projectsDirectory, `${id}.mdx`)
+
+export const getAllWorkPostIds = () => {
   // the basename of the filename serves as the id
   const filenames = fs
     .readdirSync(projectsDirectory)
@@ -58,10 +57,23 @@ export const getAllWorkPostIds = async () => {
   return filenames.map(getBasename)
 }
 
+export const getWorkPostDatum = (id: string): WorkPostDatum => {
+  const fileContents = fs.readFileSync(getWorkPostFilePath(id), 'utf8')
+
+  // Use gray-matter to parse the project metadata section
+  // we can treat it as a db using these...
+  const matterResult = matter(fileContents)
+  const frontmatter = matterResult.data as Frontmatter
+
+  return {
+    id: id,
+    ...frontmatter,
+  }
+}
+
 // full individual project data
 export const getWorkPost = async (id: string): Promise<WorkPost> => {
-  const fullPath = path.join(projectsDirectory, `${id}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const fileContents = fs.readFileSync(getWorkPostFilePath(id), 'utf8')
 
   // Use gray-matter to parse the project metadata section
   // we can treat it as a db using these...
@@ -69,9 +81,9 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const frontmatter = matterResult.data as Frontmatter
 
   const scope = pickBy(frontmatter, isString)
-  const serialized = await serialize<Frontmatter, Frontmatter>(fileContents, {
+  const mdxSource = await serialize<Frontmatter, Frontmatter>(fileContents, {
     mdxOptions: {
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [rehypeHighlight],
     },
     scope,
@@ -83,9 +95,6 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
       id: id,
       ...frontmatter,
     },
-    content: {
-      scope,
-      serialized,
-    },
+    mdxSource,
   }
 }
