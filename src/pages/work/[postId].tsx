@@ -67,6 +67,9 @@ export default function WorkPostPage({
       </Head>
       <WorkPostHero postDatum={workPost.datum} />
       {workPost.mdxSource && <MDXContent mdxSource={workPost.mdxSource} />}
+      <Section>
+        <WorkPostGrid postData={recommendedWorkPostData} trim />
+      </Section>
     </>
   )
 }
