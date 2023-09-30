@@ -7,7 +7,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About - Viet Tran</title>
+        <title>Viet Tran • About</title>
         <meta name="description" content="Blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

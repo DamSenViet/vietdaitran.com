@@ -65,7 +65,7 @@ export default function WorkPostPage({
   return (
     <>
       <Head>
-        <title>{`${workPost.datum.title} - Viet Tran`}</title>
+        <title>{`Viet Tran • Work • ${workPost.datum.title}`}</title>
       </Head>
       <WorkPostHero postDatum={workPost.datum} />
       {workPost.mdxSource && <MDXContent mdxSource={workPost.mdxSource} />}
