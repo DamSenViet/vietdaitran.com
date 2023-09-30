@@ -9,6 +9,8 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeColorChips from 'rehype-color-chips'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { isString, pickBy, sortBy } from 'lodash'
 import { getBasename, workPostsDirectory } from '@/utils/mdxFs'
 
@@ -100,7 +102,17 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const mdxSource = await serialize<Frontmatter, Frontmatter>(fileContents, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [rehypeHighlight, rehypeColorChips],
+      rehypePlugins: [
+        rehypeHighlight,
+        rehypeColorChips,
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            // behavior: 'wrap'
+          },
+        ],
+      ],
     },
     scope,
   })
