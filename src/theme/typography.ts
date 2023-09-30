@@ -8,7 +8,7 @@ export default {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
     fontSize: '5rem',
-    letterSpacing: -0.5,
+    letterSpacing: -1.5,
   },
   h2: {
     fontFamily: manrope.style.fontFamily,
