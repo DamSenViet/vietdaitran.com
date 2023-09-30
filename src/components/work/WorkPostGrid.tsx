@@ -1,15 +1,15 @@
 import React from 'react'
 import { Box, Theme } from '@mui/material'
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
-import PostGridItem, { PostGridItemProps } from './PostGridItem'
+import WorkPostGridItem, { WorkPostGridItemProps } from './WorkPostGridItem'
 
-export interface PostGridProps {
-  works?: PostGridItemProps[]
+export interface WorkPostGridProps {
+  postData?: WorkPostGridItemProps[]
   sx?: SystemStyleObject<Theme>
 }
 
-const PostGrid = React.forwardRef(function WorkGrid(
-  { works = [], sx }: PostGridProps,
+const WorkPostGrid = React.forwardRef(function WorkPostGrid(
+  { postData: works = [], sx }: WorkPostGridProps,
   ref
 ) {
   return (
@@ -33,10 +33,10 @@ const PostGrid = React.forwardRef(function WorkGrid(
       }}
     >
       {works.map((work) => (
-        <PostGridItem key={work.title} {...work} />
+        <WorkPostGridItem key={work.title} {...work} />
       ))}
     </Box>
   )
 })
 
-export default PostGrid
+export default WorkPostGrid

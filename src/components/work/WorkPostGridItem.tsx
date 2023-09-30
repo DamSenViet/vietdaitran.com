@@ -8,7 +8,7 @@ import {
   styled,
 } from '@mui/material'
 
-export interface PostGridItemProps {
+export interface WorkPostGridItemProps {
   title: string
   tags?: string
   src: ImageProps['src']
@@ -17,12 +17,12 @@ export interface PostGridItemProps {
 
 const Image = styled(NextImage)({})
 
-export default function PostGridItem({
+export default function WorkPostGridItem({
   title,
   tags,
   src,
   alt = 'Image preview',
-}: PostGridItemProps) {
+}: WorkPostGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>
