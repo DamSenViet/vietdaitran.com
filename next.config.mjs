@@ -2,6 +2,7 @@ import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeColorChips from 'rehype-color-chips'
 import mdx from '@next/mdx';
 
 // jsx loader
@@ -9,7 +10,7 @@ const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: [rehypeHighlight],
+    rehypePlugins: [rehypeHighlight, rehypeColorChips],
     providerImportSource: '@mdx-js/react',
   },
 })

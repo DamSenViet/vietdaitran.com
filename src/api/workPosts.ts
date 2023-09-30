@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeColorChips from 'rehype-color-chips'
 import { pickBy, isString } from 'lodash'
 
 /** All possible front matter properties after extraction. */
@@ -84,7 +85,7 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const mdxSource = await serialize<Frontmatter, Frontmatter>(fileContents, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [rehypeHighlight],
+      rehypePlugins: [rehypeHighlight, rehypeColorChips],
     },
     scope,
   })
