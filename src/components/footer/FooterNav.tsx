@@ -1,7 +1,7 @@
 import { Box, Button, Stack, List, ListItem, Typography } from '@mui/material'
 import FooterNavLink from '@/components/footer/FooterNavLink'
 import sectionPadding from '@/components/constants/sectionPadding'
-import socialLinks from '@/data/socialLinks'
+import socialLinks, { linkedIn } from '@/data/socialLinks'
 
 const navLinks: Record<string, string> = {
   About: '/about',
@@ -47,7 +47,7 @@ export default function FooterNav() {
             <Button
               variant="contained"
               color="primary"
-              href={socialLinks.LinkedIn}
+              href={linkedIn.href}
               sx={{ mt: 3, borderRadius: 5, px: 2.5, pt: 0.875, pb: 1 }}
             >
               Let's talk
@@ -63,9 +63,9 @@ export default function FooterNav() {
                 ))}
               </List>
               <List disablePadding sx={{ flexGrow: 1 }}>
-                {Object.entries(socialLinks).map(([name, url]) => (
-                  <ListItem key={name} disablePadding>
-                    <FooterNavLink href={url}>{name}</FooterNavLink>
+                {socialLinks.map(({ label, href }) => (
+                  <ListItem key={label} disablePadding>
+                    <FooterNavLink href={href}>{label}</FooterNavLink>
                   </ListItem>
                 ))}
               </List>
