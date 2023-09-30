@@ -13,7 +13,7 @@ import { pickBy, isString } from 'lodash'
 /** All possible front matter properties after extraction. */
 export interface Frontmatter {
   name: string
-  previewUrl?: string
+  previewImg: string
   startDate?: string
   endDate: string
   hidden?: boolean
