@@ -1,4 +1,5 @@
 import NextImage from 'next/image'
+import NextLink from 'next/link'
 import {
   Card,
   CardActionArea,
@@ -9,12 +10,13 @@ import {
 import { WorkPostDatum } from '@/api/workPosts'
 
 export interface WorkPostGridItemProps extends WorkPostDatum {
-  tags?: string
+  tags?: string[]
 }
 
 const Image = styled(NextImage)({})
 
 export default function WorkPostGridItem({
+  id,
   title,
   tags,
   previewImg,
@@ -22,17 +24,19 @@ export default function WorkPostGridItem({
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>
-        <Image
-          src={previewImg}
-          height={1000}
-          width={200}
-          alt={title}
-          sx={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: 1,
-          }}
-        />
+        <NextLink href={`/work/${id}`}>
+          <Image
+            src={previewImg}
+            height={500}
+            width={500}
+            alt={title}
+            sx={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: 1,
+            }}
+          />
+        </NextLink>
       </CardActionArea>
 
       <CardContent
@@ -59,7 +63,7 @@ export default function WorkPostGridItem({
             variant={'body2'}
             textOverflow={'ellipsis'}
           >
-            {tags}
+            {tags.join(', ')}
           </Typography>
         )}
       </CardContent>
