@@ -13,6 +13,10 @@ export default function Td({ children, align }: ComponentProps<'td'>) {
         fontWeight: 500,
         color: 'text.primary',
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
+        borderRight: `1px solid ${theme.palette.text.disabled}`,
+        '&:last-child': {
+          borderRightStyle: 'none',
+        },
       })}
     >
       {children}

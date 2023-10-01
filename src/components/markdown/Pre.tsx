@@ -85,6 +85,7 @@ export default function Pre({ children }: PreProps) {
         component={'pre'}
         sx={{
           fontSize: theme.typography.subtitle2.fontSize,
+          background: theme.palette.background.paper,
           border: `1px solid ${theme.palette.text.disabled}`,
           borderTopLeftRadius: isSm ? 0 : theme.spacing(1),
           borderTopRightRadius: isSm ? 0 : theme.spacing(1),

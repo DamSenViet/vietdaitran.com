@@ -13,6 +13,10 @@ export default function Th({ children, align }: ComponentProps<'th'>) {
         fontWeight: 700,
         color: 'text.secondary',
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
+        borderRight: `1px solid ${theme.palette.text.disabled}`,
+        '&:last-child': {
+          borderRightStyle: 'none',
+        },
       })}
     >
       {children}
