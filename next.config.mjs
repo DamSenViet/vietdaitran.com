@@ -6,6 +6,13 @@ import rehypeColorChips from 'rehype-color-chips'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import mdx from '@next/mdx';
+import bundleAnalyzer from '@next/bundle-analyzer';
+import withPlugins from 'next-compose-plugins';
+
+// bundle analyzer
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 // jsx loader
 const withMDX = mdx({
@@ -28,7 +35,6 @@ const withMDX = mdx({
 })
 
 
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -37,4 +43,7 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-export default withMDX(nextConfig);
+export default withPlugins([
+  withMDX,
+  withBundleAnalyzer,
+], nextConfig);
