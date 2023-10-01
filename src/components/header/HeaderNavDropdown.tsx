@@ -1,10 +1,23 @@
 import React from 'react'
-import { IconButton, Box, Container, ClickAwayListener } from '@mui/material'
+import {
+  useTheme,
+  useMediaQuery,
+  IconButton,
+  ClickAwayListener,
+} from '@mui/material'
 import { SvgHamburgerIcon } from '@/components/header/SvgHamburgerIcon'
+import HeaderNavModal from './HeaderNavModal'
 
 export default function HeaderNavDropdown() {
   const [open, setOpen] = React.useState<boolean>(false)
   const hamburgerRef = React.useRef<HTMLButtonElement | null>(null)
+  const theme = useTheme()
+  const isMedium = useMediaQuery(theme.breakpoints.up('md'))
+
+  // reset dropdown state when dropdown is wapped with bar
+  React.useEffect(() => {
+    if (isMedium) setOpen(false)
+  }, [isMedium])
 
   return (
     <React.Fragment>
@@ -30,32 +43,7 @@ export default function HeaderNavDropdown() {
             setOpen(false)
         }}
       >
-        <Box
-          component={'nav'}
-          sx={(theme) => ({
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            zIndex: -1,
-            width: '100%',
-            minHeight: 500,
-            height: '100%',
-            borderBottomLeftRadius: theme.shape.borderRadius * 5,
-            borderBottomRightRadius: theme.shape.borderRadius * 5,
-            backgroundColor: theme.palette.background.paper,
-            transform: open ? 'translateY(0%)' : 'translateY(-101%)',
-          })}
-        >
-          <Box className={'bg-grid'}>
-            {/* expand when menu is open to compose the background */}
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-          </Box>
-          <Container maxWidth={'xl'}></Container>
-        </Box>
+        <HeaderNavModal open={open} />
       </ClickAwayListener>
     </React.Fragment>
   )

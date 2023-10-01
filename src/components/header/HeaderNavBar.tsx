@@ -1,8 +1,7 @@
-import { styled, Box, List, ListItem } from '@mui/material'
+import { styled, Box, List, ListItem, Typography } from '@mui/material'
 import { NavLink } from '@/components/header/NavLink'
 
 const navLinks = {
-  // Home: '/',
   About: '/about',
   Work: '/work',
   Blog: '/blog',
@@ -19,7 +18,9 @@ const MyList = styled(List)(({ theme }) => ({
 export default function HeaderNavBar() {
   const NavLinks = Object.entries(navLinks).map(([label, href], i) => (
     <ListItem key={label} sx={{ ml: i === 0 ? 0 : 1, padding: 0 }}>
-      <NavLink href={href}>{label}</NavLink>
+      <NavLink href={href}>
+        <Typography variant="subtitle2">{label}</Typography>
+      </NavLink>
     </ListItem>
   ))
   return (
