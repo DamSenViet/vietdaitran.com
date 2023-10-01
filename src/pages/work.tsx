@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import HeroWorks from '@/components/work/HeroWorks'
 import WorksShowcase from '@/components/work/WorksShowcase'

@@ -1,6 +1,5 @@
 import NextLink from 'next/link'
-import { Link, Typography, styled } from '@mui/material'
-import { IconType } from 'react-icons'
+import { Link, Typography } from '@mui/material'
 
 export interface FooterNavLinkProps {
   href: string

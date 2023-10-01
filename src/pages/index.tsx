@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import Hero from '@/components/home/Hero'
 import WorkPreview from '@/components/home/WorkPreview'
 import BlogPreview from '@/components/home/BlogPreview'
