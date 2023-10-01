@@ -4,6 +4,7 @@ import { DefaultSeo } from 'next-seo'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '@/createEmotionCache'
 import ThemeContext from '@/providers/ThemeContext'
+import { SnackbarProvider } from 'notistack'
 import DefaultLayout from '@/layout/DefaultLayout'
 import '@/styles/global.css'
 import '@/styles/highlight-dark.scss'
@@ -27,14 +28,19 @@ export default function MyApp({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeContext>
-        <DefaultLayout>
-          <DefaultSeo
-            titleTemplate="Viet Tran • %s"
-            defaultTitle="Viet Tran • Creative Developer"
-            description="The personal website of Viet Tran, Creative Developer."
-          />
-          <Component {...pageProps} />
-        </DefaultLayout>
+        <SnackbarProvider
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          maxSnack={3}
+        >
+          <DefaultLayout>
+            <DefaultSeo
+              titleTemplate="Viet Tran • %s"
+              defaultTitle="Viet Tran • Creative Developer"
+              description="The personal website of Viet Tran, Creative Developer."
+            />
+            <Component {...pageProps} />
+          </DefaultLayout>
+        </SnackbarProvider>
       </ThemeContext>
     </CacheProvider>
   )

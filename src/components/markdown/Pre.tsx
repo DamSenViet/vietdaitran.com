@@ -1,8 +1,8 @@
 import React, { ComponentProps } from 'react'
-import { useTheme, Box, IconButton, Snackbar } from '@mui/material'
-import { useCopyToClipboard } from 'react-use'
+import { useTheme, Box, IconButton } from '@mui/material'
+import { useClipboard } from '@mantine/hooks'
 import { MdContentCopy } from 'react-icons/md'
-import { isUndefined } from 'lodash'
+import { useSnackbar } from 'notistack'
 
 export interface PreProps extends ComponentProps<'pre'> {
   header?: boolean
@@ -11,13 +11,25 @@ export interface PreProps extends ComponentProps<'pre'> {
 export default function Pre({ children, header = false }: PreProps) {
   const ref = React.useRef<HTMLPreElement>()
   const theme = useTheme()
-  const [state, copyToClipboard] = useCopyToClipboard()
-  const copyCode = () => copyToClipboard(ref?.current?.textContent || '')
+  const { copy, copied, reset, error } = useClipboard()
+  const { enqueueSnackbar } = useSnackbar()
+  const copyCode = () => copy(ref!.current!.textContent || '')
 
   React.useEffect(() => {
-    if (!isUndefined(state.value)) return
-    // add snackbar
-  }, [state.value])
+    if (copied)
+      enqueueSnackbar('Copied code!', {
+        autoHideDuration: 1000,
+        variant: 'success',
+        preventDuplicate: false,
+      })
+    if (error)
+      enqueueSnackbar(error?.message, {
+        autoHideDuration: 1000,
+        variant: 'error',
+        preventDuplicate: true,
+      })
+    reset()
+  }, [copied, error])
 
   const copyButton = (
     <IconButton size="medium" onClick={copyCode}>
