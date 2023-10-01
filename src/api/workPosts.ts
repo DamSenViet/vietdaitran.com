@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -10,7 +9,6 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeColorChips from 'rehype-color-chips'
 import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { isString, pickBy, sortBy } from 'lodash'
 import { getBasename, workPostsDirectory } from '@/utils/mdxFs'
 
@@ -105,17 +103,7 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const mdxSource = await serialize<Frontmatter, Frontmatter>(fileContents, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [
-        rehypeHighlight,
-        rehypeColorChips,
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            // behavior: 'wrap'
-          },
-        ],
-      ],
+      rehypePlugins: [rehypeHighlight, rehypeColorChips, rehypeSlug],
     },
     scope,
   })

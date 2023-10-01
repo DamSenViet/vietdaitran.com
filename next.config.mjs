@@ -4,7 +4,6 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeColorChips from 'rehype-color-chips'
 import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import mdx from '@next/mdx';
 import bundleAnalyzer from '@next/bundle-analyzer';
 import withPlugins from 'next-compose-plugins';
@@ -23,12 +22,6 @@ const withMDX = mdx({
       rehypeHighlight,
       rehypeColorChips,
       rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          // behavior: 'wrap'
-        },
-      ],
     ],
     providerImportSource: '@mdx-js/react',
   },
