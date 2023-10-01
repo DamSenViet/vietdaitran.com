@@ -6,6 +6,8 @@ import createEmotionCache from '@/createEmotionCache'
 import ThemeContext from '@/providers/ThemeContext'
 import DefaultLayout from '@/layout/DefaultLayout'
 import '@/styles/global.css'
+import '@/styles/highlight-dark.scss'
+import '@/styles/highlight-light.scss'
 
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache

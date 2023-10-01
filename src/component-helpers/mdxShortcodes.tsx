@@ -15,6 +15,7 @@ import Anchor from '@/components/markdown/Anchor'
 import P from '@/components/markdown/P'
 import BlockQuote from '@/components/markdown/BlockQuote'
 import Img from '@/components/markdown/Img'
+import Pre from '@/components/markdown/Pre'
 
 const headingShortcodes = {
   h1: 'h1',
@@ -53,5 +54,6 @@ export default {
   ...typographyShortcodes,
   ...tableShortcodes,
   img: Img,
+  pre: Pre,
   Typography,
 }
