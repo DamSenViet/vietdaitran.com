@@ -1,6 +1,6 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import { ParsedUrlQuery } from 'querystring'
 import MDXContent from '@/components/MDXContent'
 import WorkPostHero from '@/components/work/WorkPostHero'
@@ -64,9 +64,10 @@ export default function WorkPostPage({
 }: WorkPostPageProps) {
   return (
     <>
-      <Head>
-        <title>{`Viet Tran • Work • ${workPost.datum.title}`}</title>
-      </Head>
+      <NextSeo
+        title={`Work • ${workPost.datum.title}`}
+        description={`${workPost.datum.title} by Viet Tran.`}
+      />
       <WorkPostHero postDatum={workPost.datum} />
       {workPost.mdxSource && <MDXContent mdxSource={workPost.mdxSource} />}
       <Section>

@@ -1,16 +1,14 @@
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import HeroBlog from '@/components/blog/HeroBlog'
 import BlogShowcase from '@/components/blog/BlogShowcase'
 
 export default function Blog() {
   return (
     <>
-      <Head>
-        <title>Viet Tran • Blog</title>
-        <meta name="description" content="Blog" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title="Blog"
+        description="The blog of Viet Tran, Creative Developer"
+      />
       <HeroBlog />
       <BlogShowcase />
     </>

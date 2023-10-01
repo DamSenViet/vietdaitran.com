@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import HeroWorks from '@/components/work/HeroWorks'
 import WorksShowcase from '@/components/work/WorksShowcase'
 import {
@@ -25,12 +26,10 @@ export const getStaticProps: GetStaticProps<WorkPageProps> = async () => {
 export default function WorkPage({ postData }: WorkPageProps) {
   return (
     <>
-      <Head>
-        <title>Viet Tran • Work</title>
-        <meta name="description" content="Blog" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title="Work"
+        description="The portfolio of Viet Tran, Creative Developer"
+      />
       <HeroWorks />
       <WorksShowcase postData={postData} />
     </>
