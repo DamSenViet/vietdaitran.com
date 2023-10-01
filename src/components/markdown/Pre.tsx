@@ -76,6 +76,7 @@ export default function Pre({ children }: PreProps) {
       }`}
       sx={{
         position: 'relative',
+        marginBottom: 2,
       }}
     >
       {isSm ? codeHeader : floatingCopy}
@@ -89,7 +90,7 @@ export default function Pre({ children }: PreProps) {
           borderTopRightRadius: isSm ? 0 : theme.spacing(1),
           borderBottomLeftRadius: theme.spacing(1),
           borderBottomRightRadius: theme.spacing(1),
-          marginTop: 0,
+          marginY: 0,
         }}
       >
         {children}
