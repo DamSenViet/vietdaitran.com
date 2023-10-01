@@ -19,6 +19,9 @@ export default createTheme({
       secondary: '#8e8e8e',
       disabled: '#212121',
     },
+    info: {
+      main: '#66b2ff',
+    },
   },
   shadows: defaultDarkTheme.shadows.map(() => 'none') as Shadows,
   typography,
