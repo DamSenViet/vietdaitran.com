@@ -45,7 +45,6 @@ export default function Pre({ children }: PreProps) {
         padding: 1,
         borderLeft: `1px solid ${theme.palette.text.disabled}`,
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderBottomLeftRadius: theme.spacing(1),
       }}
     >
