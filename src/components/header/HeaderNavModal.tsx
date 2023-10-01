@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from './NavLink'
 import { Box, List, ListItem, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import { useLockBodyScroll, useKey } from 'react-use'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 
@@ -77,11 +78,14 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
   { open, onClose }: HeaderNavModalProps,
   ref
 ) {
+  // close after page switches
   const router = useRouter()
-
   React.useEffect(() => {
     onClose()
   }, [router.pathname])
+
+  useLockBodyScroll(open)
+  useKey('Escape', onClose)
 
   return (
     <Box
