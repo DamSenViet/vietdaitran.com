@@ -43,7 +43,7 @@ export default function HeaderNavDropdown() {
             setOpen(false)
         }}
       >
-        <HeaderNavModal open={open} />
+        <HeaderNavModal open={open} onClose={() => setOpen(false)} />
       </ClickAwayListener>
     </React.Fragment>
   )

@@ -1,12 +1,13 @@
 import React from 'react'
-import MuiLink from ''
 import { NavLink } from './NavLink'
 import { Box, List, ListItem, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 
 export interface HeaderNavModalProps {
   open: boolean
+  onClose: () => void
 }
 
 const internalRoutes = [
@@ -73,9 +74,15 @@ const socialItems = (
 )
 
 const HeaderNavModal = React.forwardRef(function HeaderNavModal(
-  { open }: HeaderNavModalProps,
+  { open, onClose }: HeaderNavModalProps,
   ref
 ) {
+  const router = useRouter()
+
+  React.useEffect(() => {
+    onClose()
+  }, [router.pathname])
+
   return (
     <Box
       ref={ref}
