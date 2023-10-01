@@ -1,6 +1,6 @@
-import React, { DetailedHTMLProps, ComponentProps } from 'react'
-import NextImage from 'next/image'
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react'
 import {
   Table,
   TableBody,
@@ -9,24 +9,14 @@ import {
   TableHead,
   TableRow,
   Typography,
-  styled,
 } from '@mui/material'
 import { mapValues } from 'lodash'
+import Anchor from '@/components/markdown/Anchor'
+import P from '@/components/markdown/P'
+import BlockQuote from '@/components/markdown/BlockQuote'
+import Img from '@/components/markdown/Img'
 
-const StyledImage = styled('img')({})
-
-const StyledNextImage = styled(NextImage)({})
-
-const p = (props: any) => (
-  <Typography
-    comopnent={'p'}
-    variant={'body1'}
-    {...props}
-    sx={{ marginY: 2 }}
-  />
-)
-
-const markdownTagToTypographyVariant = {
+const headingShortcodes = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -35,30 +25,33 @@ const markdownTagToTypographyVariant = {
   h6: 'h6',
 }
 
-export default {
-  ...mapValues(markdownTagToTypographyVariant, (val, key) => (props: any) => (
-    <Typography comopnent={key} variant={val} {...props} />
+const typographyShortcodes = {
+  ...mapValues(headingShortcodes, (val, key) => (props: any) => (
+    <Typography comopnent={key} variant={val} {...props} sx={{ marginY: 3 }} />
   )),
-  p,
+  a: Anchor,
+  p: P,
+  blockquote: BlockQuote,
+}
+
+const tableShortcodes = {
   table: (props: any) => (
     <TableContainer>
-      <Table {...props} />
+      <Table {...props} sx={{ display: 'inline-block' }} />
     </TableContainer>
   ),
   thead: (props: any) => <TableHead {...props} />,
   tr: (props: any) => <TableRow {...props} />,
-  th: (props: any) => <TableCell {...props} sx={{ fontWeight: 700 }} />,
+  th: (props: any) => (
+    <TableCell {...props} sx={{ fontWeight: 500, color: 'text.secondary' }} />
+  ),
   tbody: (props: any) => <TableBody {...props} />,
   td: (props: any) => <TableCell {...props} />,
-  img: (props: any) => (
-    <StyledImage
-      sx={{
-        maxHeight: '400px',
-      }}
-      {...props}
-    />
-  ),
-  // blockquote
+}
+
+export default {
+  ...typographyShortcodes,
+  ...tableShortcodes,
+  img: Img,
   Typography,
-  StyledNextImage,
 }
