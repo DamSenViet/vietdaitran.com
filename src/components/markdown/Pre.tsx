@@ -1,17 +1,16 @@
 import React, { ComponentProps } from 'react'
-import { useTheme, Box, IconButton } from '@mui/material'
+import { useTheme, useMediaQuery, Box, IconButton } from '@mui/material'
 import { useClipboard } from '@mantine/hooks'
 import { MdContentCopy } from 'react-icons/md'
 import { useSnackbar } from 'notistack'
 
-export interface PreProps extends ComponentProps<'pre'> {
-  header?: boolean
-}
+export interface PreProps extends ComponentProps<'pre'> {}
 
-export default function Pre({ children, header = false }: PreProps) {
+export default function Pre({ children }: PreProps) {
   const ref = React.useRef<HTMLPreElement>()
   const theme = useTheme()
   const { copy, copied, reset, error } = useClipboard()
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'))
   const { enqueueSnackbar } = useSnackbar()
   const copyCode = () => copy(ref!.current!.textContent || '')
 
@@ -41,8 +40,13 @@ export default function Pre({ children, header = false }: PreProps) {
     <Box
       sx={{
         position: 'absolute',
-        right: theme.spacing(1),
-        top: theme.spacing(1),
+        right: 0,
+        top: 0,
+        padding: 1,
+        borderLeft: `1px solid ${theme.palette.text.disabled}`,
+        borderBottom: `1px solid ${theme.palette.text.disabled}`,
+        borderRight: `1px solid ${theme.palette.text.disabled}`,
+        borderBottomLeftRadius: theme.spacing(1),
       }}
     >
       {copyButton}
@@ -75,15 +79,15 @@ export default function Pre({ children, header = false }: PreProps) {
         position: 'relative',
       }}
     >
-      {header ? codeHeader : floatingCopy}
+      {isSm ? codeHeader : floatingCopy}
       <Box
         ref={ref}
         component={'pre'}
         sx={{
           fontSize: theme.typography.subtitle2.fontSize,
           border: `1px solid ${theme.palette.text.disabled}`,
-          borderTopLeftRadius: header ? 0 : theme.spacing(1),
-          borderTopRightRadius: header ? 0 : theme.spacing(1),
+          borderTopLeftRadius: isSm ? 0 : theme.spacing(1),
+          borderTopRightRadius: isSm ? 0 : theme.spacing(1),
           borderBottomLeftRadius: theme.spacing(1),
           borderBottomRightRadius: theme.spacing(1),
           marginTop: 0,
