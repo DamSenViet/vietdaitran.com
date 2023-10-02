@@ -15,12 +15,14 @@ import Section from '@/components/Section'
 import WorkPostGrid from '@/components/work/WorkPostGrid'
 
 export interface WorkPostPageParams extends ParsedUrlQuery {
-  postId: string
+  workPostId: string
 }
 
 export const getStaticPaths: GetStaticPaths<WorkPostPageParams> = async () => {
-  const postIds = getWorkPostIds()
-  const paths = postIds.map((postId) => ({ params: { postId } }))
+  const workPostIds = getWorkPostIds()
+  const paths = workPostIds.map((workPostId) => ({
+    params: { workPostId },
+  }))
   return {
     paths,
     fallback: false,
@@ -36,16 +38,21 @@ export const getStaticProps: GetStaticProps<
   WorkPostPageProps,
   WorkPostPageParams
 > = async ({ params }) => {
-  const workPost = await getWorkPost(params!.postId)
+  const workPost = await getWorkPost(params!.workPostId)
 
   // calculate recommendations here
-  const postIds = getWorkPostIds().reverse()
-  const postIdsIndex = postIds.findIndex((postId) => postId === params!.postId)
+  const workPostIds = getWorkPostIds().reverse()
+  const workPostIdsIndex = workPostIds.findIndex(
+    (workPostId) => workPostId === params!.workPostId
+  )
 
   // calculating slices for a rotation where our postIndexId is the last
   // we can start taking from the start for the recommendations
-  const startingSlice = postIds.slice(0, postIdsIndex + 1)
-  const endingSlice = postIds.slice(postIdsIndex + 1, postIds.length)
+  const startingSlice = workPostIds.slice(0, workPostIdsIndex + 1)
+  const endingSlice = workPostIds.slice(
+    workPostIdsIndex + 1,
+    workPostIds.length
+  )
 
   const recommendedPostIds = [...endingSlice, ...startingSlice].slice(0, 3)
   const recommendedWorkPostData = recommendedPostIds.map(getWorkPostDatum)
@@ -68,11 +75,13 @@ export default function WorkPostPage({
         title={`Work • ${workPost.datum.title}`}
         description={`${workPost.datum.title} by Viet Tran.`}
       />
-      <WorkPostHero postDatum={workPost.datum} />
-      {workPost.mdxSource && <MDXContent mdxSource={workPost.mdxSource} />}
-      <Section>
-        <WorkPostGrid postData={recommendedWorkPostData} trim />
-      </Section>
+      <article>
+        <WorkPostHero postDatum={workPost.datum} />
+        {workPost.mdxSource && <MDXContent mdxSource={workPost.mdxSource} />}
+        <Section>
+          <WorkPostGrid postData={recommendedWorkPostData} trim />
+        </Section>
+      </article>
     </>
   )
 }
