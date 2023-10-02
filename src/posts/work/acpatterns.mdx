@@ -25,7 +25,7 @@ application.
 
 ## Recognitions
 
-Museums around the world have built on top of our code and Several notable online news and social media presences have published articles about us.
+A couple museums around the world, social media personas, and news outlets have mentioned us!
 
 |                                                                           News Articles                                                                           |                                                           Museums                                                           |                                                                                                                            Social Media                                                                                                                            |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -48,104 +48,96 @@ Museums around the world have built on top of our code and Several notable onlin
 | Icon Designer      | [Tero](https://tero.space/)                          |
 | Data Miner         | [MelonSpeedRuns](https://twitter.com/MelonSpeedruns) |
 
-## Problem Statement
+## Background
 
-Nintendo's Animal Crossing New Leaf (ACNL) released in 2012 was the first of
-the Animal Crossing series' games to feature QR codes as a means of sharing
-in-game creations over the internet. Thulinma created a very [early version of the application](https://thulinma.com/acnl/)
-that could only work on ACNL patterns.
+In 2012, Nintendo released Animal Crossing New Leaf (ACNL) for their latest
+portable console - the 3DS. This was the first of the Animal Crossing series
+games to feature QR codes with a means of sharing in-game apparal designs
+over the internet by uploading in-game screenshots of the QR code. While
+ACNL continued to gain steam in popularity, so did the number of pattern
+designers and QR codes. Spanning dedicated ACNL forums, Tumblr blogs posts,
+Tweets, and Google Images, the method of discovering and sharing pattern
+designs was decentralized and painful. Another problem noticed retrospectively
+was plagiarism, a common complaint from the Japanese ACNL community. Designers
+had been taking patterns from the Japanese community passing them off as their
+own.
 
-While ACNL continued to gain steam in popularity, so did the number of pattern
-designers who shared QR codes over tumblr blogs. One of the problems that we
-noticed retrospectively was rampant plagiarism. We specifically noticed the
-complaints from the Japanese ACNL community over this issue.
+The first of people to begin solving these problems was Thulinma, a developer
+from the Netherlands, who created an [early version of the pattern editor](https://thulinma.com/acnl/).
+At the time it only handled ACNL patterns and couldn't show a 3D model preview
+of the apparel that the pattern would be projected to in game. I reached out to
+him about his application in 2018 trying to understand the underlying pattern
+format encoded by the QR to prepare for the next anticipated Animal Crossing
+game (and the next QR code format). With the pieces assembled I eventually began
+making design mockups and [experimental performance tests](https://github.com/DamSenViet/react-acnl-pattern-tool)
+for a centralized, searchable database of patterns.
 
-The method of sharing these pattern designs in images with QR codes and
-previews were also rather decentralized. No one had come up with a solution to
-this problem. Everyone else who had made a smiliar tool had been basing their
-own code off of Thulinma's, meaning there was no plausibility of anyone else
-making a centralized, searchable databsae of patterns. I knew this was a wanted
-feature based on the sub-optimal solutions others had chosen.
+Thulinma later extended an invitation to me to join him and Myumi, a developer
+from New York, in making the next generation of the application, We made
+uncommitted plans to develop a new application from scratch and decided to stay
+in touch with each other. A majority of this time was spent idle, waiting
+for Nintendo make some mention of patterns in their announcements or gameplay
+previews. We continued waiting until March 2020 when Nintendo showcased patterns
+in their [Nintendo Direct](https://youtu.be/Ie4WZCLbtVs?si=vDQJ7OIZFtq2WAl1) for
+Animal Crossing New Horizons (ACNH), setting the release date a week or two
+right after.
 
-In 2018, I began making design mockups and [experimental performance tests](https://github.com/DamSenViet/react-acnl-pattern-tool)
-and started reaching out to Thulinma about his early version of the application
-asking questions about the binary pattern format to prepare for what I
-anticipated to be the next Animal Crossing game (and the next QR code format).
+## Approaching Launch
 
-In 2019, I was invited by Thulinma to join him and Myumi in making the next
-application when Nintendo made their announcement, this time we planned on
-doing it all over from scratch (when Nintendo would make their announcement).
-A majority of this time was spent idle, as I was an incredibly busy during
-this year (internships, double major).
+With only 1-2 weeks of available development time, we hurriedly began
+brainstorming ideas. Very quickly, we set up a Discord server to help us, who
+were all residing in different timezones and regions, to communicate and support
+our future users. We decided to deploy a web application on our own servers and
+domains with the potential to release an offline version. The app would include
+the pattern editor which would allow you to edit via a GUI, include the ability
+to import and export QR codes and include backwards compatibility for ACNL
+patterns. We also floated the idea of including the ability to convert regular
+images to ACNL patterns as a bonus feature if we had time.
 
-Nintendo by this point had a strong track record of announcing games without
-leaking information prior. They made their first announcement for the release
-of Animal Crossing New Horizons (ACNH) in March 2020 with only a week or two
-before the release date. Planning and development kicked off the day of the
-announcement with a deadline quickly approaching.
+During initial development, the ACNH pattern format was not publicly
+available. Our lead engineer would take of the pattern format libraries, backend api,
+and infrastructure. We instead redirected a majority of our efforts to the frontend UI
+and making the previous generation pattern format (ACNL) easier to work
+with. Since no one had access to ACNH and so no one could data mine the
+files just yet, we made plans to reverse-engineer and add this in a future
+update (which we did).
 
-## Solution Design
+We also wanted to include an account system, but with two weeks left, there
+wasn't enough time & resources to securely and properly add authentication and
+authorization. The benefits of an account system wouldn't solve plagiarism and
+would also require us to setup more internal human infrastructure. Based on our
+timeline, an account system was out of question.
 
-To set the stage, we had 1-2 weeks of development time, which is frankly much
-less than anyone on the team would have hoped for. We were also all in
-different timezones, each of us residing in different regions of the world,
-introducing communication and coordination problems. We decided on deploying a
-web application on our servers and domains, with the potential to release an
-offline version. This web application would include, the pattern editor
-which would allow you to edit via GUI, the patterns and import/export QR codes
-as well as binary ACNL patterns. We included the ability to convert regular
-images to ACNL patterns as a bonus feature.
+### As Lead Frontend Engineer
 
-During the initial development, the ACNH pattern file format was not publicly
-available. No one had access to ACNH and so no one could data mine the files.
-We however made plans to reverse-engineer and add this in a future update
-(and we did).
+As an experienced front-end developer on the team, I advised my team on our
+potential technology stack, helping us decide on a build strategy to provide
+both online and offline versions of the application. A combination of prior
+[performance tests](https://github.com/DamSenViet/react-acnl-pattern-tool)
+alongside wanting making sure to include everyone in the development process
+eventually led us to settle on Vue.js – a component framework similar to
+utilizing plain HTML, CSS, JS - easy to use for developers on the team
+unfamilar with working in a component system and ES modules.
 
-A majority of our efforts were focused on the frontend while our lead engineer
-took care of the internal pattern format libraries and backend api. We also
-decided to let our lead handle the infrastructure.
+Becoming responsible for all of our setup including a custom development
+environment, bundling, compression, and dependency structures was the easy part.
+One of the unique problems that we ran into included needing to link a fork of
+the QR Code library we needed to extend from the source code directly because it
+didn't support encoding binary data and was written in TypeScript a different
+language from the what were using which was JavaScript. This was handled with
+git submodules at my suggestion so we could modify the original source and
+reference it from our main project.
 
-We intiially wanted to include an account system, but with two weeks left, we
-simply did not have the resources to fire up an account system from scratch
-and to pair it with a browsing system. We also had many security concerns.
-The benefits of an account system did not solve the plagiarism problem
-and would also require us to setup internal human infrastructure. Based on
-our timeline, an account system was not feasible.
+I spearheaded a large amount of our UI programming involved setting up our initial
+routing, pages, portal managers, data stores, client-side caching systems, api
+libraries, and integrating internationalization features.
 
-## Role Involvement
+### As Lead UI/UX Designer
 
-### Lead Frontend Engineer
-
-As the most experienced front-end developer on the team at the time,
-(based on expertise, not work years) I advised my team on our technology
-stack. I gave them options on potential build strategies we could use to
-provide both online and offline versions of the application, the benefits of
-specific frameworks based on our own optimization targets and my prior
-[experiments](https://github.com/DamSenViet/react-acnl-pattern-tool)
-(performance, bundle size).
-
-I was responsible for all of our setup including a custom development
-environment, compilers, compression, and dependency structures. One of the
-unique problems that we ran into included needing to link a fork of the QR Code
-library we needed because it didn't support encoding binary data and was
-written in a different language, TypeScript, whereas we were using JavaScript.
-This was handled with git submodules at my suggestion.
-
-I handled a large amount of our UI programming. This involved setting up
-our initial routing, pages, data stores, portal managers, api libraries,
-integrating internationalization features and guiding my team through `Vue.js` ,
-a framework my team did not have prior exposure to, but quickly familiarized
-themselves with.
-
-I also programmed our frontend caching/paging system to help additionally reduce
-our load on the backend (even with a reverse proxy cache in place).
-
-### Lead UI/UX Designer
-
-With prior background in UI/UX, I led the design efforts including making our
-UI/UX, determining general art direction, design language, and color schemes.
-Paired with my background in development, I also advised other team members
-on the viability of specific UI features.
+With a prior background in UI/UX, I led the design efforts including making HD
+mockups of our UI/UX, determining general art direction, design language, and
+color schemes. Paired with my background in development, I also advised other
+team members on the viability of specific UI features.
 
 Before the project kicked off, I had already been working on the UI/UX design
 for the application for quite a while. I did have a design in mind modeled
@@ -162,17 +154,19 @@ Latest homepage mockup:
 
 ![Latest Homepage Mockups](/work/acpatterns/latest-homepage.png)
 
-Over the course of the project, I realized I had split too much time
+## Post Launch Challenges
+
+### Time Allocation
+
+Over the course of the project, I realized we had split too much of my time
 between my two roles as developer and designer, that I had trouble fixing
 bottlenecks. Even after the initial release, I found myself having to
 spend too much time on the UI/UX designs to help move development forward.
 
 After our initial release, we encountered many offers of other community
-members volunteering to help. After we vetted and brought Tero, an
-icon/brand designer, onto the team, I was able to free up more time for
-development.
-
-## Post Launch Challenges
+members volunteering to help. We eventually vetted and brought on Tero, a
+icon/brand designer from Germany, onto the team, we were able to free up
+more of my time for development.
 
 ### Attacked and Scaled
 
@@ -182,7 +176,7 @@ harassing other community members. Our server was down for approximately half
 a day while we scrambled to set up a reverse proxy to deal with the high load
 of requests and deal with malicious ones.
 
-### User-Generated Content and Nintendo's Legal Team
+### User-Generated Content
 
 I learned that when you have user-generated content, but don't have the human
 resources to moderate that content, you end up with some very glaring issues.
@@ -192,6 +186,8 @@ gore, etc – clearly not content meant for kids or those playing Animal Crossi
 for relaxation purposes, which would be a large portion of our users. We were
 even featured on [Eurogamer](https://www.eurogamer.net/articles/2020-03-21-animal-crossing-new-horizons-players-are-putting-memes-hand-wash-warnings-and-some-very-nasty-things-in-their-islands)
 for this blunder.
+
+### Nintendo's Legal Team
 
 I remember I woke up on a weekend during spring break getting a phone call
 from Thulinma, "Did you not see what happened? Check your discord." Nintendo
@@ -274,7 +270,6 @@ support to users (both non-developers and developers), responding to feature
 requests, reviewing code, managing contributions, and coordinating with team
 members. I'm glad that we were able to deploy a tool for others to meaningfully
 engage over social media and games, glad that we were recogized for it, and
-proud that our work is being used by others in a wholesome or productive manner.
+proud that our work had a positive impact on players.
 
-I hope to continue making tools like these on a much larger scale for
-other communities as well.
+This was a great experience and I hope to continue making applications for other communities.
