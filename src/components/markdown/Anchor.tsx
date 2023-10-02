@@ -1,16 +1,33 @@
 import React, { ComponentProps } from 'react'
 import NextLink from 'next/link'
-import { styled, Link as MuiLink } from '@mui/material'
+import {
+  styled,
+  Link as MuiLink,
+  LinkProps as MuiLinkProps,
+} from '@mui/material'
 
-const StyledNextLink = styled(NextLink)(({ theme }) => ({
-  color: theme.palette.info.main,
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-}))
+const StyledNextLink = styled(NextLink)<{
+  underline?: MuiLinkProps['underline']
+}>(({ theme, underline }) => {
+  const underlineMapping = {
+    none: ['none', 'none'],
+    hover: ['none', 'underline'],
+    always: ['underline', 'underline'],
+  }
+  return {
+    color: theme.palette.info.main,
+    textDecoration: underlineMapping[underline ? underline : 'always'][0],
+    '&:hover': {
+      textDecoration: underlineMapping[underline ? underline : 'always'][0],
+      textDecorationThickness: '0.08em',
+    },
+    textUnderlineOffset: '0.15em',
+  }
+})
 
-export interface AnchorProps extends ComponentProps<'a'> {}
+export interface AnchorProps extends ComponentProps<'a'> {
+  inheritColor?: boolean
+}
 
 /**
  * A link that automatically chooses the NextLink or a render as an
@@ -26,7 +43,15 @@ export default function Anchor({ href, children }: AnchorProps) {
 
   if (href && !isExternal)
     return (
-      <StyledNextLink href={href} rel="noopener">
+      <StyledNextLink
+        href={href}
+        rel="noopener"
+        underline="hover"
+        color={'info.main'}
+        sx={{
+          textUnderlineOffset: '0.15em',
+        }}
+      >
         {children}
       </StyledNextLink>
     )
@@ -35,8 +60,13 @@ export default function Anchor({ href, children }: AnchorProps) {
     <MuiLink
       href={href}
       underline="hover"
-      rel="noopener"
-      color={(theme) => theme.palette.info.main}
+      color={'info.main'}
+      sx={{
+        textUnderlineOffset: '0.15em',
+        '&:hover': {
+          textDecorationThickness: '0.08em',
+        },
+      }}
     >
       {children}
     </MuiLink>
