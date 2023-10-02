@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react'
+import React, { ComponentProps, ElementType } from 'react'
 import { Typography } from '@mui/material'
 import Anchor from '@/components/markdown/Anchor'
 import P from '@/components/markdown/P'
@@ -17,6 +17,7 @@ import { BsLink45Deg } from 'react-icons/bs'
 import { mapValues } from 'lodash'
 import NextLink from 'next/link'
 import { styled, LinkProps } from '@mui/material'
+import { Variant } from '@mui/material/styles/createTypography'
 
 const headingTagNameToVariant = {
   h1: 'h1',
@@ -49,13 +50,15 @@ const HeadingAnchor = styled(NextLink)<{ underline?: LinkProps['underline'] }>(
 const headingShortcodes = mapValues(
   headingTagNameToVariant,
   (val, key) =>
-    ({ id, children, ...props }: any) => (
+    ({
+      id,
+      children,
+    }: ComponentProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>) => (
       <Typography
         id={id} // rehype-slug generates the id for us
-        component={key}
-        variant={val}
-        {...props}
-        sx={{ marginY: 3 }}
+        component={key as ElementType<any>}
+        variant={val as Variant}
+        sx={{ marginTop: 3, marginBottom: 2 }}
       >
         <HeadingAnchor href={`#${id}`} underline="hover">
           {children}

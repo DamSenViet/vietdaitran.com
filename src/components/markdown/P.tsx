@@ -8,9 +8,7 @@ export default function P({ children }: ComponentProps<'p'>) {
       variant={'body1'}
       color="text.secondary"
       sx={{
-        textAlign: 'justify',
-        textAlignLast: 'left',
-        lineHeight: 1.6,
+        lineHeight: 1.7,
         marginBottom: 2,
       }}
     >
