@@ -5,6 +5,10 @@ import { defaultLightTheme } from './base'
 export default {
   htmlFontSize: 16, // base rem
   fontFamily: manrope.style.fontFamily,
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightBold: 700,
   h1: {
     fontFamily: manrope.style.fontFamily,
     fontSize: '3rem',
