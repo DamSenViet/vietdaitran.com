@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react'
 import { useTheme, useMediaQuery, Box, IconButton } from '@mui/material'
 import { useClipboard } from '@mantine/hooks'
 import { MdContentCopy } from 'react-icons/md'
-import { useSnackbar } from 'notistack'
+import { useSnackbar, SnackbarKey } from 'notistack'
 
 export interface PreProps extends ComponentProps<'pre'> {}
 
@@ -11,16 +11,23 @@ export default function Pre({ children }: PreProps) {
   const theme = useTheme()
   const { copy, copied, reset, error } = useClipboard()
   const isSm = useMediaQuery(theme.breakpoints.down('sm'))
-  const { enqueueSnackbar } = useSnackbar()
-  const copyCode = () => copy(ref!.current!.textContent || '')
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+  const [lastSnackBarId, setLastSnackbarId] =
+    React.useState<SnackbarKey | null>(null)
+  const copyCode = () => {
+    if (lastSnackBarId) closeSnackbar(lastSnackBarId)
+    copy(ref!.current!.textContent || '')
+  }
 
   React.useEffect(() => {
     if (copied)
-      enqueueSnackbar('Copied code!', {
-        autoHideDuration: 1000,
-        variant: 'success',
-        preventDuplicate: false,
-      })
+      setLastSnackbarId(
+        enqueueSnackbar('Copied code!', {
+          autoHideDuration: 1000,
+          variant: 'success',
+          preventDuplicate: false,
+        })
+      )
     if (error)
       enqueueSnackbar(error?.message, {
         autoHideDuration: 1000,
@@ -63,6 +70,7 @@ export default function Pre({ children }: PreProps) {
         borderRight: `1px solid ${theme.palette.text.disabled}`,
         borderTopLeftRadius: theme.spacing(1),
         borderTopRightRadius: theme.spacing(1),
+        background: theme.palette.background.paper,
       }}
     >
       {copyButton}

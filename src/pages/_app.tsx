@@ -30,7 +30,7 @@ export default function MyApp({
       <ThemeContext>
         <SnackbarProvider
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-          maxSnack={3}
+          maxSnack={5}
         >
           <DefaultLayout>
             <DefaultSeo
