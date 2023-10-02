@@ -11,7 +11,15 @@ export interface MDXContentProps {
 export default function MDXContent({ mdxSource }: MDXContentProps) {
   return (
     <Section>
-      <Container maxWidth="md" disableGutters>
+      <Container
+        maxWidth="md"
+        disableGutters
+        sx={{
+          '&>*:first-child': {
+            marginTop: '0 !important',
+          },
+        }}
+      >
         <MDXRemote {...mdxSource} components={mdxShortcodes} />
       </Container>
     </Section>
