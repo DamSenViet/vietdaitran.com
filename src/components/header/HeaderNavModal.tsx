@@ -35,7 +35,7 @@ const internalItems = internalRoutes.map((route) => (
     <NavLink href={route.href}>
       <Typography
         component={'span'}
-        variant="h4"
+        variant="h3"
         sx={{
           fontWeight: 700,
           '&::before': {

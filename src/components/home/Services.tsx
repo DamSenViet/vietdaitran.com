@@ -73,7 +73,7 @@ export default function Services() {
           <Box flex={'2 0 0'}>
             <Typography
               component={'p'}
-              variant="h5"
+              variant="h4"
               sx={{ letterSpacing: -0.5 }}
             >
               I’m a software engineer with 3+ years of experience in software

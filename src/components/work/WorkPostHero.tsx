@@ -39,7 +39,7 @@ export default function WorkPostHero({
         <Typography component={'p'} variant="body1" color={'text.secondary'}>
           Work
         </Typography>
-        <Typography component={'h1'} variant="h2">
+        <Typography component={'h1'} variant="h1">
           {title}
         </Typography>
       </Box>

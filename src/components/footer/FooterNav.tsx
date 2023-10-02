@@ -39,7 +39,7 @@ export default function FooterNav() {
           }}
         >
           <Box>
-            <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
+            <Typography component="p" variant="h3" sx={{ fontWeight: 500 }}>
               Have a project in mind?
               <br />
               Let's work together.

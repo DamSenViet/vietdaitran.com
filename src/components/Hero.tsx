@@ -38,8 +38,8 @@ export default function Hero({ title, tagline }: HeroProps) {
           color="text.primary"
           sx={{
             typography: {
-              xs: 'h3',
-              md: 'h2',
+              xs: 'h2',
+              md: 'h1',
             },
           }}
         >

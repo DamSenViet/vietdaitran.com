@@ -18,7 +18,7 @@ export default function Hero() {
             marginRight: { xs: 0, md: 8, lg: 24, xl: 28 },
           }}
         >
-          <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
+          <Typography component="p" variant="h3" sx={{ fontWeight: 500 }}>
             I'm a developer crafting applications and tools in San Jose,
             California.
           </Typography>

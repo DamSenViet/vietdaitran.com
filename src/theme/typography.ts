@@ -3,32 +3,27 @@ import { manrope } from './fonts'
 import { defaultLightTheme } from './base'
 
 export default {
+  htmlFontSize: 16, // base rem
   fontFamily: manrope.style.fontFamily,
   h1: {
     fontFamily: manrope.style.fontFamily,
-    fontWeight: 500,
-    fontSize: '5rem',
-    letterSpacing: -1.5,
-  },
-  h2: {
-    fontFamily: manrope.style.fontFamily,
-    fontWeight: 500,
-    letterSpacing: -0.5,
     fontSize: '3rem',
+    fontWeight: 500,
+    letterSpacing: -1.5,
     [defaultLightTheme.breakpoints.up('md')]: {
       fontSize: '3.75rem',
     },
   },
-  h3: {
+  h2: {
     fontFamily: manrope.style.fontFamily,
-    fontWeight: 500,
     fontSize: '2.25rem',
+    fontWeight: 500,
     letterSpacing: -0.5,
     [defaultLightTheme.breakpoints.up('md')]: {
       fontSize: '2.375rem',
     },
   },
-  h4: {
+  h3: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
     fontSize: '1.75rem',
@@ -37,14 +32,22 @@ export default {
       fontSize: '1.875rem',
     },
   },
+  h4: {
+    fontFamily: manrope.style.fontFamily,
+    fontWeight: 500,
+    fontSize: '1.5rem',
+    letterSpacing: -0.5,
+  },
   h5: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
+    fontSize: '1.25rem',
     letterSpacing: -0.5,
   },
   h6: {
     fontFamily: manrope.style.fontFamily,
     fontWeight: 500,
+    fontSize: '1.125rem',
     letterSpacing: -0.5,
   },
   subtitle1: {

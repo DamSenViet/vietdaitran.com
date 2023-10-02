@@ -24,9 +24,9 @@ export default function HeroAbout() {
         component={'p'}
         sx={{
           typography: {
-            xs: 'h3',
-            md: 'h4',
-            lg: 'h3',
+            xs: 'h2',
+            md: 'h3',
+            lg: 'h2',
           },
           marginTop: 1,
         }}

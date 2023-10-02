@@ -25,7 +25,7 @@ export default function WorkPreview({
           md: 'flex-end',
         }}
       >
-        <Typography component={'h2'} variant="h2">
+        <Typography component={'h2'} variant="h1">
           Work
           <Typography
             color="text.secondary"
