@@ -10,6 +10,7 @@ export default function P({ children }: ComponentProps<'p'>) {
       sx={{
         textAlign: 'justify',
         textAlignLast: 'left',
+        lineHeight: 1.6,
         marginBottom: 2,
       }}
     >
