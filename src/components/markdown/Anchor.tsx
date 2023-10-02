@@ -18,7 +18,7 @@ const StyledNextLink = styled(NextLink)<{
     color: theme.palette.info.main,
     textDecoration: underlineMapping[underline ? underline : 'always'][0],
     '&:hover': {
-      textDecoration: underlineMapping[underline ? underline : 'always'][0],
+      textDecoration: underlineMapping[underline ? underline : 'always'][1],
       textDecorationThickness: '0.08em',
     },
     textUnderlineOffset: '0.15em',
