@@ -15,6 +15,8 @@ export default function MDXContent({ mdxSource }: MDXContentProps) {
         maxWidth="md"
         disableGutters
         sx={{
+          display: 'grid',
+          rowGap: 2,
           '&>*:first-child': {
             marginTop: '0 !important',
           },

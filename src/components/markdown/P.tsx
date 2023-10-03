@@ -9,7 +9,6 @@ export default function P({ children }: ComponentProps<'p'>) {
       color="text.secondary"
       sx={{
         lineHeight: 1.7,
-        marginBottom: 2,
       }}
     >
       {children}

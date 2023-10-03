@@ -6,7 +6,7 @@ import {
 
 export default function Table({ children }: ComponentProps<'table'>) {
   return (
-    <MuiTableContainer sx={{ marginBottom: 2 }}>
+    <MuiTableContainer>
       <MuiTable
         sx={(theme) => ({
           width: 'auto',

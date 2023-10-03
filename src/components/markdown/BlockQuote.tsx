@@ -11,7 +11,7 @@ export default function BlockQuote({ children }: ComponentProps<'blockquote'>) {
         paddingLeft: 2,
         paddingRight: 1,
         paddingTop: 2,
-        paddingBottom: 0.1,
+        paddingBottom: 2,
         backgroundColor: `${theme.palette.action.disabledBackground}`,
         borderLeft: `${theme.spacing(1)} solid ${theme.palette.action.hover}`,
       })}

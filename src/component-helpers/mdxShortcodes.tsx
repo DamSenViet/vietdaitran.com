@@ -58,7 +58,7 @@ const headingShortcodes = mapValues(
         id={id} // rehype-slug generates the id for us
         component={key as ElementType<any>}
         variant={val as Variant}
-        sx={{ marginTop: 3, marginBottom: 2 }}
+        sx={{ marginTop: 2 }}
       >
         <HeadingAnchor href={`#${id}`} underline="hover">
           {children}
