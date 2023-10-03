@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeHighlight from 'rehype-highlight'
@@ -102,7 +103,12 @@ export const getWorkPost = async (id: string): Promise<WorkPost> => {
   const scope = pickBy(frontmatter, isString)
   const mdxSource = await serialize<Frontmatter, Frontmatter>(fileContents, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+      remarkPlugins: [
+        remarkGfm,
+        remarkUnwrapImages,
+        remarkFrontmatter,
+        remarkMdxFrontmatter,
+      ],
       rehypePlugins: [rehypeHighlight, rehypeColorChips, rehypeSlug],
     },
     scope,

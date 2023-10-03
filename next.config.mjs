@@ -1,4 +1,5 @@
 import remarkGfm from 'remark-gfm';
+import remarkUnwrapImages from 'remark-unwrap-images'
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeHighlight from 'rehype-highlight';
@@ -17,12 +18,13 @@ const withBundleAnalyzer = bundleAnalyzer({
 const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: [
-      rehypeHighlight,
-      rehypeColorChips,
-      rehypeSlug,
+    remarkPlugins: [
+      remarkGfm,
+      remarkUnwrapImages,
+      remarkFrontmatter,
+      remarkMdxFrontmatter,
     ],
+    rehypePlugins: [rehypeHighlight, rehypeColorChips, rehypeSlug],
     providerImportSource: '@mdx-js/react',
   },
 })

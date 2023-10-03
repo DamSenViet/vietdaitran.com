@@ -9,6 +9,7 @@ import DefaultLayout from '@/layout/DefaultLayout'
 import '@/styles/global.css'
 import '@/styles/highlight-dark.scss'
 import '@/styles/highlight-light.scss'
+import 'react-medium-image-zoom/dist/styles.css'
 
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
