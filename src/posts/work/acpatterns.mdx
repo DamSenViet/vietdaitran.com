@@ -28,9 +28,10 @@ tags:
 </Typography>
 
 An application that edits Nintendo's Animal Crossing New Leaf and Animal
-Crossing New Horizons pattern files and encode to and decode from QR codes.
-Meant to be used in tandem with Animal Crossing New Leaf (3DS) or Animal
-Crossing New Horizons (Switch) and the Nintendo Switch Online mobile application.
+Crossing New Horizons pattern files, capable of encoding to and decoding from
+QR codes. Meant to be used in tandem with Animal Crossing New Leaf (3DS) or
+Animal Crossing New Horizons (Switch) and the Nintendo Switch Online mobile
+application.
 
 ## Collaborators
 
@@ -127,7 +128,7 @@ patterns. We also floated the idea of including the ability to convert regular
 images to ACNL patterns as a bonus feature.
 
 During initial development, the ACNH pattern format was not publicly
-available. Our lead engineer would take care of the pattern format libraries,
+available. Thulinmag would take care of the pattern format libraries,
 backend api, and infrastructure. I instead redirected a majority of our efforts
 to the frontend UI and Myumi worked on improving QR code generation. Since no
 one had access to ACNH just yet, we made plans to reverse-engineer and add this
@@ -141,14 +142,14 @@ timeline, an account system was out of question.
 
 ### As Frontend Developer
 
-As an experienced front-end developer, I advised my team on our
-potential technology stack, helping us decide on a build strategy to provide
-both online and offline versions of the application. A combination of prior
-[performance tests](https://github.com/DamSenViet/react-acnl-pattern-tool)
-alongside wanting to include everyone in the development process eventually led
-us to settle on Vue.js – a component framework similar to utilizing plain HTML,
-CSS, JS – easy to use for developers on the team unfamilar with working in a
-component system and ES modules.
+As an experienced front-end developer, I advised my team on our potential
+technology stack, helping us decide on a build strategy to provide both online
+and offline versions of the application. A combination of prior [performance
+tests](https://github.com/DamSenViet/react-acnl-pattern-tool) alongside wanting
+to include everyone in the development process eventually led us to settle on
+Vue.js – a component framework similar to utilizing plain HTML, CSS, JS – easy
+to use for developers on the team unfamilar with working in a component system
+and ES modules.
 
 Becoming responsible for all of our setup included setting up a custom tooling
 involving bundling, compression, and dependency structures was the easy part.
@@ -212,14 +213,15 @@ originally a bonus feature, ended up becoming our biggest engagement driver.
 
 Users greatly loved the image conversion and QR code preview features, using it
 put pictures of memes, art, and loved ones into their games. Mentioned in the
-Nintendo Direct, by scanning the QR codes with Nintendo's mobile application,
-users were able to add these patterns encoded as QR codes to their game after
-connecting with their Nintendo Account. Our image conversion feature allowed for
-memes, art, and pictures of loved ones to be added into the game as designs that
-users could project onto in-game apparel, furniture and decor, and even 1x1
-tiles on landscapes. We received heartfelt messages and support from the Animal
-Crossing community on our platform and collaborated with other similar free
-platforms like [Nooknet](https://nooknet.net/) to continue getting the word out.
+Nintendo Direct, by scanning the QR codes that encoded ACNL patterns with
+Nintendo's mobile application, users were able to add these patterns to their
+game after connecting with their Nintendo Account. Our image conversion feature
+allowed for memes, art, and pictures of loved ones to be added into the game as
+designs that users could project onto in-game apparel, furniture and decor, and
+even 1x1 tiles on landscapes. We received heartfelt messages and support from
+the Animal Crossing community on our platform and collaborated with other
+similar free platforms like [Nooknet](https://nooknet.net/) to continue getting
+the word out.
 
 <MediaContainer>
   <Img src="/work/acpatterns/screenshots/2023-06-18/Editor - Import - Convert - 02 Crop Mosiac.png" />
@@ -242,12 +244,12 @@ the infrastructure required to even support such a large userbase. Given our sta
 for April 2020, we did amazing on release!
 
 By May our numbers began to slack a bit, but it was expected because the
-popularity and visibility of the game began to fizzle. Users began to
-understand that this Animal Crossing entry not centered around interaction like
-previous entries but around customization instead. Many of us Animal Crossing
-fans were feeling burnout from the game. Despite the lack of Nintendo's new
-updates excluding meaningful additions to the base game, we continued to have
-millions of unique monthly global users.
+popularity and visibility of the game began to fizzle. Players began to
+understand that this Animal Crossing entry not centered around villager
+interaction like previous entries but around customization instead. Many of us
+Animal Crossing fans were feeling burnout from the game. Despite the lack of
+Nintendo's new updates excluding meaningful additions to the base game, we
+continued to have millions of unique monthly global users.
 
 ### Social Media
 
@@ -293,6 +295,8 @@ members volunteering to help. We eventually vetted and brought on Tero, an
 icon/brand designer from Germany, onto the team who did an [amazing job
 creating graphics and branding for us to use](https://tero.space/acpatterns),
 freeing up more of my time for development.
+
+{/* Insert some UI exploration and concepts */}
 
 ### Overlooked Infrastructure
 
