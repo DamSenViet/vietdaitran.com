@@ -13,7 +13,7 @@ export default createTheme({
     secondary,
     background: {
       default: '#080808',
-      paper: '#080808',
+      paper: '#1C1C1C',
     },
     text: {
       secondary: '#8e8e8e',
