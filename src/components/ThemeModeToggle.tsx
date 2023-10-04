@@ -27,6 +27,7 @@ export default function ThemeModeToggle() {
 
   return (
     <IconButton
+      title={`Switch to ${themeToSwitchTo} theme`}
       aria-label={`Switch to ${themeToSwitchTo} theme`}
       sx={(theme) => ({
         color: theme.palette.primary.contrastText,

@@ -25,10 +25,15 @@ export default function Img({ ...props }: ComponentProps<typeof StyledImage>) {
           },
     [hasSetDims]
   )
+
+  const computedProps = {
+    ...(props.alt && { title: props.alt }),
+  }
+
   return (
     // may be part of a carousel will need 100% width set by default
     <Zoom>
-      <StyledImage {...props} {...propsWithSx} />
+      <StyledImage {...props} {...computedProps} {...propsWithSx} />
     </Zoom>
   )
 }
