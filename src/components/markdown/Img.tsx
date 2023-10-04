@@ -1,66 +1,32 @@
 import React, { ComponentProps } from 'react'
-import Zoom from 'react-medium-image-zoom'
-import { styled, useTheme, Box, GlobalStyles } from '@mui/material'
-import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai'
-import { transparentize } from 'color2k'
+import Zoom from '../Zoom'
+import { styled } from '@mui/material'
 
 const StyledImage = styled('img')({})
 
-interface CustomZoomProps {
-  children: React.ReactNode
-}
-
-function CustomZoom({ children }: CustomZoomProps) {
-  const theme = useTheme()
-  return (
-    <>
-      <GlobalStyles
-        styles={{
-          "[data-rmiz-portal] [data-rmiz-modal-overlay='visible']": {
-            backgroundColor: transparentize(
-              theme.palette.background.default,
-              0.4
-            ),
-            backdropFilter: 'blur(10px)',
-          },
-        }}
-      />
-      <Zoom
-        IconUnzoom={() => <AiOutlineZoomOut size={22} />}
-        IconZoom={() => <AiOutlineZoomIn size={22} />}
-        wrapElement="div"
-        ZoomContent={({ img, buttonUnzoom, onUnzoom }) => {
-          return (
-            <Box
-              onClick={onUnzoom}
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
-              }}
-            >
-              {buttonUnzoom}
-              {img}
-            </Box>
-          )
-        }}
-      >
-        {children}
-      </Zoom>
-    </>
-  )
-}
-
 export default function Img({ ...props }: ComponentProps<'img'>) {
+  // whether coming directly from markdown
+  const isDefaultConstrained = React.useMemo(
+    () => !props?.width && !props?.height,
+    [props.width, props.height]
+  )
+
+  const propsWithSx = React.useMemo(
+    () =>
+      isDefaultConstrained
+        ? {
+            sx: {
+              maxWidth: '100%',
+              maxHeight: '400px',
+            },
+          }
+        : {},
+    [isDefaultConstrained]
+  )
   return (
-    <CustomZoom>
-      <StyledImage
-        sx={{
-          maxWidth: '100%',
-          maxHeight: '400px',
-        }}
-        {...props}
-      />
-    </CustomZoom>
+    // may be part of a carousel will need 100% width set by default
+    <Zoom>
+      <StyledImage {...propsWithSx} {...props} />
+    </Zoom>
   )
 }

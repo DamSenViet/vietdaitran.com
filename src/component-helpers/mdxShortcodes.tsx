@@ -18,6 +18,9 @@ import { mapValues } from 'lodash'
 import NextLink from 'next/link'
 import { styled, LinkProps } from '@mui/material'
 import { Variant } from '@mui/material/styles/createTypography'
+import Zoom from '@/components/Zoom'
+import Carousel from '@/components/Carousel'
+import withDefaultProps from '@/utils/withDefaultProps'
 
 const headingTagNameToVariant = {
   h1: 'h1',
@@ -95,9 +98,16 @@ const tableShortcodes = {
   td: Td,
 }
 
+const customShortcodes = {
+  Img: withDefaultProps(Img, { width: '100%' }),
+  Carousel,
+  Zoom,
+  Typography,
+}
+
 export default {
   ...typographyShortcodes,
   ...tableShortcodes,
   img: Img,
-  Typography,
+  ...customShortcodes,
 }
