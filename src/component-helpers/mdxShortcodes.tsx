@@ -122,6 +122,7 @@ const customShortcodes = {
   Zoom,
   Typography,
   MediaContainer,
+  Anchor,
 }
 
 export default {
