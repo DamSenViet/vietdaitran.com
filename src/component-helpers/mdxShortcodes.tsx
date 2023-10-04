@@ -20,6 +20,7 @@ import { styled, LinkProps } from '@mui/material'
 import { Variant } from '@mui/material/styles/createTypography'
 import Zoom from '@/components/Zoom'
 import Carousel from '@/components/Carousel'
+import MediaContainer from '@/components/MediaContainer'
 import withDefaultProps from '@/utils/withDefaultProps'
 
 const headingTagNameToVariant = {
@@ -98,11 +99,29 @@ const tableShortcodes = {
   td: Td,
 }
 
+/**
+ * Spells out explicit components we can use directly through JSX in MDX.
+ */
 const customShortcodes = {
-  Img: withDefaultProps(Img, { width: '100%' }),
+  /**
+   * If we don't set Img width or height props, we maximize the width.
+   * Otherwise by default we have it amx expand to be Carousel compatible.
+   */
+  Img: withDefaultProps(Img, (props) =>
+    props?.width || props?.height
+      ? {
+          width: props.width,
+          height: props.height,
+        }
+      : {
+          width: '100%',
+          height: 'auto',
+        }
+  ),
   Carousel,
   Zoom,
   Typography,
+  MediaContainer,
 }
 
 export default {

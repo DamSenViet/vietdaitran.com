@@ -4,29 +4,31 @@ import { styled } from '@mui/material'
 
 const StyledImage = styled('img')({})
 
-export default function Img({ ...props }: ComponentProps<'img'>) {
-  // whether coming directly from markdown
-  const isDefaultConstrained = React.useMemo(
-    () => !props?.width && !props?.height,
+/**
+ * If we don't set width or height props, we limit the potential size of the image.
+ */
+export default function Img({ ...props }: ComponentProps<typeof StyledImage>) {
+  const hasSetDims = React.useMemo(
+    () => props?.width || props?.height,
     [props.width, props.height]
   )
 
   const propsWithSx = React.useMemo(
     () =>
-      isDefaultConstrained
-        ? {
+      hasSetDims
+        ? {}
+        : {
             sx: {
               maxWidth: '100%',
               maxHeight: '400px',
             },
-          }
-        : {},
-    [isDefaultConstrained]
+          },
+    [hasSetDims]
   )
   return (
     // may be part of a carousel will need 100% width set by default
     <Zoom>
-      <StyledImage {...propsWithSx} {...props} />
+      <StyledImage {...props} {...propsWithSx} />
     </Zoom>
   )
 }

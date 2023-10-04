@@ -1,6 +1,8 @@
+import React, { ComponentProps } from 'react'
 import NukaCarousel from 'nuka-carousel'
 import { IconButton } from '@mui/material'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+import MediaContainer from './MediaContainer'
 import withDefaultProps from '@/utils/withDefaultProps'
 import { transparentize } from 'color2k'
 
@@ -50,4 +52,14 @@ const Carousel = withDefaultProps(NukaCarousel, {
   ),
 })
 
-export default Carousel
+const ContainedCarousel: React.FunctionComponent<
+  ComponentProps<typeof Carousel>
+> = (props) => {
+  return (
+    <MediaContainer>
+      <Carousel {...props} />
+    </MediaContainer>
+  )
+}
+
+export default ContainedCarousel
