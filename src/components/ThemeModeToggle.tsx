@@ -7,12 +7,17 @@ export default function ThemeModeToggle() {
   const [mounted, setMounted] = React.useState(false)
   const { theme, toggleTheme } = useRootTheme()
 
+  const themeToSwitchTo = React.useMemo(
+    () => (theme === 'light' ? 'dark' : 'light'),
+    [theme]
+  )
+
   const Icon = !mounted
     ? null
     : {
-        light: <NightlightOutlined fontSize="small" />,
-        dark: <LightModeOutlined fontSize="small" />,
-      }[theme as string]
+        light: <LightModeOutlined fontSize="small" />,
+        dark: <NightlightOutlined fontSize="small" />,
+      }[themeToSwitchTo as string]
 
   React.useEffect(() => {
     setMounted(true)
@@ -22,6 +27,7 @@ export default function ThemeModeToggle() {
 
   return (
     <IconButton
+      aria-label={`Switch to ${themeToSwitchTo} theme`}
       sx={(theme) => ({
         color: theme.palette.primary.contrastText,
         backgroundColor: theme.palette.primary.main,
