@@ -19,7 +19,7 @@ function CustomZoom({ children }: CustomZoomProps) {
           "[data-rmiz-portal] [data-rmiz-modal-overlay='visible']": {
             backgroundColor: transparentize(
               theme.palette.background.default,
-              0.9
+              0.4
             ),
             backdropFilter: 'blur(10px)',
           },
@@ -29,9 +29,10 @@ function CustomZoom({ children }: CustomZoomProps) {
         IconUnzoom={() => <AiOutlineZoomOut size={22} />}
         IconZoom={() => <AiOutlineZoomIn size={22} />}
         wrapElement="div"
-        ZoomContent={({ img, buttonUnzoom }) => {
+        ZoomContent={({ img, buttonUnzoom, onUnzoom }) => {
           return (
             <Box
+              onClick={onUnzoom}
               sx={{
                 position: 'relative',
                 width: '100%',
