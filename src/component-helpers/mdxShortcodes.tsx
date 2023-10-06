@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ComponentProps, ElementType } from 'react'
+import React, { ComponentProps, ElementType, Component } from 'react'
 import { Typography } from '@mui/material'
 import Anchor from '@/components/markdown/Anchor'
 import P from '@/components/markdown/P'
@@ -62,7 +62,7 @@ const headingShortcodes = mapValues(
         id={id} // rehype-slug generates the id for us
         component={key as ElementType<any>}
         variant={val as Variant}
-        sx={{ marginTop: 2 }}
+        sx={{ marginY: 1 }}
       >
         <HeadingAnchor href={`#${id}`} underline="hover">
           {children}
@@ -123,7 +123,9 @@ const customShortcodes = {
   Typography,
   MediaContainer,
   Anchor,
-}
+} as unknown as {
+  [key: string]: Component<any>
+} // MDX definition isn't generic enough to handle these
 
 export default {
   ...typographyShortcodes,
