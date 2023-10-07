@@ -11,15 +11,15 @@ tags:
   - Open Source
 ---
 
-<Carousel>
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Home.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Home - Menu Open.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Editor.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Editor - Palette Open.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Editor - QR Preview.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Editor - Import - Convert - 02 Crop Mosiac.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Editor - Local Storage Expanded.png" />
-  <Img src="/work/acpatterns/screenshots/2023-06-18/Browse.png" />
+<Carousel caption="acpatterns.com">
+  <Img alt="Home page" src="/work/acpatterns/screenshots/2023-06-18/Home.png" />
+  <Img alt="Home page with menu open" src="/work/acpatterns/screenshots/2023-06-18/Home - Menu Open.png" />
+  <Img alt="Editor page" src="/work/acpatterns/screenshots/2023-06-18/Editor.png" />
+  <Img alt="Editor page with palette open" src="/work/acpatterns/screenshots/2023-06-18/Editor - Palette Open.png" />
+  <Img alt="Editor page with QR preview" src="/work/acpatterns/screenshots/2023-06-18/Editor - QR Preview.png" />
+  <Img alt="Editor page with import conversion open" src="/work/acpatterns/screenshots/2023-06-18/Editor - Import - Convert - 02 Crop Mosiac.png" />
+  <Img alt="Editor page with pattern storage open" src="/work/acpatterns/screenshots/2023-06-18/Editor - Local Storage Expanded.png" />
+  <Img alt="Browse page" src="/work/acpatterns/screenshots/2023-06-18/Browse.png" />
 </Carousel>
 
 <Typography textAlign="center">
@@ -94,8 +94,8 @@ assembled I eventually began making design mockups and [experimental performance
 tests](https://github.com/DamSenViet/react-acnl-pattern-tool) for a centralized,
 searchable database of patterns.
 
-Thulinma later extended an invitation to me to join him and Myumi, a developer
-in New York, in making the next generation of the application, We made
+Thulinma later extended an invitation to me to join him and [Myumi](https://github.com/myumi),
+a developer in New York, in making the next generation of the application, We made
 uncommitted plans to develop a new application from scratch and decided to stay
 in touch with each other. A majority of this time was spent idle, waiting
 for Nintendo to make some mention of patterns in their announcements or gameplay
@@ -128,11 +128,11 @@ patterns. We also floated the idea of including the ability to convert regular
 images to ACNL patterns as a bonus feature.
 
 During initial development, the ACNH pattern format was not publicly
-available. Thulinmag would take care of the pattern format libraries,
-backend api, and infrastructure. I instead redirected a majority of our efforts
-to the frontend UI and Myumi worked on improving QR code generation. Since no
-one had access to ACNH just yet, we made plans to reverse-engineer and add this
-in a future update (which we did).
+available. So, Thulinma took care of our pattern format librarry, backend API,
+and infrastructure. I instead redirected a majority of my efforts to the
+frontend UI and Myumi worked on improving QR code generation and support. Since
+no one had access to ACNH just yet, we made plans to reverse-engineer and add
+this in a future update (which we did).
 
 We also wanted to include an account system, but with two weeks left, there
 wasn't enough time and resources to securely and properly add authentication and
@@ -151,14 +151,14 @@ Vue.js – a component framework similar to utilizing plain HTML, CSS, JS – ea
 to use for developers on the team unfamilar with working in a component system
 and ES modules.
 
-Becoming responsible for all of our setup included setting up a custom tooling
-involving bundling, compression, and dependency structures was the easy part.
-One of the unique problems we ran into included needing to link a fork of the
-QR Code library we needed to extend from the source code directly because it
-didn't support encoding binary data and was written in TypeScript, a different
-language from the what were using which was JavaScript. This was handled with
-git submodules at my suggestion so we could modify the original source, compile
-it back to JavaScript and then reference it from our main project.
+Becoming responsible for our setup included setting up custom tooling involving
+bundling, compression, and dependency structures was the easy part. One of the
+unique problems we ran into included needing to link a fork of the QR Code
+library we needed to extend from the source code directly because it didn't
+support encoding binary data and was written in TypeScript, a different language
+from the what were using which was JavaScript. This was handled with git
+submodules at my suggestion so we could modify the original source, compile it
+back to JavaScript and then reference it from our main project.
 
 I also ended up spearheading a large amount of our UI programming involving
 setting up our initial routing, pages, portal managers, data stores, client-side
@@ -193,14 +193,14 @@ Early home page concepts:
 ## At Launch
 
 <Carousel>
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Home.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor - QR Preview.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor - Image Conversion.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor - Local Storage.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor - Palette Open.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Editor - Pattern Settings.png" />
-  <Img src="/work/acpatterns/screenshots/2020-03-20/Browse.png" />
+  <Img alt="Early home page" src="/work/acpatterns/screenshots/2020-03-20/Home.png" />
+  <Img alt="Early editor page" src="/work/acpatterns/screenshots/2020-03-20/Editor.png" />
+  <Img alt="Early editor page with QR code" src="/work/acpatterns/screenshots/2020-03-20/Editor - QR Preview.png" />
+  <Img alt="Early editor page with image conversion" src="/work/acpatterns/screenshots/2020-03-20/Editor - Image Conversion.png" />
+  <Img alt="Early editor page with storage" src="/work/acpatterns/screenshots/2020-03-20/Editor - Local Storage.png" />
+  <Img alt="Early editor page with palette open" src="/work/acpatterns/screenshots/2020-03-20/Editor - Palette Open.png" />
+  <Img alt="Early editor page with settings open" src="/work/acpatterns/screenshots/2020-03-20/Editor - Pattern Settings.png" />
+  <Img alt="Early browse page " src="/work/acpatterns/screenshots/2020-03-20/Browse.png" />
 </Carousel>
 
 Pressed by lack of time, we focused solely on implementing features. The UI
@@ -291,12 +291,18 @@ much time on the HD mockups to help move development forward. Despite being a
 unicorn, I found our pace of development to be a bit frustrating.
 
 After our initial release, we encountered many offers of other community
-members volunteering to help. We eventually vetted and brought on Tero, an
-icon/brand designer from Germany, onto the team who did an [amazing job
-creating graphics and branding for us to use](https://tero.space/acpatterns),
-freeing up more of my time for development.
+members volunteering to help. We eventually vetted and brought on [Tero](https://tero.space/),
+an icon/brand designer from Germany, who did an amazing job creating graphics
+and branding for us to use, freeing up more of my time for development. With
+Tero's help we were able to design the UI we have today. Below are a couple of
+the assets Tero made for us!
 
-{/* Insert some UI exploration and concepts */}
+<Carousel>
+  <Img src="/work/acpatterns/assets/menu-icons.png" />
+  <Img src="/work/acpatterns/assets/banner-background.png" />
+  <Img src="/work/acpatterns/assets/brushes.jpeg" />
+  <Img src="/work/acpatterns/assets/stamps.png" />
+</Carousel>
 
 ### Overlooked Infrastructure
 
@@ -362,4 +368,4 @@ members. We deployed a tool for others to meaningfully engage over social media
 and games and we were recogized for it.
 
 I'm proud that our work had a positive impact and hope to continue developing
-apps like this!
+open source applications much like this!
