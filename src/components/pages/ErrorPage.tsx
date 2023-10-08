@@ -20,7 +20,7 @@ export default function ErrorPage({ statusCode }: ErrorPage) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: '50vh',
+          minHeight: 'calc(100vh - var(--header-height))',
         }}
       >
         <Box

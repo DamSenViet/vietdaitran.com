@@ -5,14 +5,18 @@ import SplashScreen from '@/components/SplashScreen'
 
 export interface DefaultLayoutProps {
   children: React.ReactNode
+  omitFooter?: boolean
 }
 
-export default function DefaultLayout({ children }: DefaultLayoutProps) {
+export default function DefaultLayout({
+  children,
+  omitFooter = false,
+}: DefaultLayoutProps) {
   return (
     <>
       <SplashScreen />
       <AppHeader />
-      <AppMain>{children}</AppMain>
+      <AppMain omitFooter={omitFooter}>{children}</AppMain>
     </>
   )
 }

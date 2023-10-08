@@ -6,6 +6,7 @@ import createEmotionCache from '@/createEmotionCache'
 import ThemeContext from '@/providers/ThemeContext'
 import { SnackbarProvider } from 'notistack'
 import DefaultLayout from '@/layout/DefaultLayout'
+import { Page } from 'page'
 import '@/styles/global.css'
 import '@/styles/highlight-dark.scss'
 import '@/styles/highlight-light.scss'
@@ -13,6 +14,7 @@ import 'react-medium-image-zoom/dist/styles.css'
 import '@/styles/react-medium-image-zoom-overrides.scss'
 
 export interface MyAppProps extends AppProps {
+  Component: Page
   emotionCache?: EmotionCache
 }
 
@@ -23,6 +25,8 @@ export default function MyApp({
   Component,
   pageProps,
 }: MyAppProps) {
+  const getLayout = Component.getLayout ?? ((page) => page)
+  const Layout = Component.layout ?? DefaultLayout
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -34,14 +38,14 @@ export default function MyApp({
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           maxSnack={5}
         >
-          <DefaultLayout>
+          <Layout>
             <DefaultSeo
               titleTemplate="Viet Tran • %s"
               defaultTitle="Viet Tran • Creative Developer"
               description="The personal website of Viet Tran, Creative Developer."
             />
-            <Component {...pageProps} />
-          </DefaultLayout>
+            {getLayout(<Component {...pageProps} />)}
+          </Layout>
         </SnackbarProvider>
       </ThemeContext>
     </CacheProvider>

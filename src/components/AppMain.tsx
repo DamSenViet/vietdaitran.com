@@ -5,9 +5,13 @@ import containerSx from './constants/containerSx'
 
 export interface AppMainProps {
   children?: React.ReactNode
+  omitFooter?: boolean
 }
 
-export default function AppMain({ children }: AppMainProps) {
+export default function AppMain({
+  children,
+  omitFooter = false,
+}: AppMainProps) {
   return (
     <Stack
       sx={(theme) => ({
@@ -30,7 +34,7 @@ export default function AppMain({ children }: AppMainProps) {
         <Box sx={{ height: 'var(--header-height)' }} />
         {children}
       </Stack>
-      <AppFooter></AppFooter>
+      {!omitFooter && <AppFooter />}
     </Stack>
   )
 }
