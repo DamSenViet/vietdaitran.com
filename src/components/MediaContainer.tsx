@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box } from '@mui/material'
 import withDefaultProps from '@/utils/withDefaultProps'
 
@@ -6,10 +5,12 @@ const MediaContainer = withDefaultProps(Box, {
   sx: {
     position: 'relative',
     display: 'grid',
-    justifyContent: 'center',
+    justifyContent: 'stretch',
+    justifyItems: 'center',
+    width: '100%',
     top: 0,
     left: 0,
-    marginX: {
+    paddingX: {
       md: 12,
     },
     marginY: 2,
