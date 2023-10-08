@@ -29,7 +29,7 @@ export default function WorkPage({ postData }: WorkPageProps) {
         title="Work"
         description="The portfolio of Viet Tran, Creative Developer"
       />
-      <HeroWorks />
+      <HeroWorks totalPostCount={postData.length} />
       <WorksShowcase postData={postData} />
     </>
   )
