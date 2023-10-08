@@ -11,11 +11,80 @@ tags:
   - Open Source
 ---
 
-An experimental build to edit Animal Crossing pattern files. Meant to evaluate
-performance improvement strategies. Results available on GitHub.
+<Img alt="Banner" src="/work/react-acnl-pattern-tool/device-mockup.png" height="400"/>
 
-![Preview](/work/react-acnl-pattern-tool/device-mockup.png)
+<Typography component="div" textAlign="center">
+  <Anchor href="https://damsenviet.github.io/react-acnl-pattern-tool/">Official Website</Anchor><span> • </span>
+  <Anchor href="https://github.com/DamSenViet/react-acnl-pattern-tool">GitHub</Anchor><br/>
+  An experimental build to edit Animal Crossing pattern files.<br/>
+  Findings available on GitHub.<br/>
+</Typography>
 
-## Links
+## Background
 
-[GitHub](https://github.com/DamSenViet/react-acnl-pattern-tool)
+<MediaContainer>
+  <iframe
+    width="100%"
+    height="400"
+    src="https://www.youtube.com/embed/fYKvOzYw4xg?si=hf0I001Ql2g7uuBt&amp;start=257"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</MediaContainer>
+
+Animal Crossing New Leaf (ACNL) on 3DS had a feature where we could design
+patterns and apply them to in-apparel and decor. Players could take these
+patterns and generate QR codes to share or scan other player's codes to import
+them into their game.
+
+This is an application I wrote to to explore that ACNL pattern format, learn
+how the QR encoding worked as well as evaluate and improve drawing performance.
+One of the issues I found with the original was that, when drawing with large,
+fast strokes, we'll end up missing pixels along the way. This is due to the
+browser throttling event dispatching under heavier load. This was a problem I
+desperately wanted to understand and solve.
+
+## Approach
+
+I rebuilt the core ACNL pattern format library to help me understand the binary
+layout the pattern format of the as well as any other encoding of the data.
+
+Anything that could be cached and slimmed in case of the drawing functions
+I pre-emptively cached. The importance of caching could not be overstated in
+trying to co-erce the browser to fire more events. I also cached the bounding client
+rect calculation to avoid layout thrashing, reduced unecessary event handling,
+and hardcoded lookups to reduce any unecessary CPU load.
+
+Wanting to experiment with different optimization techniques, I also implemented
+buffers for recording pixel changes in the pattern, debouncing the actual write
+process to the pattern itself.
+
+## Findings
+
+Using the JavaScript profiler, I discovered that this experimental build won
+out in some aspects but also lost out on others.
+
+React's synthetic event handling has a considerable overhead. For applications
+that require rapid event firing with low-overhead handling, there's a need to be
+utilizing native event bindings provided by the browser combined with a
+performant event handler. This will result in the browser firing as many
+events as possible on an event like mouse dragging as to not miss any potential
+events.
+
+Because the browser will always throttle events to some degree due to currently
+running JavaScript, rather than approach the problem of event dispatch
+throttling as a performance issue, there should be recouncilation of
+the throttling instead. Automatically calculating the pixels in between the
+beginning and end of the stroke was an idea that I came to when building the
+application since there will always be missed pixels depending on the size of
+and speed of the drawing stroke.
+
+The QR code library the original application used as well as the one I used,
+did not supoprt multi-QR encoding which was required for it to work with
+Animal Crossing New Leaf on the 3DS.
+
+I was able to use these findings later when my team and I  worked on the [Animal
+Crossing Pattern Tool](/work/acpatterns), giving these recommendations to my
+team to help drive our design choices.
