@@ -11,10 +11,74 @@ tags:
   - Open Source
 ---
 
-An Imgur/Reddit style image-serving application.
+<Img alt="Preview" src="/work/lahacks-improved/screenshots-mockup.png" height="400"/>
 
-![Preview](/work/lahacks-improved/screenshots-mockup.png)
+<Typography component="div" textAlign="center">
+  <Anchor href="https://github.com/DamSenViet/lahacks-improved">GitHub</Anchor><br/>
+  An Imgur/Reddit style image-serving application.<br/>
+  Built with performant CSS animations.<br/>
+</Typography>
 
-## Links
+## Videos
 
-[GitHub](https://github.com/DamSenViet/lahacks-improved)
+<MediaContainer>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/UAslSN53XpY?si=jCrNmAms40Pqmb6W"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</MediaContainer>
+
+<MediaContainer>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/_a-jHiP1omo?si=eQ2htz3FHeKpaEjs"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</MediaContainer>
+
+
+
+## Background
+
+This was an improved version of an application I built at a hackathon in Los
+Angeles. The original was quite a bland application at the time, one you could
+probably find a tutorial to do. I didn't feel quite satisifed with what had I
+made so I took another chance at it.
+
+What I was really after was to redesign this with a sleeker UI and real mobile
+apps with hero animations (going from card to spanning the entire screen).
+
+## Retrospective
+
+I took this opportunity to learn a bunch of CSS tricks and optimizations. These
+included learning more about the browser's rendering pipeline and how to
+separate elements onto separate animatable layers via transform translate
+properties. While implementing these I also came across the practice of
+requesting animation frames before triggering any animations via JavaScript.
+I also learned that the browser also placed limits to how much animation
+optimization could be applied.
+
+
+Among the CSS tricks I experimented with included sprite sheet animations.
+This wasn't something I was even aware was possible in CSS at the time. After
+coming across  some articles about how Twitter implemented their sprite sheet
+animation really made me want to give it a shot. I ended up using this for the
+favorite / like button!
+
+Building this new version of the application, I was able to work more with
+responsive design and CSS media queries - a topic I had been seeking more
+practice on at the time in my quest of learning to build commercial-grade
+applications.
+
+This also forced me to work more with databases - designing database tables for
+a potential social media site, learning more about issuing queries and
+sanitizing user input outside of my academics.
