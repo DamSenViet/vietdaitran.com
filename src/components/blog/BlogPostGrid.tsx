@@ -1,8 +1,9 @@
 import React from 'react'
-import { Box, Theme, useMediaQuery } from '@mui/material'
+import { useMediaQuery, Box, Typography, Theme } from '@mui/material'
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import BlogPostGridItem, { BlogPostGridItemProps } from './BlogPostGridItem'
 import { useTheme } from '@mui/material'
+import { BsNewspaper } from 'react-icons/bs'
 
 export interface BlogPostGridProps {
   postData?: BlogPostGridItemProps[]
@@ -34,6 +35,38 @@ const BlogPostGrid = React.forwardRef(function BlogPostGrid(
     if (fullRows === 0) return postData
     else return trim ? postData.slice(0, fullRows * columns) : postData
   }, [postData, columns])
+
+  // empty display
+  if (postData.length === 0)
+    return (
+      <Box
+        ref={ref}
+        sx={{
+          display: 'grid',
+          justifyContent: 'center',
+          justifyItems: 'center',
+          alignContent: 'center',
+          minHeight: 400,
+          ...sx,
+        }}
+      >
+        <Box
+          component={BsNewspaper}
+          size={80}
+          sx={(theme) => ({ fill: theme.palette.text.disabled })}
+        />
+        <Typography
+          component={'p'}
+          color={'text.secondary'}
+          textAlign={'center'}
+          sx={{ marginTop: 2 }}
+        >
+          No posts found.
+          <br />
+          Writing in progress.
+        </Typography>
+      </Box>
+    )
 
   return (
     <Box

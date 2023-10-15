@@ -1,8 +1,9 @@
 import React from 'react'
-import { Box, Theme, useMediaQuery } from '@mui/material'
+import { useMediaQuery, Box, Typography, Theme } from '@mui/material'
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import WorkPostGridItem, { WorkPostGridItemProps } from './WorkPostGridItem'
 import { useTheme } from '@mui/material'
+import { BsCodeSquare } from 'react-icons/bs'
 
 export interface WorkPostGridProps {
   postData?: WorkPostGridItemProps[]
@@ -34,6 +35,38 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
     if (fullRows === 0) return postData
     else return trim ? postData.slice(0, fullRows * columns) : postData
   }, [postData, columns])
+
+  // empty display
+  if (postData.length === 0)
+    return (
+      <Box
+        ref={ref}
+        sx={{
+          display: 'grid',
+          justifyContent: 'center',
+          justifyItems: 'center',
+          alignContent: 'center',
+          minHeight: 400,
+          ...sx,
+        }}
+      >
+        <Box
+          component={BsCodeSquare}
+          size={80}
+          sx={(theme) => ({ fill: theme.palette.text.disabled })}
+        />
+        <Typography
+          component={'p'}
+          color={'text.secondary'}
+          textAlign={'center'}
+          sx={{ marginTop: 2 }}
+        >
+          No posts found.
+          <br />
+          Work in progress.
+        </Typography>
+      </Box>
+    )
 
   return (
     <Box
