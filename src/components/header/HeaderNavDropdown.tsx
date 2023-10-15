@@ -33,18 +33,20 @@ export default function HeaderNavDropdown() {
       >
         {<SvgHamburgerIcon open={open} />}
       </IconButton>
-      <ClickAwayListener
-        onClickAway={(event) => {
-          if (
-            // note that hamburger icon cannot switch when the click away triggers
-            hamburgerRef.current &&
-            !hamburgerRef.current.contains(event.target as Node)
-          )
-            setOpen(false)
-        }}
-      >
-        <HeaderNavModal open={open} onClose={() => setOpen(false)} />
-      </ClickAwayListener>
+      {open && (
+        <ClickAwayListener
+          onClickAway={(event) => {
+            if (
+              // note that hamburger icon cannot switch when the click away triggers
+              hamburgerRef.current &&
+              !hamburgerRef.current.contains(event.target as Node)
+            )
+              setOpen(false)
+          }}
+        >
+          <HeaderNavModal onClose={() => setOpen(false)} />
+        </ClickAwayListener>
+      )}
     </React.Fragment>
   )
 }

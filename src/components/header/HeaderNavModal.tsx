@@ -7,7 +7,6 @@ import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 
 export interface HeaderNavModalProps {
-  open: boolean
   onClose: () => void
 }
 
@@ -75,13 +74,14 @@ const socialItems = (
 )
 
 const HeaderNavModal = React.forwardRef(function HeaderNavModal(
-  { open, onClose }: HeaderNavModalProps,
+  { onClose }: HeaderNavModalProps,
   ref
 ) {
   // close after page switches
   const router = useRouter()
+  const [startingPathname] = React.useState(router.pathname)
   React.useEffect(() => {
-    onClose()
+    if (startingPathname !== router.pathname) onClose()
   }, [router.pathname])
 
   useKey('Escape', onClose)
@@ -92,7 +92,7 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
       component={'nav'}
       sx={(theme) => ({
         position: 'absolute',
-        display: open ? 'grid' : 'none',
+        display: 'grid',
         top: 'var(--header-height)',
         left: 0,
         zIndex: -2,
