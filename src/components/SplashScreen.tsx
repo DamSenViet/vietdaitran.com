@@ -1,27 +1,21 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useLockBodyScroll } from 'react-use'
 import useAnimatedCounter from '@/hooks/useAnimatedCounter'
 import { transparentize } from 'color2k'
 
-export default function SplashScreen() {
-  // const [locked, toggleLocked] = useToggle(true)
-  // useLockBodyScroll(true)
-  const totalAnimationDuration = 0.6
+const totalAnimationDuration = 0.6
+const letterDelay = 0.05
+const letterRows = 6
+
+function SplashScreenModal() {
   const counter = useAnimatedCounter(100, 0, totalAnimationDuration).toFixed(0)
   const ellipseCount = Math.floor(
     useAnimatedCounter(3, 0, totalAnimationDuration)
   )
 
-  const [showSplash, setShowSplash] = React.useState(true)
-
-  React.useEffect(() => {
-    setTimeout(() => setShowSplash(false), 1000)
-  }, [])
-
   const text = 'VIETTRAN'
-  const letterObjs = new Array(6)
+  const letterObjs = new Array(letterRows)
     .fill(text)
     .map((str, i) => (i % 2 ? str.split('').reverse() : str.split('')))
     .flat(1)
@@ -35,7 +29,7 @@ export default function SplashScreen() {
     initial: { opacity: 1 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: totalAnimationDuration / 2 },
+    transition: { duration: totalAnimationDuration },
   }
 
   const letterAnimation = {
@@ -73,8 +67,11 @@ export default function SplashScreen() {
         width: '100%',
         background: `linear-gradient(-35deg,${transparentize(
           theme.palette.background.default,
-          0.1
-        )}, ${transparentize(theme.palette.background.paper, 0.1)})`,
+          theme.palette.mode === 'light' ? 0.5 : 0.1
+        )}, ${transparentize(
+          theme.palette.background.paper,
+          theme.palette.mode === 'light' ? 0.5 : 0.1
+        )})`,
         backdropFilter: 'blur(10px)',
       })}
     />
@@ -103,7 +100,7 @@ export default function SplashScreen() {
           textAlign={'center'}
           {...letterAnimation}
           transition={{
-            delay: letterObj.row * 0.05,
+            delay: letterObj.row * letterDelay,
             duration: totalAnimationDuration,
           }}
           sx={{ display: 'inline-block', fontSize: '0.7rem' }}
@@ -143,11 +140,8 @@ export default function SplashScreen() {
       >
         <Box
           component={motion.div}
-          initial={{ height: 0 }}
-          animate={{ height: '100%' }}
-          exit={{ height: '100%' }}
-          transition={{ duration: totalAnimationDuration }}
           bgcolor={(theme) => theme.palette.text.primary}
+          sx={{ height: `${counter}%`, willChange: 'height' }}
         />
       </Box>
       <Typography
@@ -219,36 +213,46 @@ export default function SplashScreen() {
   )
 
   return (
-    <AnimatePresence>
-      {showSplash && (
-        <Box // container
-          sx={(theme) => ({
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            display: 'grid',
-            justifyContent: 'center',
-            alignContent: 'center',
-            height: '100%',
-            width: '100%',
-            overflow: 'hidden',
-            zIndex: theme.zIndex.appBar + 1,
-          })}
-        >
-          {colorBg}
-          {letterBg}
-          <Box
-            sx={{
-              position: 'relative',
-              height: 340,
-              width: '60vw',
-            }}
-          >
-            {progressBar}
-            {centerText}
-          </Box>
-        </Box>
-      )}
-    </AnimatePresence>
+    <Box // container
+      sx={(theme) => ({
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        display: 'grid',
+        justifyContent: 'center',
+        alignContent: 'center',
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+        zIndex: theme.zIndex.appBar + 1,
+      })}
+    >
+      {colorBg}
+      {letterBg}
+      <Box
+        sx={{
+          position: 'relative',
+          height: 340,
+          width: '60vw',
+        }}
+      >
+        {progressBar}
+        {centerText}
+      </Box>
+    </Box>
+  )
+}
+
+export default function SplashScreen() {
+  const [showSplash, setShowSplash] = React.useState(true)
+  React.useEffect(() => {
+    setTimeout(
+      () => setShowSplash(false),
+      (totalAnimationDuration + letterDelay * (letterRows - 1)) * 1000
+    )
+  }, [])
+
+  return (
+    <AnimatePresence>{showSplash && <SplashScreenModal />}</AnimatePresence>
   )
 }
