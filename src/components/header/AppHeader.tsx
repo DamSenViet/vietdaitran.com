@@ -52,9 +52,23 @@ export default function AppHeader() {
           xs: 'none',
           md: `1px solid ${theme.palette.text.disabled}`,
         },
-        borderBottom: `1px solid ${theme.palette.text.disabled}`,
-        backgroundColor: transparentize(theme.palette.background.default, 0.1),
-        // backdropFilter: 'blur(10px)',
+        // background
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          borderBottom: `1px solid ${theme.palette.text.disabled}`,
+          backgroundColor: transparentize(
+            theme.palette.background.default,
+            theme.palette.mode === 'light' ? 0.2 : 0.1
+          ),
+          backdropFilter: 'blur(10px)',
+        },
       })}
     >
       <GlobalStyles

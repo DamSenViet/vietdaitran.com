@@ -91,16 +91,16 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
       ref={ref}
       component={'nav'}
       sx={(theme) => ({
-        position: 'fixed',
+        position: 'absolute',
         display: open ? 'grid' : 'none',
         top: 'var(--header-height)',
         left: 0,
-        zIndex: 1,
+        zIndex: -2,
         width: '100%',
         height: 'calc(100vh - var(--header-height))',
         backgroundColor: transparentize(
           theme.palette.background.default,
-          theme.palette.mode === 'light' ? 0.5 : 0.1
+          theme.palette.mode === 'light' ? 0.2 : 0.1
         ),
         // NOTE: Chrome has a bug where only one backdrop filter can be present
         // the AppHeader backdrop will take priority in Chrome
