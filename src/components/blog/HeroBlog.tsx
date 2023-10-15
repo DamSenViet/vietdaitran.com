@@ -1,7 +1,11 @@
 import { Box, Typography } from '@mui/material'
 import Hero from '@/components/Hero'
 
-export default function HeroBlog() {
+interface HeroBlogProps {
+  totalPostCount: number
+}
+
+export default function HeroBlog({ totalPostCount }: HeroBlogProps) {
   return (
     <Hero
       title={
@@ -13,7 +17,7 @@ export default function HeroBlog() {
             variant={'body1'}
             sx={{ ml: 0.5, verticalAlign: 'top' }}
           >
-            (9)
+            ({totalPostCount})
           </Typography>
         </>
       }

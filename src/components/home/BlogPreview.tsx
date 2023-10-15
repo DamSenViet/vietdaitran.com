@@ -1,18 +1,13 @@
 import NextLink from 'next/link'
 import { Link, Stack, Typography } from '@mui/material'
-import BlogPostGrid from '@/components/blog/BlogPostGrid'
+import BlogPostGrid, { BlogPostGridProps } from '@/components/blog/BlogPostGrid'
 import Section from '@/components/Section'
-import profile2018 from '@/assets/2018 Profile.jpg'
 
-const articles = new Array(4).fill(0).map((_, i) => ({
-  id: i.toString(),
-  title: `Design Ethics in the Age of Big Data (${i + 1})`,
-  tags: ['Branding', 'Design'],
-  previewImg: profile2018.src,
-  publishDate: `2000-01-0${i + 1}`,
-}))
+export interface BlogPreviewProps extends BlogPostGridProps {
+  totalPostCount: number
+}
 
-export default function BlogPreview() {
+export default function BlogPreview({ totalPostCount }: BlogPreviewProps) {
   return (
     <Section>
       <Stack
@@ -35,7 +30,7 @@ export default function BlogPreview() {
             variant={'body1'}
             sx={{ ml: 0.5, verticalAlign: 'top' }}
           >
-            (Post count here)
+            ({totalPostCount})
           </Typography>
         </Typography>
         <Stack
@@ -58,7 +53,7 @@ export default function BlogPreview() {
         </Stack>
       </Stack>
       <BlogPostGrid
-        postData={articles}
+        postData={[]}
         sx={{
           marginTop: {
             xs: 2,

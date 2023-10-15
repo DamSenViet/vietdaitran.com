@@ -8,19 +8,31 @@ import {
   getWorkPostIds,
   WorkPostDatum,
 } from '@/api/workPosts'
+import {
+  getBlogPostDatum,
+  getBlogPostIds,
+  BlogPostDatum,
+} from '@/api/blogPosts'
 
 export interface HomePageProps {
   totalWorkPostCount: number
   workPostData: WorkPostDatum[]
+  totalBlogPostCount: number
+  blogPostData: BlogPostDatum[]
 }
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const workPostIds = getWorkPostIds()
   const workPostData = workPostIds.map(getWorkPostDatum).reverse().slice(0, 6)
+
+  const blogPostIds = getBlogPostIds()
+  const blogPostData = blogPostIds.map(getBlogPostDatum).reverse().slice(0, 4)
   return {
     props: {
       totalWorkPostCount: workPostIds.length,
       workPostData,
+      totalBlogPostCount: blogPostIds.length,
+      blogPostData: blogPostData,
     },
   }
 }
@@ -28,6 +40,8 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
 export default function HomePage({
   totalWorkPostCount,
   workPostData,
+  totalBlogPostCount,
+  blogPostData,
 }: HomePageProps) {
   return (
     <>
@@ -36,7 +50,10 @@ export default function HomePage({
         totalPostCount={totalWorkPostCount}
         postData={workPostData}
       />
-      <BlogPreview />
+      <BlogPreview
+        totalPostCount={totalBlogPostCount}
+        postData={blogPostData}
+      />
       <Services />
     </>
   )
