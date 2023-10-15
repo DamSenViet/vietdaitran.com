@@ -37,10 +37,13 @@ export default function Zoom({ children }: CustomZoomProps) {
       <GlobalStyles
         styles={{
           "[data-rmiz-portal] [data-rmiz-modal-overlay='visible']": {
-            backgroundColor: transparentize(
+            background: `linear-gradient(-35deg,${transparentize(
               theme.palette.background.default,
-              0.4
-            ),
+              theme.palette.mode === 'light' ? 0.5 : 0.1
+            )}, ${transparentize(
+              theme.palette.background.paper,
+              theme.palette.mode === 'light' ? 0.5 : 0.1
+            )})`,
             backdropFilter: 'blur(10px)',
           },
         }}

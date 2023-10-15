@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from './NavLink'
 import { Box, List, ListItem, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
-import { useLockBodyScroll, useKey } from 'react-use'
+import { useKey } from 'react-use'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 
@@ -84,7 +84,6 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
     onClose()
   }, [router.pathname])
 
-  useLockBodyScroll(open)
   useKey('Escape', onClose)
 
   return (
@@ -99,7 +98,10 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
         zIndex: 1,
         width: '100%',
         height: 'calc(100vh - var(--header-height))',
-        backgroundColor: transparentize(theme.palette.background.default, 0.1),
+        backgroundColor: transparentize(
+          theme.palette.background.default,
+          theme.palette.mode === 'light' ? 0.5 : 0.1
+        ),
         // NOTE: Chrome has a bug where only one backdrop filter can be present
         // the AppHeader backdrop will take priority in Chrome
         backdropFilter: 'blur(10px)',
