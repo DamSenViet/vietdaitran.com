@@ -19,6 +19,7 @@ export default function Overview() {
       <Image
         src={aboutImg}
         alt={'banner'}
+        priority
         sx={{
           width: '100%',
           height: 'auto',
