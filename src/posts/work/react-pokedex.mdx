@@ -1,0 +1,92 @@
+---
+title: 'React Pokédex'
+previewImg: '/work/react-pokedex/staged-screenshot.png'
+startDate: '2019-04-01'
+endDate: '2019-04-05'
+audience: 'Open Source'
+service: 'Web Development'
+sector: 'Games'
+tags:
+  - Web App
+  - Open Source
+---
+
+<Img alt="Banner" src="/work/react-pokedex/banner-screenshot.png" height="300"/>
+
+<Typography component="div" textAlign="center">
+  <Anchor href="https://damsenviet.github.io/react-pokedex/">Official Website</Anchor><span> • </span>
+  <Anchor href="https://github.com/DamSenViet/react-pokedex">GitHub</Anchor><br/>
+  A simple Pokedex probing the PokéAPI.<br/>
+</Typography>
+
+## Background
+
+This was an application I made as part of a screening for the software
+engineering intern at Immerse, a VR language education platform. The goal of the
+application was to demonstrate requisite knowledge about interacting with an
+API, and to be able to talk about design decisions.
+
+## Approach
+
+Originally I wanted to make a Pokédex, an in-game enclopedia from Nintendo's IP,
+Pokémon, after seeing [BryanC's design concept](https://dribbble.com/shots/2901787-Pokemon-OG)
+of a modern UI for a Pokédex. The detailed information page was out of scope
+for this application so I decided to forego it to focus on API interaction.
+
+This was to be done in React as an SPA per technical challenge requirements.
+
+Based off the design, I needed the sprite for each Pokemon, a component to hold
+the species name and evolution-stage type, a component to hold the numerous type
+filters, a component to hold the region / generation filters, and a component
+to hold the search input. The filters were designed as controlled or puppeteered
+components while the search and results could just pull their state from The
+root component.
+
+I didn't have much experience with http request utility libraries designed to
+simplify creation of the `XMLHTTPRequest` object beyond `jQuery` at the time and
+I wanted to try something new so I ended up picking `request`. I organized the
+HTTP request helper methods around actions that the application would be
+responsible for fetching and processing rather than making calls directly from
+the components.
+
+
+## Feedback
+
+After getting feedback from the software engineer responsible for the
+interview process, I was feeling pretty good. One of the things I was able to do
+well was structure the API. I was suggested to pick up the [Axios HTTP request
+library](https://github.com/axios/axios) since it structures it's API request
+object and creation quite similarly to the way that I had structured mine
+without it.
+
+I was also recommended to avoid needing binding when passing event handlers
+down the compnent tree with arrow functions instead. These were practices I
+readily adopted not having known that these were available options to me at the
+time - JS was something I was just learning at the time outside of my academic
+work (which was mostly Python and C++).
+
+
+## Improvements
+
+After the screening for my application and getting the internship, I actually
+realized I hadn't optimized filtering performance when searching for Pokémon and
+this was something that bother me quite a bit during development. I ended up
+returning to this implementation to improve with regex match instead of looping
+through when looking for regional variants and mega evolutions which were
+treated as special stages of evolution, I applied a regex to a stringified
+version of the response to drastically improve performance when using this
+information to issue subsequent issues to the PokéAPI. This helped reduce the
+rate at which we would approach the rate limit.
+
+
+## Retrospective Reflection
+
+Looking back, for the time period, I definitely felt like the screening
+challenge to was intended to force me to utilize some form of an
+application state library like Redux or utilize the one built-into React at the
+time which was React context.
+
+Without one, handling the asynchronous nature of request callbacks did prove
+to be a bit more difficult. The internship itself actually taught me a lot
+about how to utilize and structure application state so I'm really glad I had
+the experience of getting the internship.
