@@ -5,10 +5,11 @@ import Section from '@/components/Section'
 import profile2018 from '@/assets/2018 Profile.jpg'
 
 const articles = new Array(4).fill(0).map((_, i) => ({
+  id: i.toString(),
   title: `Design Ethics in the Age of Big Data (${i + 1})`,
-  tags: 'Branding, Design',
-  src: profile2018,
-  date: new Date(),
+  tags: ['Branding', 'Design'],
+  previewImg: profile2018.src,
+  publishDate: `2000-01-0${i + 1}`,
 }))
 
 export default function BlogPreview() {
@@ -57,7 +58,7 @@ export default function BlogPreview() {
         </Stack>
       </Stack>
       <BlogPostGrid
-        articles={articles}
+        postData={articles}
         sx={{
           marginTop: {
             xs: 2,

@@ -1,5 +1,5 @@
 import NextImage from 'next/image'
-import { ImageProps } from 'next/dist/shared/lib/get-img-props'
+import NextLink from 'next/link'
 import {
   Card,
   CardActionArea,
@@ -8,37 +8,36 @@ import {
   styled,
 } from '@mui/material'
 import { format } from 'date-fns'
+import { BlogPostDatum } from '@/api/blogPosts'
 
-export interface BlogPostGridItemProps {
-  title: string
-  tags?: string
-  date?: Date
-  src: ImageProps['src']
-  alt?: ImageProps['alt']
-}
+export interface BlogPostGridItemProps extends BlogPostDatum {}
 
 const Image = styled(NextImage)({})
 
 export default function BlogPostGridItem({
+  id,
   title,
   tags,
-  src,
-  alt = 'Image preview',
-  date,
+  previewImg,
+  publishDate,
 }: BlogPostGridItemProps) {
   return (
     <Card raised={false} sx={{ background: 'transparent' }}>
       <CardActionArea>
-        <Image
-          src={src}
-          alt={alt}
-          width={200}
-          sx={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: 1,
-          }}
-        />
+        <NextLink href={`/blog/${id}`}>
+          <Image
+            src={previewImg}
+            alt={title}
+            height={500}
+            width={500}
+            priority
+            sx={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: 1,
+            }}
+          />
+        </NextLink>
       </CardActionArea>
 
       <CardContent
@@ -63,17 +62,17 @@ export default function BlogPostGridItem({
             variant={'body2'}
             textOverflow={'ellipsis'}
           >
-            {tags}
+            {tags.join(', ')}
           </Typography>
         )}
-        {date && (
+        {publishDate && (
           <Typography
             component={'span'}
             color={'text.secondary'}
             variant="body1"
             sx={{ fontSize: '0.75rem' }}
           >
-            {format(date, "M'.'d'.'yyyy")}
+            {format(new Date(publishDate), "M'.'d'.'yyyy")}
           </Typography>
         )}
       </CardContent>

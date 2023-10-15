@@ -8,3 +8,10 @@ export const workPostsDirectory = path.join(
   'posts',
   'work'
 )
+
+export const blogPostsDirectory = path.join(
+  process.cwd(),
+  'src',
+  'posts',
+  'blog'
+)
