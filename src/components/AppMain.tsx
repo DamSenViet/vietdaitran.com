@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import AppFooter from './footer/AppFooter'
 import containerSx from './constants/containerSx'
 
@@ -30,10 +30,7 @@ export default function AppMain({
         marginX: 'auto',
       })}
     >
-      <Stack component={'main'}>
-        <Box sx={{ height: 'var(--header-height)' }} />
-        {children}
-      </Stack>
+      <Stack component={'main'}>{children}</Stack>
       {!omitFooter && <AppFooter />}
     </Stack>
   )

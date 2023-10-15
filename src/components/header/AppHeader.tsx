@@ -34,10 +34,8 @@ export default function AppHeader() {
       disableGutters
       maxWidth={false}
       sx={(theme) => ({
-        position: 'fixed',
+        position: 'sticky',
         top: 0,
-        left: '50%',
-        transform: 'translate(-50%, 0)',
         minHeight: headerHeight,
         zIndex: theme.zIndex.appBar,
         display: 'flex',
@@ -56,7 +54,7 @@ export default function AppHeader() {
         },
         borderBottom: `1px solid ${theme.palette.text.disabled}`,
         backgroundColor: transparentize(theme.palette.background.default, 0.1),
-        backdropFilter: 'blur(10px)',
+        // backdropFilter: 'blur(10px)',
       })}
     >
       <GlobalStyles
