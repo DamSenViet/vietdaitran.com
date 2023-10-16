@@ -1,12 +1,20 @@
 import React from 'react'
 import { NavLink } from './NavLink'
-import { Box, List, ListItem, Typography } from '@mui/material'
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  ClickAwayListener,
+} from '@mui/material'
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useKey } from 'react-use'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 
 export interface HeaderNavModalProps {
+  hamburgerRef: React.MutableRefObject<HTMLButtonElement | null>
   onClose: () => void
 }
 
@@ -29,8 +37,23 @@ const internalRoutes = [
   },
 ]
 
-const internalItems = internalRoutes.map((route) => (
-  <ListItem key={route.label}>
+const internalItems = internalRoutes.map((route, i) => (
+  <ListItem
+    key={route.label}
+    component={motion.li}
+    initial={{ opacity: 0, y: 50, scale: 1.5 }}
+    animate={{
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { delay: i * 0.075 },
+    }}
+    exit={{
+      opacity: 0,
+      y: -50,
+      transition: { delay: i * 0.075 },
+    }}
+  >
     <NavLink href={route.href}>
       <Typography
         component={'span'}
@@ -74,7 +97,7 @@ const socialItems = (
 )
 
 const HeaderNavModal = React.forwardRef(function HeaderNavModal(
-  { onClose }: HeaderNavModalProps,
+  { hamburgerRef, onClose }: HeaderNavModalProps,
   ref
 ) {
   // close after page switches
@@ -86,35 +109,53 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
 
   useKey('Escape', onClose)
 
+  const fadeOut = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0, transition: { delay: 0.375, duration: 0.3 } },
+  }
+
   return (
-    <Box
-      ref={ref}
-      component={'nav'}
-      sx={(theme) => ({
-        position: 'absolute',
-        display: 'grid',
-        top: 'var(--header-height)',
-        left: 0,
-        zIndex: -2,
-        width: '100%',
-        height: 'calc(100vh - var(--header-height))',
-        backgroundColor: transparentize(
-          theme.palette.background.default,
-          theme.palette.mode === 'light' ? 0.2 : 0.1
-        ),
-        // NOTE: Chrome has a bug where only one backdrop filter can be present
-        // the AppHeader backdrop will take priority in Chrome
-        backdropFilter: 'blur(10px)',
-        justifyContent: 'center',
-        alignContent: 'center',
-      })}
+    <ClickAwayListener
+      onClickAway={(event) => {
+        if (
+          // note that hamburger icon cannot switch when the click away triggers
+          hamburgerRef.current &&
+          !hamburgerRef.current.contains(event.target as Node)
+        )
+          onClose()
+      }}
     >
-      <Box>
-        {/* internal links */}
-        <List sx={{ counterReset: 'listStyle' }}>{internalItems}</List>
-        {socialItems}
+      <Box
+        ref={ref}
+        component={motion.nav}
+        {...fadeOut}
+        sx={(theme) => ({
+          position: 'absolute',
+          display: 'grid',
+          top: 'var(--header-height)',
+          left: 0,
+          zIndex: -2,
+          width: '100%',
+          height: 'calc(100vh - var(--header-height))',
+          backgroundColor: transparentize(
+            theme.palette.background.default,
+            theme.palette.mode === 'light' ? 0.2 : 0.1
+          ),
+          // NOTE: Chrome has a bug where only one backdrop filter can be present
+          // the AppHeader backdrop will take priority in Chrome
+          backdropFilter: 'blur(10px)',
+          justifyContent: 'center',
+          alignContent: 'center',
+        })}
+      >
+        <Box>
+          {/* internal links */}
+          <List sx={{ counterReset: 'listStyle' }}>{internalItems}</List>
+          {socialItems}
+        </Box>
       </Box>
-    </Box>
+    </ClickAwayListener>
   )
 })
 

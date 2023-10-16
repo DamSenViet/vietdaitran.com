@@ -1,15 +1,12 @@
 import React from 'react'
-import {
-  useTheme,
-  useMediaQuery,
-  IconButton,
-  ClickAwayListener,
-} from '@mui/material'
+import { useTheme, useMediaQuery, IconButton } from '@mui/material'
+import { AnimatePresence } from 'framer-motion'
 import { SvgHamburgerIcon } from '@/components/header/SvgHamburgerIcon'
 import HeaderNavModal from './HeaderNavModal'
 
 export default function HeaderNavDropdown() {
   const [open, setOpen] = React.useState<boolean>(false)
+  const closeModal = () => setOpen(false)
   const hamburgerRef = React.useRef<HTMLButtonElement | null>(null)
   const theme = useTheme()
   const isMedium = useMediaQuery(theme.breakpoints.up('md'))
@@ -33,20 +30,15 @@ export default function HeaderNavDropdown() {
       >
         {<SvgHamburgerIcon open={open} />}
       </IconButton>
-      {open && (
-        <ClickAwayListener
-          onClickAway={(event) => {
-            if (
-              // note that hamburger icon cannot switch when the click away triggers
-              hamburgerRef.current &&
-              !hamburgerRef.current.contains(event.target as Node)
-            )
-              setOpen(false)
-          }}
-        >
-          <HeaderNavModal onClose={() => setOpen(false)} />
-        </ClickAwayListener>
-      )}
+      <AnimatePresence>
+        {open && (
+          <HeaderNavModal
+            key="header-nav-modal"
+            hamburgerRef={hamburgerRef}
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </React.Fragment>
   )
 }
