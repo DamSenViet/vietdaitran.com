@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useAnimatedCounter from '@/hooks/useAnimatedCounter'
 import { transparentize } from 'color2k'
 
-const totalAnimationDuration = 0.6
+const animationDuration = 0.3
 const letterDelay = 0.05
 const letterRows = 6
+const totalAnimationDuration =
+  animationDuration + letterDelay * (letterRows - 1)
 
 function SplashScreenModal() {
   const counter = useAnimatedCounter(100, 0, totalAnimationDuration).toFixed(0)
@@ -25,11 +27,14 @@ function SplashScreenModal() {
       row: Math.floor(i / text.length),
     }))
 
-  const fadeOutProps = {
+  const fadeOutAnimation = {
     initial: { opacity: 1 },
     animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: { duration: totalAnimationDuration },
+    // ending animation ends slightly early
+    exit: {
+      opacity: 0,
+      transition: { duration: animationDuration },
+    },
   }
 
   const letterAnimation = {
@@ -48,10 +53,15 @@ function SplashScreenModal() {
   }
 
   const backgroundAnimation = {
-    ...fadeOutProps,
-    transition: {
-      delay: totalAnimationDuration,
-      duration: totalAnimationDuration,
+    initial: fadeOutAnimation.initial,
+    animate: fadeOutAnimation.animate,
+    exit: {
+      ...fadeOutAnimation.exit,
+      // wait for original animation to play out first
+      transition: {
+        delay: totalAnimationDuration,
+        duration: animationDuration,
+      },
     },
   }
 
@@ -65,13 +75,19 @@ function SplashScreenModal() {
         left: 0,
         height: '100%',
         width: '100%',
-        background: `linear-gradient(-35deg,${transparentize(
+        // default bg
+        background: transparentize(
           theme.palette.background.default,
           theme.palette.mode === 'light' ? 0.2 : 0.1
-        )}, ${transparentize(
-          theme.palette.background.paper,
-          theme.palette.mode === 'light' ? 0.2 : 0.1
-        )})`,
+        ),
+        // gradient bg
+        // background: `linear-gradient(-35deg,${transparentize(
+        //   theme.palette.background.default,
+        //   theme.palette.mode === 'light' ? 0.2 : 0.1
+        // )}, ${transparentize(
+        //   theme.palette.background.paper,
+        //   theme.palette.mode === 'light' ? 0.2 : 0.1
+        // )})`,
         backdropFilter: 'blur(10px)',
       })}
     />
@@ -85,8 +101,9 @@ function SplashScreenModal() {
         left: 0,
         height: '100%',
         width: '100%',
+        overflow: 'hidden',
         display: 'grid',
-        gridTemplateColumns: 'repeat(8, 1fr)',
+        gridTemplateColumns: `repeat(${text.length}, 1fr)`,
         justifyContent: 'space-around',
         alignContent: 'space-around',
         rowGap: 4,
@@ -101,7 +118,7 @@ function SplashScreenModal() {
           {...letterAnimation}
           transition={{
             delay: letterObj.row * letterDelay,
-            duration: totalAnimationDuration,
+            duration: animationDuration,
           }}
           sx={{ display: 'inline-block', fontSize: '0.7rem' }}
         >
@@ -114,7 +131,7 @@ function SplashScreenModal() {
   const progressBar = (
     <Box
       component={motion.div}
-      {...fadeOutProps}
+      {...fadeOutAnimation}
       sx={{
         position: 'absolute',
         height: '100%',
@@ -174,7 +191,7 @@ function SplashScreenModal() {
   const centerText = (
     <Box
       component={motion.div}
-      {...fadeOutProps}
+      {...fadeOutAnimation}
       sx={{
         position: 'absolute',
         height: '100%',
@@ -246,10 +263,7 @@ function SplashScreenModal() {
 export default function SplashScreen() {
   const [showSplash, setShowSplash] = React.useState(true)
   React.useEffect(() => {
-    setTimeout(
-      () => setShowSplash(false),
-      (totalAnimationDuration + letterDelay * (letterRows - 1)) * 1000
-    )
+    setTimeout(() => setShowSplash(false), totalAnimationDuration * 1000)
   }, [])
 
   return (
