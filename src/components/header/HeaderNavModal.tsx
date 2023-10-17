@@ -41,17 +41,13 @@ const internalItems = internalRoutes.map((route, i) => (
   <ListItem
     key={route.label}
     component={motion.li}
-    initial={{ opacity: 0, y: 50, scale: 1.5 }}
-    animate={{
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { delay: i * 0.075 },
-    }}
-    exit={{
-      opacity: 0,
-      y: -50,
-      transition: { delay: i * 0.075 },
+    initial={{ opacity: 0, y: 100 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -100 }}
+    transition={{
+      delay: i * 0.075,
+      type: 'just',
+      duration: 0.3,
     }}
   >
     <NavLink href={route.href}>
