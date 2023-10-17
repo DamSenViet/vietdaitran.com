@@ -3,8 +3,7 @@ import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '@/createEmotionCache'
-import ThemeContext from '@/providers/ThemeContext'
-import { SnackbarProvider } from 'notistack'
+import Providers from '@/providers'
 import DefaultLayout from '@/layout/DefaultLayout'
 import { Page } from 'page'
 import '@/styles/global.css'
@@ -33,21 +32,16 @@ export default function MyApp({
         {/* NextSeo can't add viewport meta without duplicating it. Will keep it in Head. */}
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeContext>
-        <SnackbarProvider
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-          maxSnack={5}
-        >
-          <Layout>
-            <DefaultSeo
-              titleTemplate="Viet Tran • %s"
-              defaultTitle="Viet Tran • Creative Developer"
-              description="The personal website of Viet Tran, Creative Developer."
-            />
-            {getLayout(<Component {...pageProps} />)}
-          </Layout>
-        </SnackbarProvider>
-      </ThemeContext>
+      <Providers>
+        <Layout>
+          <DefaultSeo
+            titleTemplate="Viet Tran • %s"
+            defaultTitle="Viet Tran • Creative Developer"
+            description="The personal website of Viet Tran, Creative Developer."
+          />
+          {getLayout(<Component {...pageProps} />)}
+        </Layout>
+      </Providers>
     </CacheProvider>
   )
 }

@@ -3,6 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { motion, AnimatePresence } from 'framer-motion'
 import useAnimatedCounter from '@/hooks/useAnimatedCounter'
 import { transparentize } from 'color2k'
+import useSplash from '@/hooks/useSplash'
 
 const animationDuration = 0.3
 const letterDelay = 0.05
@@ -262,11 +263,15 @@ function SplashScreenModal() {
 
 export default function SplashScreen() {
   const [showSplash, setShowSplash] = React.useState(true)
+  const { setSplashDuration, setSplashed } = useSplash()
   React.useEffect(() => {
+    setSplashDuration(animationDuration + totalAnimationDuration)
     setTimeout(() => setShowSplash(false), totalAnimationDuration * 1000)
   }, [])
 
   return (
-    <AnimatePresence>{showSplash && <SplashScreenModal />}</AnimatePresence>
+    <AnimatePresence onExitComplete={() => setSplashed(true)}>
+      {showSplash && <SplashScreenModal />}
+    </AnimatePresence>
   )
 }
