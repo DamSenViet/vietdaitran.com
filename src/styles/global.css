@@ -12,9 +12,26 @@
   border: 1px solid gray;
 }
 
+/* slide content centering */
 .slide {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: grab;
+}
+
+/* slide pagination styling */
+.slider-control-bottomcenter ul {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  align-content: center;
+  .paging-item {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    line-height: 0;
+  }
+  & circle {
+    fill: white;
+  }
 }
