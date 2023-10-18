@@ -1,5 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import Section from '@/components/Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 const services = [
   {
@@ -19,11 +21,14 @@ const services = [
 interface ServiceProps {
   name: string
   description: string
+  stagger?: number
 }
 
-const ServiceItems = ({ name, description }: ServiceProps) => {
+const ServiceItems = ({ name, description, stagger = 0 }: ServiceProps) => {
   return (
     <Box
+      component={motion.div}
+      {...useMovingFade({ stagger, amount: 1 })}
       flex="1 0 0"
       sx={{
         paddingRight: {
@@ -51,6 +56,8 @@ export default function Services() {
   return (
     <Section>
       <Stack
+        component={motion.div}
+        {...useMovingFade()}
         useFlexGap
         rowGap={{
           xs: 12,
@@ -90,8 +97,8 @@ export default function Services() {
           rowGap={4}
           columnGap={3}
         >
-          {services.map((service) => (
-            <ServiceItems key={service.name} {...service} />
+          {services.map((service, i) => (
+            <ServiceItems key={service.name} {...service} stagger={i + 1} />
           ))}
         </Stack>
       </Stack>

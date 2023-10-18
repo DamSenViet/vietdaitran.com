@@ -8,8 +8,12 @@ import {
   styled,
 } from '@mui/material'
 import { WorkPostDatum } from '@/api/workPosts'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
-export interface WorkPostGridItemProps extends WorkPostDatum {}
+export interface WorkPostGridItemProps extends WorkPostDatum {
+  stagger?: number
+}
 
 const Image = styled(NextImage)({})
 
@@ -18,9 +22,14 @@ export default function WorkPostGridItem({
   title,
   tags,
   previewImg,
+  stagger = 0,
 }: WorkPostGridItemProps) {
   return (
-    <Card raised={false} sx={{ background: 'transparent' }}>
+    <Card
+      component={motion.div}
+      {...useMovingFade({ stagger })}
+      sx={{ background: 'transparent' }}
+    >
       <CardActionArea>
         <NextLink href={`/work/${id}`}>
           <Image

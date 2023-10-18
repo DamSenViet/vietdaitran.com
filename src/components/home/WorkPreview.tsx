@@ -2,6 +2,8 @@ import NextLink from 'next/link'
 import { Link, Stack, Typography } from '@mui/material'
 import WorkPostGrid, { WorkPostGridProps } from '@/components/work/WorkPostGrid'
 import Section from '@/components/Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export interface WorkPreviewProps extends WorkPostGridProps {
   totalPostCount: number
@@ -14,6 +16,8 @@ export default function WorkPreview({
   return (
     <Section>
       <Stack
+        component={motion.div}
+        {...useMovingFade()}
         flexDirection={{
           xs: 'column',
           md: 'row',

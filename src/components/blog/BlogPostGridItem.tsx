@@ -9,8 +9,12 @@ import {
 } from '@mui/material'
 import { format } from 'date-fns'
 import { BlogPostDatum } from '@/api/blogPosts'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
-export interface BlogPostGridItemProps extends BlogPostDatum {}
+export interface BlogPostGridItemProps extends BlogPostDatum {
+  stagger?: number
+}
 
 const Image = styled(NextImage)({})
 
@@ -20,9 +24,14 @@ export default function BlogPostGridItem({
   tags,
   previewImg,
   publishDate,
+  stagger = 0,
 }: BlogPostGridItemProps) {
   return (
-    <Card raised={false} sx={{ background: 'transparent' }}>
+    <Card
+      component={motion.div}
+      {...useMovingFade({ stagger })}
+      sx={{ background: 'transparent' }}
+    >
       <CardActionArea>
         <NextLink href={`/blog/${id}`}>
           <Image

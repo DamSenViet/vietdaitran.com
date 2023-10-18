@@ -1,5 +1,7 @@
 import { Box, Stack, Button, Typography } from '@mui/material'
 import Section from '@/components/Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export default function Hero() {
   return (
@@ -8,10 +10,17 @@ export default function Hero() {
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent={'space-between'}
       >
-        <Typography component={'h1'} variant="body1" color="text.secondary">
+        <Typography
+          component={motion.h1}
+          {...useMovingFade()}
+          variant="body1"
+          color="text.secondary"
+        >
           Intro
         </Typography>
         <Box
+          component={motion.div}
+          {...useMovingFade()}
           sx={{
             maxWidth: { xs: 'initial', sm: 330 },
             margintTop: { xs: 2, sm: 0 },

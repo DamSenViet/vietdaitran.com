@@ -2,6 +2,8 @@ import { Box, Button, Stack, List, ListItem, Typography } from '@mui/material'
 import FooterNavLink from '@/components/footer/FooterNavLink'
 import sectionPadding from '@/components/constants/sectionPadding'
 import socialLinks, { linkedIn } from '@/data/socialLinks'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 const navLinks: Record<string, string> = {
   About: '/about',
@@ -24,7 +26,12 @@ export default function FooterNav() {
           md: 34,
         }}
       >
-        <Typography color="text.secondary" component={'h2'} variant="body1">
+        <Typography
+          component={motion.h2}
+          {...useMovingFade()}
+          color="text.secondary"
+          variant="body1"
+        >
           Contact
         </Typography>
         <Box
@@ -38,7 +45,7 @@ export default function FooterNav() {
             justifyContent: 'space-between',
           }}
         >
-          <Box>
+          <Box component={motion.div} {...useMovingFade()}>
             <Typography component="p" variant="h3" sx={{ fontWeight: 500 }}>
               Have a project in mind?
               <br />
@@ -53,7 +60,7 @@ export default function FooterNav() {
               Let's talk
             </Button>
           </Box>
-          <Box component={'nav'}>
+          <Box component={motion.nav} {...useMovingFade()}>
             <Stack direction={'row'}>
               <List disablePadding sx={{ flexGrow: 1 }}>
                 {Object.entries(navLinks).map(([name, url]) => (

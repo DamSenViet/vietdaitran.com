@@ -4,6 +4,8 @@ import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import WorkPostGridItem, { WorkPostGridItemProps } from './WorkPostGridItem'
 import { useTheme } from '@mui/material'
 import { BsCodeSquare } from 'react-icons/bs'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export interface WorkPostGridProps {
   postData?: WorkPostGridItemProps[]
@@ -40,6 +42,8 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
   if (postData.length === 0)
     return (
       <Box
+        component={motion.div}
+        {...useMovingFade()}
         ref={ref}
         sx={{
           display: 'grid',
@@ -50,11 +54,13 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
           ...sx,
         }}
       >
-        <Box
-          component={BsCodeSquare}
-          size={80}
-          sx={(theme) => ({ fill: theme.palette.text.disabled })}
-        />
+        <Box component={motion.div} {...useMovingFade({ amount: 'all' })}>
+          <Box
+            component={BsCodeSquare}
+            size={80}
+            sx={(theme) => ({ fill: theme.palette.text.disabled })}
+          />
+        </Box>
         <Typography
           component={'p'}
           color={'text.secondary'}
@@ -85,8 +91,8 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
         ...sx,
       }}
     >
-      {trimmedPostData.map((postDatum) => (
-        <WorkPostGridItem key={postDatum.id} {...postDatum} />
+      {trimmedPostData.map((postDatum, i) => (
+        <WorkPostGridItem key={postDatum.id} {...postDatum} stagger={i} />
       ))}
     </Box>
   )

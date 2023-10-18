@@ -4,6 +4,8 @@ import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import BlogPostGridItem, { BlogPostGridItemProps } from './BlogPostGridItem'
 import { useTheme } from '@mui/material'
 import { BsNewspaper } from 'react-icons/bs'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export interface BlogPostGridProps {
   postData?: BlogPostGridItemProps[]
@@ -50,13 +52,16 @@ const BlogPostGrid = React.forwardRef(function BlogPostGrid(
           ...sx,
         }}
       >
-        <Box
-          component={BsNewspaper}
-          size={80}
-          sx={(theme) => ({ fill: theme.palette.text.disabled })}
-        />
+        <Box component={motion.div} {...useMovingFade({ amount: 'all' })}>
+          <Box
+            component={BsNewspaper}
+            size={80}
+            sx={(theme) => ({ fill: theme.palette.text.disabled })}
+          />
+        </Box>
         <Typography
-          component={'p'}
+          component={motion.p}
+          {...useMovingFade({ amount: 'all' })}
           color={'text.secondary'}
           textAlign={'center'}
           sx={{ marginTop: 2 }}
@@ -85,8 +90,8 @@ const BlogPostGrid = React.forwardRef(function BlogPostGrid(
         ...sx,
       }}
     >
-      {trimmedPostData.map((postDatum) => (
-        <BlogPostGridItem key={postDatum.id} {...postDatum} />
+      {trimmedPostData.map((postDatum, i) => (
+        <BlogPostGridItem key={postDatum.id} {...postDatum} stagger={i} />
       ))}
     </Box>
   )

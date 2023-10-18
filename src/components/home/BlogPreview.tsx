@@ -2,6 +2,8 @@ import NextLink from 'next/link'
 import { Link, Stack, Typography } from '@mui/material'
 import BlogPostGrid, { BlogPostGridProps } from '@/components/blog/BlogPostGrid'
 import Section from '@/components/Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export interface BlogPreviewProps extends BlogPostGridProps {
   totalPostCount: number
@@ -11,6 +13,8 @@ export default function BlogPreview({ totalPostCount }: BlogPreviewProps) {
   return (
     <Section>
       <Stack
+        component={motion.div}
+        {...useMovingFade()}
         flexDirection={{
           xs: 'column',
           md: 'row',
