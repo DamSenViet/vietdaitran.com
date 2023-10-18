@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import Hero from '@/components/home/Hero'
+import HeroHome from '@/components/home/HeroHome'
 import WorkPreview from '@/components/home/WorkPreview'
 import BlogPreview from '@/components/home/BlogPreview'
 import Services from '@/components/home/Services'
@@ -45,7 +45,7 @@ export default function HomePage({
 }: HomePageProps) {
   return (
     <>
-      <Hero />
+      <HeroHome />
       <WorkPreview
         totalPostCount={totalWorkPostCount}
         postData={workPostData}
