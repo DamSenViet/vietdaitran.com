@@ -1,6 +1,8 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import Section from './Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 interface HeroProps {
   title: React.ReactNode
@@ -34,7 +36,8 @@ export default function Hero({ title, tagline }: HeroProps) {
         }}
       >
         <Typography
-          component={'h2'}
+          component={motion.h2}
+          {...useMovingFade()}
           color="text.primary"
           sx={{
             typography: {
@@ -45,7 +48,12 @@ export default function Hero({ title, tagline }: HeroProps) {
         >
           {title}
         </Typography>
-        <Typography component={'p'} color="text.secondary" variant="body1">
+        <Typography
+          component={motion.p}
+          {...useMovingFade({ stagger: 1 })}
+          color="text.secondary"
+          variant="body1"
+        >
           {tagline}
         </Typography>
       </Box>

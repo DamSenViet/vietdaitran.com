@@ -26,7 +26,7 @@ export default function BlogPreview({ totalPostCount }: BlogPreviewProps) {
           md: 'flex-end',
         }}
       >
-        <Typography component={'h2'} variant="h1">
+        <Typography component={motion.h2} {...useMovingFade()} variant="h1">
           Blog
           <Typography
             color="text.secondary"
@@ -45,9 +45,16 @@ export default function BlogPreview({ totalPostCount }: BlogPreviewProps) {
             md: '35%',
           }}
         >
-          <Typography color="text.secondary">Latest updates</Typography>
+          <Typography
+            component={motion.p}
+            {...useMovingFade({ stagger: 1 })}
+            color="text.secondary"
+          >
+            Latest updates
+          </Typography>
           <Link
-            component={NextLink}
+            component={motion(NextLink)}
+            {...useMovingFade({ stagger: 2 })}
             href={'/blog'}
             color="text.primary"
             underline="hover"

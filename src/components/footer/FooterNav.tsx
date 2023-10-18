@@ -45,13 +45,20 @@ export default function FooterNav() {
             justifyContent: 'space-between',
           }}
         >
-          <Box component={motion.div} {...useMovingFade()}>
-            <Typography component="p" variant="h3" sx={{ fontWeight: 500 }}>
+          <Box>
+            <Typography
+              component={motion.p}
+              {...useMovingFade({ stagger: 1 })}
+              variant="h3"
+              sx={{ fontWeight: 500 }}
+            >
               Have a project in mind?
               <br />
               Let's work together.
             </Typography>
             <Button
+              component={motion.a}
+              {...useMovingFade({ stagger: 2 })}
               variant="contained"
               color="primary"
               href={linkedIn.href}
@@ -60,7 +67,7 @@ export default function FooterNav() {
               Let's talk
             </Button>
           </Box>
-          <Box component={motion.nav} {...useMovingFade()}>
+          <Box component={motion.nav} {...useMovingFade({ stagger: 3 })}>
             <Stack direction={'row'}>
               <List disablePadding sx={{ flexGrow: 1 }}>
                 {Object.entries(navLinks).map(([name, url]) => (

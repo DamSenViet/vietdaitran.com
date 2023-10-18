@@ -16,8 +16,6 @@ export default function WorkPreview({
   return (
     <Section>
       <Stack
-        component={motion.div}
-        {...useMovingFade()}
         flexDirection={{
           xs: 'column',
           md: 'row',
@@ -29,7 +27,7 @@ export default function WorkPreview({
           md: 'flex-end',
         }}
       >
-        <Typography component={'h2'} variant="h1">
+        <Typography component={motion.h2} {...useMovingFade()} variant="h1">
           Work
           <Typography
             color="text.secondary"
@@ -48,9 +46,16 @@ export default function WorkPreview({
             md: '35%',
           }}
         >
-          <Typography color="text.secondary">Selected projects</Typography>
+          <Typography
+            component={motion.p}
+            {...useMovingFade({ stagger: 1 })}
+            color="text.secondary"
+          >
+            Selected projects
+          </Typography>
           <Link
-            component={NextLink}
+            component={motion(NextLink)}
+            {...useMovingFade({ stagger: 2 })}
             href={'/work'}
             color="text.primary"
             underline="hover"

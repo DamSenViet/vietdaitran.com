@@ -19,19 +19,24 @@ export default function Hero() {
           Intro
         </Typography>
         <Box
-          component={motion.div}
-          {...useMovingFade()}
           sx={{
             maxWidth: { xs: 'initial', sm: 330 },
             margintTop: { xs: 2, sm: 0 },
             marginRight: { xs: 0, md: 8, lg: 24, xl: 28 },
           }}
         >
-          <Typography component="p" variant="h3" sx={{ fontWeight: 500 }}>
+          <Typography
+            component={motion.p}
+            {...useMovingFade({ stagger: 1 })}
+            variant="h3"
+            sx={{ fontWeight: 500 }}
+          >
             I'm a developer crafting applications and tools in San Jose,
             California.
           </Typography>
           <Typography
+            component={motion.p}
+            {...useMovingFade({ stagger: 2 })}
             variant={'body1'}
             color={'text.secondary'}
             sx={{
@@ -43,6 +48,8 @@ export default function Hero() {
             communities through crafted digital experiences.
           </Typography>
           <Button
+            component={motion.button}
+            {...useMovingFade({ stagger: 3 })}
             variant="contained"
             color="primary"
             href="/about"
