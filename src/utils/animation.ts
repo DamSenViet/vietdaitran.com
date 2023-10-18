@@ -1,24 +1,38 @@
+import { MotionProps } from 'framer-motion'
 /** The duration of an animation step in seconds. */
 export const stepDuration = 0.3
 
 export const staggerDelay = 0.075
 
-interface CreateMovingFadeConfig {
+export interface CreateMovingFadeConfig {
   delay?: number
   stagger?: number
+  amount?: Required<MotionProps>['viewport']['amount']
 }
 
-export const createMovingFade = (
-  { delay = 0, stagger = 0 }: CreateMovingFadeConfig = {
+export const createMovingFadeConfigDefaults: Required<CreateMovingFadeConfig> =
+  {
     delay: 0,
     stagger: 0,
+    amount: 0.4,
   }
-) => {
+
+export const createMovingFade = ({
+  delay = createMovingFadeConfigDefaults.delay,
+  stagger = createMovingFadeConfigDefaults.stagger,
+  amount = createMovingFadeConfigDefaults.amount,
+}: CreateMovingFadeConfig = createMovingFadeConfigDefaults) => {
+  const yOffset = 48
   const totalDelay = delay + stagger * staggerDelay
   return {
-    initial: { y: 24, opacity: 0 },
+    initial: { y: yOffset, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
-    viewport: { once: true, amount: 0.8 },
+    viewport: {
+      once: true,
+      amount: amount,
+      rootMargin: `0px`,
+      margin: `${yOffset}px`,
+    },
     transition: { delay: totalDelay, duration: stepDuration },
   }
 }

@@ -1,9 +1,17 @@
 import useSplashDelay from './useSplashDelay'
-import { createMovingFade } from '@/utils/animation'
+import {
+  CreateMovingFadeConfig,
+  createMovingFade,
+  createMovingFadeConfigDefaults,
+} from '@/utils/animation'
 
-export default function useMovingFade(stagger: number = 0) {
+export default function useMovingFade({
+  stagger = createMovingFadeConfigDefaults.stagger,
+  amount = createMovingFadeConfigDefaults.amount,
+}: CreateMovingFadeConfig = createMovingFadeConfigDefaults) {
   return createMovingFade({
     delay: useSplashDelay(),
     stagger,
+    amount,
   })
 }
