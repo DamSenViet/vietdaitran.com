@@ -1,6 +1,6 @@
 import React from 'react'
 import SplashProvider from './SplashProvider'
-import ThemeContext from './ThemeContext'
+import RootThemeProvider from './RootThemeProvider'
 import { SnackbarProvider } from 'notistack'
 
 class ConfiguredSnackbarProvider extends SnackbarProvider {
@@ -15,7 +15,7 @@ interface ProvidersProps {
 }
 
 export default function Providers({ children }: ProvidersProps) {
-  return [ConfiguredSnackbarProvider, SplashProvider, ThemeContext].reduce(
+  return [ConfiguredSnackbarProvider, SplashProvider, RootThemeProvider].reduce(
     (acc, Curr) => {
       return <Curr>{acc}</Curr>
     },

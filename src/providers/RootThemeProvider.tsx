@@ -8,17 +8,17 @@ import {
   PaletteMode,
 } from '@mui/material'
 import {
-  initialThemeState,
-  themeReducer,
-  ThemeDispatchContext,
-  ThemeActionType,
-} from '@/context/theme'
+  initialRootThemeState,
+  rootThemeReducer,
+  RootThemeDispatchContext,
+  RootThemeActionType,
+} from '@/context/rootTheme'
 
-interface ThemeContextProps {
+interface RootThemeContextProps {
   children: React.ReactNode
 }
 
-export default function ThemeContext(props: ThemeContextProps) {
+export default function ThemeContext(props: RootThemeContextProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {
     noSsr: true,
   })
@@ -26,9 +26,9 @@ export default function ThemeContext(props: ThemeContextProps) {
   // os controlled theme preference
   const preferredMode: PaletteMode = prefersDarkMode ? 'dark' : 'light'
 
-  const [themeState, dispatch] = React.useReducer(
-    themeReducer,
-    initialThemeState
+  const [rootThemeState, dispatch] = React.useReducer(
+    rootThemeReducer,
+    initialRootThemeState
   )
 
   // effect to check if user is utilizing theme override
@@ -37,22 +37,22 @@ export default function ThemeContext(props: ThemeContextProps) {
       (localStorage.getItem('mui-mode') as PaletteMode) ?? preferredMode
 
     dispatch({
-      type: ThemeActionType.UPDATE,
+      type: RootThemeActionType.UPDATE,
       payload: { mode: nextPaletteMode },
     })
   }, [preferredMode])
 
-  const theme = React.useMemo(
-    () => (themeState.mode === 'dark' ? dark : light),
-    [themeState.mode]
+  const rootTheme = React.useMemo(
+    () => (rootThemeState.mode === 'dark' ? dark : light),
+    [rootThemeState.mode]
   )
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={rootTheme}>
       <CssBaseline />
-      <ThemeDispatchContext.Provider value={[themeState, dispatch]}>
+      <RootThemeDispatchContext.Provider value={[rootThemeState, dispatch]}>
         {props.children}
-      </ThemeDispatchContext.Provider>
+      </RootThemeDispatchContext.Provider>
     </ThemeProvider>
   )
 }

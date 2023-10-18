@@ -1,18 +1,21 @@
 import React from 'react'
 import { PaletteMode } from '@mui/material'
-import { ThemeActionType, ThemeDispatchContext } from '@/context/theme'
+import {
+  RootThemeActionType,
+  RootThemeDispatchContext,
+} from '@/context/rootTheme'
 
 /**
  * Modifies the theme in the top level theme provider.
  * @returns Actions to get / set the top level theme.
  */
 export default function useRootTheme() {
-  const [themeState, dispatch] = React.useContext(ThemeDispatchContext)
+  const [themeState, dispatch] = React.useContext(RootThemeDispatchContext)
 
   const setThemeMode = (mode: PaletteMode) => {
     localStorage.setItem('mui-mode', mode)
     dispatch({
-      type: ThemeActionType.UPDATE,
+      type: RootThemeActionType.UPDATE,
       payload: { mode },
     })
   }
