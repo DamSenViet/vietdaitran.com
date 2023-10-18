@@ -21,7 +21,7 @@ import { Variant } from '@mui/material/styles/createTypography'
 import Zoom from '@/components/Zoom'
 import Carousel from '@/components/Carousel'
 import MediaContainer from '@/components/MediaContainer'
-import withDefaultProps from '@/utils/withDefaultProps'
+import withDefaultProps from '@/hoc/withDefaultProps'
 
 const headingTagNameToVariant = {
   h1: 'h1',

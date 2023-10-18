@@ -3,7 +3,7 @@ import BaseZoom from 'react-medium-image-zoom'
 import { useTheme, Box, GlobalStyles } from '@mui/material'
 import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai'
 import { transparentize } from 'color2k'
-import withDefaultProps from '@/utils/withDefaultProps'
+import withDefaultProps from '@/hoc/withDefaultProps'
 
 interface CustomZoomProps {
   children: React.ReactNode

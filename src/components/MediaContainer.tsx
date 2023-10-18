@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import withDefaultProps from '@/utils/withDefaultProps'
+import withDefaultProps from '@/hoc/withDefaultProps'
 
 const MediaContainer = withDefaultProps(Box, {
   sx: {

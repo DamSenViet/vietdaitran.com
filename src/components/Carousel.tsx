@@ -3,7 +3,7 @@ import NukaCarousel from 'nuka-carousel'
 import { useTheme, IconButton } from '@mui/material'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import MediaContainer from './MediaContainer'
-import withDefaultProps from '@/utils/withDefaultProps'
+import withDefaultProps from '@/hoc/withDefaultProps'
 import { transparentize } from 'color2k'
 
 const CustomCarousel = withDefaultProps(NukaCarousel, {
