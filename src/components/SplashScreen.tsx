@@ -4,18 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useAnimatedCounter from '@/hooks/useAnimatedCounter'
 import { transparentize } from 'color2k'
 import useSplash from '@/hooks/useSplash'
+import { stepDuration, staggerDelay } from '@/utils/animation'
 
-const animationDuration = 0.3
-const letterDelay = 0.05
+// ORDER OF ANIMATION: ENTER LETTTERS, EXIT LETTERS, FADE BACKGROUND
+
 const letterRows = 6
-const totalAnimationDuration =
-  animationDuration + letterDelay * (letterRows - 1)
+/**
+ * Total duration of letters animating.
+ */
+const animationDuration = stepDuration + staggerDelay * (letterRows - 1)
 
 function SplashScreenModal() {
-  const counter = useAnimatedCounter(100, 0, totalAnimationDuration).toFixed(0)
-  const ellipseCount = Math.floor(
-    useAnimatedCounter(3, 0, totalAnimationDuration)
-  )
+  const counter = useAnimatedCounter(100, 0, animationDuration).toFixed(0)
+  const ellipseCount = Math.floor(useAnimatedCounter(3, 0, animationDuration))
 
   const text = 'VIETTRAN'
   const letterObjs = new Array(letterRows)
@@ -34,7 +35,7 @@ function SplashScreenModal() {
     // ending animation ends slightly early
     exit: {
       opacity: 0,
-      transition: { duration: animationDuration },
+      transition: { duration: stepDuration },
     },
   }
 
@@ -60,8 +61,8 @@ function SplashScreenModal() {
       ...fadeOutAnimation.exit,
       // wait for original animation to play out first
       transition: {
-        delay: totalAnimationDuration,
-        duration: animationDuration,
+        delay: animationDuration,
+        duration: stepDuration,
       },
     },
   }
@@ -118,8 +119,8 @@ function SplashScreenModal() {
           textAlign={'center'}
           {...letterAnimation}
           transition={{
-            delay: letterObj.row * letterDelay,
-            duration: animationDuration,
+            delay: letterObj.row * staggerDelay,
+            duration: stepDuration,
           }}
           sx={{ display: 'inline-block', fontSize: '0.7rem' }}
         >
@@ -265,10 +266,8 @@ export default function SplashScreen() {
   const [showSplash, setShowSplash] = React.useState(true)
   const { setSplashDuration, setSplashed } = useSplash()
   React.useEffect(() => {
-    setSplashDuration(
-      totalAnimationDuration + totalAnimationDuration + animationDuration
-    )
-    setTimeout(() => setShowSplash(false), totalAnimationDuration * 1000)
+    setSplashDuration(animationDuration + animationDuration + stepDuration)
+    setTimeout(() => setShowSplash(false), animationDuration * 1000)
   }, [])
 
   return (

@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { useKey } from 'react-use'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
+import { stepDuration, staggerDelay } from '@/utils/animation'
 
 export interface HeaderNavModalProps {
   hamburgerRef: React.MutableRefObject<HTMLButtonElement | null>
@@ -45,9 +46,9 @@ const internalItems = internalRoutes.map((route, i) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -100 }}
     transition={{
-      delay: i * 0.075,
+      delay: i * staggerDelay,
       type: 'just',
-      duration: 0.3,
+      duration: stepDuration,
     }}
   >
     <NavLink href={route.href}>
@@ -108,7 +109,13 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
   const fadeOut = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    exit: { opacity: 0, transition: { delay: 0.375, duration: 0.3 } },
+    exit: {
+      opacity: 0,
+      transition: {
+        delay: stepDuration + staggerDelay * (internalRoutes.length - 1),
+        duration: stepDuration,
+      },
+    },
   }
 
   return (
