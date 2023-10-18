@@ -1,10 +1,9 @@
-import useSplash from './useSplash'
-import { createMovingFade, stepDuration } from '@/utils/animation'
+import useSplashDelay from './useSplashDelay'
+import { createMovingFade } from '@/utils/animation'
 
-export default function () {
-  const { splashed, splashDuration } = useSplash()
-
+export default function useMovingFade(stagger: number = 0) {
   return createMovingFade({
-    delay: !splashed ? splashDuration + stepDuration : 0,
+    delay: useSplashDelay(),
+    stagger,
   })
 }

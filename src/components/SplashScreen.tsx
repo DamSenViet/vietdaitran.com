@@ -265,7 +265,9 @@ export default function SplashScreen() {
   const [showSplash, setShowSplash] = React.useState(true)
   const { setSplashDuration, setSplashed } = useSplash()
   React.useEffect(() => {
-    setSplashDuration(animationDuration + totalAnimationDuration)
+    setSplashDuration(
+      totalAnimationDuration + totalAnimationDuration + animationDuration
+    )
     setTimeout(() => setShowSplash(false), totalAnimationDuration * 1000)
   }, [])
 

@@ -1,7 +1,7 @@
 /** The duration of an animation step in seconds. */
 export const stepDuration = 0.3
 
-export const staggerDelay = 0.05
+export const staggerDelay = 0.075
 
 interface CreateMovingFadeConfig {
   delay?: number
@@ -16,9 +16,9 @@ export const createMovingFade = (
 ) => {
   const totalDelay = delay + stagger * staggerDelay
   return {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.5 },
+    initial: { y: 24, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true, amount: 0.8 },
     transition: { delay: totalDelay, duration: stepDuration },
   }
 }
