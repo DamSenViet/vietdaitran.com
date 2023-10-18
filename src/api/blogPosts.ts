@@ -11,7 +11,7 @@ import rehypeHighlight from 'rehype-highlight'
 import rehypeColorChips from 'rehype-color-chips'
 import rehypeSlug from 'rehype-slug'
 import { isString, pickBy, sortBy } from 'lodash'
-import { getBasename, blogPostsDirectory } from '@/utils/mdxFs'
+import { getBasename, blogPostsDirectory } from '@/utils/mdxPaths'
 
 /** All possible front matter properties after extraction. */
 export interface Frontmatter {
