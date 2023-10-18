@@ -5,6 +5,8 @@ import { getYear, Interval } from 'date-fns'
 import immerseLogo from '@/assets/experiences/Immerse.svg'
 import planviewLogo from '@/assets/experiences/Planview.svg'
 import enrichLogo from '@/assets/experiences/Enrich.png'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 interface Experience {
   company: string
@@ -63,7 +65,12 @@ export default function Experience() {
         },
       }}
     >
-      <Typography component={'h2'} variant="body1" color="text.secondary">
+      <Typography
+        component={motion.h2}
+        {...useMovingFade()}
+        variant="body1"
+        color="text.secondary"
+      >
         Experience
       </Typography>
       <Box
@@ -73,9 +80,11 @@ export default function Experience() {
           rowGap: 3.25,
         }}
       >
-        {experiences.map((experience) => (
+        {experiences.map((experience, i) => (
           <Box
             key={experience.company}
+            component={motion.div}
+            {...useMovingFade({ stagger: i + 1 })}
             sx={{
               display: 'grid',
               gridTemplateColumns: '54px 1fr',

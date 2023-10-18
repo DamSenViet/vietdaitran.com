@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import Section from '@/components/Section'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export default function HeroAbout() {
   return (
@@ -17,11 +19,17 @@ export default function HeroAbout() {
         },
       }}
     >
-      <Typography component="h2" variant="body1" color="text.secondary">
+      <Typography
+        component={motion.h2}
+        {...useMovingFade()}
+        variant="body1"
+        color="text.secondary"
+      >
         About
       </Typography>
       <Typography
-        component={'p'}
+        component={motion.p}
+        {...useMovingFade({ stagger: 1 })}
         sx={{
           typography: {
             xs: 'h2',
