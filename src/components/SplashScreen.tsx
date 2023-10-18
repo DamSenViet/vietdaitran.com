@@ -13,10 +13,17 @@ const letterRows = 6
  * Total duration of letters animating.
  */
 const animationDuration = stepDuration + staggerDelay * (letterRows - 1)
+const name = 'Viet Tran'
+const role = 'Creative Developer'
+
+const useAnimatedString = (str: string, duration = stepDuration) =>
+  str.substring(0, Math.floor(useAnimatedCounter(str.length, 0, duration)))
 
 function SplashScreenModal() {
   const counter = useAnimatedCounter(100, 0, animationDuration).toFixed(0)
-  const ellipseCount = Math.floor(useAnimatedCounter(3, 0, animationDuration))
+  const animatedName = useAnimatedString(name)
+  const animatedRole = useAnimatedString(role, 0)
+  const animatedEllipses = useAnimatedString('...', animationDuration)
 
   const text = 'VIETTRAN'
   const letterObjs = new Array(letterRows)
@@ -185,7 +192,7 @@ function SplashScreenModal() {
           transform: 'rotate(180deg)',
         }}
       >
-        Loading{'...'.substring(0, ellipseCount)}
+        Loading{animatedEllipses}
       </Typography>
     </Box>
   )
@@ -214,7 +221,7 @@ function SplashScreenModal() {
           alignSelf: 'flex-start',
         }}
       >
-        Viet Tran
+        {animatedName}
       </Typography>
       <Typography
         component={'span'}
@@ -226,7 +233,7 @@ function SplashScreenModal() {
           alignSelf: 'flex-end',
         }}
       >
-        Creative Developer
+        {animatedRole}
       </Typography>
     </Box>
   )
