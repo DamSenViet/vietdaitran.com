@@ -25,7 +25,7 @@ export const createMovingFade = ({
   const yOffset = 48
   const totalDelay = delay + stagger * staggerDelay
   return {
-    initial: { y: yOffset, opacity: 0 },
+    initial: { y: -yOffset, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
     viewport: {
       once: true,

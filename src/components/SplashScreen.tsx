@@ -49,7 +49,7 @@ function SplashScreenModal() {
   const letterAnimation = {
     initial: {
       opacity: 0,
-      y: 150,
+      y: -150,
     },
     animate: {
       opacity: 1,
@@ -57,7 +57,7 @@ function SplashScreenModal() {
     },
     exit: {
       opacity: 0,
-      y: -150,
+      y: 150,
     },
   }
 

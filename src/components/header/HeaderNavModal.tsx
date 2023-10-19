@@ -38,15 +38,15 @@ const internalRoutes = [
   },
 ]
 
-const internalItems = internalRoutes.map((route, i) => (
+const internalItems = internalRoutes.map((route, i, routes) => (
   <ListItem
     key={route.label}
     component={motion.li}
-    initial={{ opacity: 0, y: 100 }}
+    initial={{ opacity: 0, y: -100 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -100 }}
+    exit={{ opacity: 0, y: 100 }}
     transition={{
-      delay: i * staggerDelay,
+      delay: (routes.length - (i + 1)) * staggerDelay,
       type: 'just',
       duration: stepDuration,
     }}

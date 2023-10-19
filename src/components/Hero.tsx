@@ -37,7 +37,7 @@ export default function Hero({ title, tagline }: HeroProps) {
       >
         <Typography
           component={motion.h2}
-          {...useMovingFade()}
+          {...useMovingFade({ stagger: 1 })}
           color="text.primary"
           sx={{
             typography: {
@@ -50,7 +50,7 @@ export default function Hero({ title, tagline }: HeroProps) {
         </Typography>
         <Typography
           component={motion.p}
-          {...useMovingFade({ stagger: 1 })}
+          {...useMovingFade({ stagger: 0 })}
           color="text.secondary"
           variant="body1"
         >
