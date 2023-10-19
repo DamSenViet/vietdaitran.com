@@ -129,7 +129,10 @@ function SplashScreenModal() {
             delay: letterObj.row * staggerDelay,
             duration: stepDuration,
           }}
-          sx={{ display: 'inline-block', fontSize: '0.7rem' }}
+          sx={{
+            display: 'inline-block',
+            fontSize: { xs: '0.5rem', md: '0.7rem' },
+          }}
         >
           {letterObj.letter}
         </Typography>
@@ -215,6 +218,7 @@ function SplashScreenModal() {
       <Typography
         component={'span'}
         variant="subtitle2"
+        fontWeight={700}
         sx={{
           position: 'relative',
           right: { xs: 0, md: '20.5vw' },
