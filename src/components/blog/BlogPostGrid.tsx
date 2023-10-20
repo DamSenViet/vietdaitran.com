@@ -90,9 +90,16 @@ const BlogPostGrid = React.forwardRef(function BlogPostGrid(
         ...sx,
       }}
     >
-      {trimmedPostData.map((postDatum, i) => (
-        <BlogPostGridItem key={postDatum.id} {...postDatum} stagger={i} />
-      ))}
+      {trimmedPostData.map((postDatum, i) => {
+        const columnIndex = i % columns
+        return (
+          <BlogPostGridItem
+            key={postDatum.id}
+            {...postDatum}
+            stagger={columnIndex}
+          />
+        )
+      })}
     </Box>
   )
 })

@@ -91,9 +91,16 @@ const WorkPostGrid = React.forwardRef(function WorkPostGrid(
         ...sx,
       }}
     >
-      {trimmedPostData.map((postDatum, i) => (
-        <WorkPostGridItem key={postDatum.id} {...postDatum} stagger={i} />
-      ))}
+      {trimmedPostData.map((postDatum, i) => {
+        const columnIndex = i % columns
+        return (
+          <WorkPostGridItem
+            key={postDatum.id}
+            {...postDatum}
+            stagger={columnIndex}
+          />
+        )
+      })}
     </Box>
   )
 })
