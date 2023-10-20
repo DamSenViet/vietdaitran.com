@@ -56,8 +56,6 @@ export default function Services() {
   return (
     <Section>
       <Stack
-        component={motion.div}
-        {...useMovingFade()}
         useFlexGap
         rowGap={{
           xs: 12,
@@ -73,13 +71,19 @@ export default function Services() {
           columnGap={3}
         >
           <Box flex={'1 0 0'}>
-            <Typography color="text.secondary" component={'h2'} variant="body1">
+            <Typography
+              color="text.secondary"
+              component={motion.h2}
+              {...useMovingFade({ stagger: 0 })}
+              variant="body1"
+            >
               Services
             </Typography>
           </Box>
           <Box flex={'2 0 0'}>
             <Typography
-              component={'p'}
+              component={motion.p}
+              {...useMovingFade({ stagger: 1 })}
               variant="h4"
               sx={{ letterSpacing: -0.5 }}
             >
@@ -98,7 +102,7 @@ export default function Services() {
           columnGap={3}
         >
           {services.map((service, i) => (
-            <ServiceItems key={service.name} {...service} stagger={i + 1} />
+            <ServiceItems key={service.name} {...service} stagger={i + 2} />
           ))}
         </Stack>
       </Stack>

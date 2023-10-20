@@ -2,6 +2,8 @@ import { Box, Typography, Chip } from '@mui/material'
 import Section from '../Section'
 import { WorkPostDatum } from '@/api/workPosts'
 import { getYear } from 'date-fns'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 export interface WorkPostHeroProps {
   postDatum: WorkPostDatum
@@ -36,10 +38,19 @@ export default function WorkPostHero({
           rowGap: 1,
         }}
       >
-        <Typography component={'p'} variant="body1" color={'text.secondary'}>
+        <Typography
+          component={motion.p}
+          {...useMovingFade({ stagger: 0 })}
+          variant="body1"
+          color={'text.secondary'}
+        >
           Work
         </Typography>
-        <Typography component={'h1'} variant="h1">
+        <Typography
+          component={motion.h1}
+          {...useMovingFade({ stagger: 1 })}
+          variant="h1"
+        >
           {title}
         </Typography>
       </Box>
@@ -48,19 +59,23 @@ export default function WorkPostHero({
           marginTop: 5.75,
         }}
       >
-        <Typography variant="body1" color="text.secondary">
-          Audience: {audience}
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Service: {service}
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Sector: {sector}
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Year: {getYear(new Date(endDate))}
-        </Typography>
+        <Box component={motion.div} {...useMovingFade({ stagger: 2 })}>
+          <Typography variant="body1" color="text.secondary">
+            Audience: {audience}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Service: {service}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Sector: {sector}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Year: {getYear(new Date(endDate))}
+          </Typography>
+        </Box>
         <Box
+          component={motion.div}
+          {...useMovingFade({ stagger: 3 })}
           sx={{
             marginTop: 1,
             display: 'flex',

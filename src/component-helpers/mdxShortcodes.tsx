@@ -22,6 +22,8 @@ import Zoom from '@/components/Zoom'
 import Carousel from '@/components/Carousel'
 import MediaContainer from '@/components/MediaContainer'
 import withDefaultProps from '@/hoc/withDefaultProps'
+import { motion } from 'framer-motion'
+import useMovingFade from '@/hooks/useMovingFade'
 
 const headingTagNameToVariant = {
   h1: 'h1',
@@ -53,14 +55,15 @@ const HeadingAnchor = styled(NextLink)<{ underline?: LinkProps['underline'] }>(
 
 const headingShortcodes = mapValues(
   headingTagNameToVariant,
-  (val, key) =>
+  (val, key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') =>
     ({
       id,
       children,
     }: ComponentProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>) => (
       <Typography
         id={id} // rehype-slug generates the id for us
-        component={key as ElementType<any>}
+        component={motion[key] as ElementType<any>}
+        {...useMovingFade({ amount: 1 })}
         variant={val as Variant}
         sx={{ marginY: 1 }}
       >
