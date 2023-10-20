@@ -31,7 +31,7 @@ export const createMovingFade = ({
       once: true,
       amount: amount,
       rootMargin: `0px`,
-      margin: `${yOffset}px`,
+      margin: `${0}px`,
     },
     transition: { delay: totalDelay, duration: stepDuration },
   }
