@@ -1,33 +1,50 @@
-import { Box, Stack, Button, Typography } from '@mui/material'
+import { Stack, Box, Button, Typography } from '@mui/material'
 import Section from '@/components/Section'
 import { motion } from 'framer-motion'
 import useMovingFade from '@/hooks/useMovingFade'
+import HeroAnimation from './HeroAnimation'
 
 export default function Hero() {
   return (
-    <Section sx={{ paddingTop: 22, paddingBottom: 22 }}>
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        justifyContent={'space-between'}
+    <Section
+      sx={{
+        paddingTop: { xs: 6, sm: 10, md: 22 },
+        paddingBottom: { xs: 6, sm: 10, md: 22 },
+      }}
+    >
+      <Box
+        sx={{
+          display: 'grid',
+          gridAutoFlow: { xs: 'row', sm: 'column' },
+          gridTemplateColumns: { xs: 'none', sm: 'repeat(2, 1fr)' },
+          rowGap: 2,
+        }}
       >
-        <Typography
-          component={motion.h1}
-          {...useMovingFade()}
-          variant="body1"
-          color="text.secondary"
+        <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          rowGap={2}
+          justifyContent={'space-between'}
         >
-          Intro
-        </Typography>
+          <Typography
+            component={motion.h1}
+            {...useMovingFade({ stagger: 0 })}
+            variant="body1"
+            color="text.secondary"
+          >
+            Intro
+          </Typography>
+          <HeroAnimation />
+        </Stack>
         <Box
           sx={{
+            justifySelf: 'center',
             maxWidth: { xs: 'initial', sm: 330 },
-            margintTop: { xs: 2, sm: 0 },
             marginRight: { xs: 0, md: 8, lg: 24, xl: 28 },
           }}
         >
           <Typography
             component={motion.p}
-            {...useMovingFade({ stagger: 1 })}
+            {...useMovingFade({ stagger: 2 })}
             variant="h3"
             sx={{ fontWeight: 500 }}
           >
@@ -36,7 +53,7 @@ export default function Hero() {
           </Typography>
           <Typography
             component={motion.p}
-            {...useMovingFade({ stagger: 2 })}
+            {...useMovingFade({ stagger: 3 })}
             variant={'body1'}
             color={'text.secondary'}
             sx={{
@@ -49,7 +66,7 @@ export default function Hero() {
           </Typography>
           <Button
             component={motion.button}
-            {...useMovingFade({ stagger: 3 })}
+            {...useMovingFade({ stagger: 4 })}
             variant="contained"
             color="primary"
             href="/about"
@@ -58,7 +75,7 @@ export default function Hero() {
             About me
           </Button>
         </Box>
-      </Stack>
+      </Box>
     </Section>
   )
 }
