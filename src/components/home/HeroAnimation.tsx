@@ -81,6 +81,7 @@ function AnimatedShapes() {
         cursor: 'pointer',
         transformOrigin: 'center center',
         borderRadius: 150,
+        userSelect: 'none',
       })}
       animate={{ rotate: 360 }}
       transition={shapesTransition}
