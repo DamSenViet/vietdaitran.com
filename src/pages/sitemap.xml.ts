@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
-import { XMLBuilder } from 'fast-xml-parser'
+import { SitemapStream, streamToPromise } from 'sitemap'
+import { Readable } from 'stream'
 import { getBlogPostIds } from '@/api/blogPosts'
 import { getWorkPostIds } from '@/api/workPosts'
 
@@ -24,57 +25,41 @@ const internalRoutes = [
   },
 ]
 
-// READ THIS FOR BUILDING UP THE SITEMAP OBJ
-// https://www.sitemaps.org/protocol.html
-const xmlBuilder = new XMLBuilder({
-  suppressEmptyNode: true,
-  attributeNamePrefix: '@@',
-  ignoreAttributes: false,
-  format: true,
-})
-
-// `getServerSideProps` lets us use
+// `getServerSideProps` lets us pilot the response directly
 export const getServerSideProps: GetServerSideProps = async function ({ res }) {
   const workPostIds = getWorkPostIds().reverse()
   const blogPostIds = getBlogPostIds().reverse()
 
-  const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  const xmlString = xmlBuilder.build({
-    urlset: {
-      '@@xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
-      urls: [
-        ...internalRoutes.map((route) => ({
-          url: {
-            loc: `${baseUrl}${route.href}`,
-            priority: 0.5,
-            changefreq: 'monthly',
-          },
-        })),
-        // blogs
-        ...blogPostIds.map((blogPostId) => ({
-          url: {
-            loc: `${baseUrl}/blog/${blogPostId}`,
-            priority: 0.5,
-            changefreq: 'daily',
-          },
-        })),
-        // works
-        ...workPostIds.map((workPostId) => ({
-          url: {
-            loc: `${baseUrl}/work/${workPostId}`,
-            priority: 0.5,
-            changefreq: 'daily',
-          },
-        })),
-      ],
-    },
-  })
+  const stream = new SitemapStream({ hostname: baseUrl })
 
+  // https://www.sitemaps.org/protocol.html
+  const sitemapEntries = [
+    ...internalRoutes.map((route) => ({
+      url: `${baseUrl}${route.href}`,
+      priority: 0.5,
+      changefreq: 'monthly',
+    })),
+    ...workPostIds.map((workPostId) => ({
+      url: `${baseUrl}/work/${workPostId}`,
+      priority: 0.5,
+      changefreq: 'daily',
+    })),
+    ...blogPostIds.map((blogPostId) => ({
+      url: `${baseUrl}/blog/${blogPostId}`,
+      priority: 0.5,
+      changefreq: 'daily',
+    })),
+  ]
+
+  const sitemapXmlStr = await streamToPromise(
+    Readable.from(sitemapEntries).pipe(stream)
+  )
+
+  // end the request content early
   res.setHeader('Content-Type', 'text/xml')
-  res.write(`${xmlHeader}${xmlString}`)
-  // res.write(sitemap)
+  res.write(sitemapXmlStr)
   res.end()
-  // noop return to
+  // noop return to satisfy type check
   return { props: {} }
 }
 
