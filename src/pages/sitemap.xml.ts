@@ -3,27 +3,9 @@ import { SitemapStream, streamToPromise } from 'sitemap'
 import { Readable } from 'stream'
 import { getBlogPostIds } from '@/api/blogPosts'
 import { getWorkPostIds } from '@/api/workPosts'
+import { topLevelRoutes } from '@/data/routes'
 
 const baseUrl = 'https://www.vietdaitran.com'
-
-const internalRoutes = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: 'About',
-    href: '/about',
-  },
-  {
-    label: 'Work',
-    href: '/work',
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
-  },
-]
 
 // `getServerSideProps` lets us pilot the response directly
 export const getServerSideProps: GetServerSideProps = async function ({ res }) {
@@ -34,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async function ({ res }) {
 
   // https://www.sitemaps.org/protocol.html
   const sitemapEntries = [
-    ...internalRoutes.map((route) => ({
+    ...topLevelRoutes.map((route) => ({
       url: `${baseUrl}${route.href}`,
       priority: 0.5,
       changefreq: 'monthly',

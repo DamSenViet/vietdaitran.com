@@ -13,32 +13,14 @@ import { useKey } from 'react-use'
 import { transparentize } from 'color2k'
 import socialLinks from '@/data/socialLinks'
 import { stepDuration, staggerDelay } from '@/utils/animation'
+import { topLevelRoutes } from '@/data/routes'
 
 export interface HeaderNavModalProps {
   hamburgerRef: React.MutableRefObject<HTMLButtonElement | null>
   onClose: () => void
 }
 
-const internalRoutes = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: 'About',
-    href: '/about',
-  },
-  {
-    label: 'Work',
-    href: '/work',
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
-  },
-]
-
-const internalItems = internalRoutes.map((route, i, routes) => (
+const internalNavItems = topLevelRoutes.map((route, i, routes) => (
   <ListItem
     key={route.label}
     component={motion.li}
@@ -73,7 +55,7 @@ const internalItems = internalRoutes.map((route, i, routes) => (
   </ListItem>
 ))
 
-const socialItems = (
+const socialNavItems = (
   <List
     sx={(theme) => ({
       position: 'absolute',
@@ -112,7 +94,7 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
     exit: {
       opacity: 0,
       transition: {
-        delay: stepDuration + staggerDelay * (internalRoutes.length - 1),
+        delay: stepDuration + staggerDelay * (topLevelRoutes.length - 1),
         duration: stepDuration,
       },
     },
@@ -154,8 +136,8 @@ const HeaderNavModal = React.forwardRef(function HeaderNavModal(
       >
         <Box>
           {/* internal links */}
-          <List sx={{ counterReset: 'listStyle' }}>{internalItems}</List>
-          {socialItems}
+          <List sx={{ counterReset: 'listStyle' }}>{internalNavItems}</List>
+          {socialNavItems}
         </Box>
       </Box>
     </ClickAwayListener>
