@@ -26,14 +26,12 @@ function SplashScreenModal() {
   const animatedEllipses = useAnimatedString('...', animationDuration)
 
   const text = 'VIETTRAN'
-  const letterObjs = new Array(letterRows)
+  const rowObjs = new Array<string>(letterRows)
     .fill(text)
     .map((str, i) => (i % 2 ? str.split('').reverse() : str.split('')))
-    .flat(1)
-    .map((letter, i) => ({
-      key: `${letter} - ${i}`,
-      letter,
-      row: Math.floor(i / text.length),
+    .map((letters, row) => ({
+      letters: letters,
+      row,
     }))
 
   const fadeOutAnimation = {
@@ -89,15 +87,6 @@ function SplashScreenModal() {
           theme.palette.background.default,
           theme.palette.mode === 'light' ? 0.2 : 0.1
         ),
-        // gradient bg
-        // background: `linear-gradient(-35deg,${transparentize(
-        //   theme.palette.background.default,
-        //   theme.palette.mode === 'light' ? 0.2 : 0.1
-        // )}, ${transparentize(
-        //   theme.palette.background.paper,
-        //   theme.palette.mode === 'light' ? 0.2 : 0.1
-        // )})`,
-        backdropFilter: 'blur(10px)',
       })}
     />
   )
@@ -112,30 +101,38 @@ function SplashScreenModal() {
         width: '100%',
         overflow: 'hidden',
         display: 'grid',
-        gridTemplateColumns: `repeat(${text.length}, 1fr)`,
-        justifyContent: 'space-around',
         alignContent: 'space-around',
         rowGap: 4,
       }}
     >
-      {letterObjs.map((letterObj) => (
-        <Typography
-          key={letterObj.key}
-          component={motion.span}
-          color="text.secondary"
-          textAlign={'center'}
+      {rowObjs.map(({ letters, row }) => (
+        <Box
+          key={row.toString()}
+          component={motion.div}
           {...letterAnimation}
           transition={{
-            delay: letterObj.row * staggerDelay,
+            delay: row * staggerDelay,
             duration: stepDuration,
           }}
           sx={{
-            display: 'inline-block',
-            fontSize: { xs: '0.5rem', md: '0.7rem' },
+            display: 'grid',
+            gridAutoFlow: 'row',
+            gridTemplateColumns: `repeat(${text.length}, 1fr)`,
+            justifyContent: 'space-around',
           }}
         >
-          {letterObj.letter}
-        </Typography>
+          {letters.map((letter, i) => (
+            <Typography
+              key={`${row.toString()} - ${i.toString()}`}
+              color="text.secondary"
+              textAlign={'center'}
+              {...letterAnimation}
+              sx={{ fontSize: { xs: '0.5rem', md: '0.7rem' } }}
+            >
+              {letter}
+            </Typography>
+          ))}
+        </Box>
       ))}
     </Box>
   )
