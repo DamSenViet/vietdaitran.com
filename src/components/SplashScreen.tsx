@@ -87,6 +87,7 @@ function SplashScreenModal() {
           theme.palette.background.default,
           theme.palette.mode === 'light' ? 0.2 : 0.1
         ),
+        backdropFilter: 'blur(10px)',
       })}
     />
   )
