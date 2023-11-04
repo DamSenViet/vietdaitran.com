@@ -82,12 +82,7 @@ function SplashScreenModal() {
         left: 0,
         height: '100%',
         width: '100%',
-        // default bg
-        background: transparentize(
-          theme.palette.background.default,
-          theme.palette.mode === 'light' ? 0.2 : 0.1
-        ),
-        backdropFilter: 'blur(10px)',
+        background: theme.palette.background.default,
       })}
     />
   )
