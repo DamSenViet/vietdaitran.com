@@ -1,0 +1,109 @@
+---
+title: 'KLE.json, KLE.js, KLE.py'
+previewImg: '/work/kle-libs/kle-libs-square.svg'
+startDate: '12-13-2020'
+endDate: '11-13-2021'
+audience: 'Open Source'
+service: 'Library Development'
+sector: 'Technology'
+tags:
+  - Dev Tools
+  - Open Source
+
+---
+
+<Img alt="Banner" src="/work/kle-libs/kle-libs-rectangle.svg" height="300"/>
+
+<Typography component="div" textAlign="center">
+  <Anchor href="https://github.com/DamSenViet/kle-json">kle-json</Anchor><span> • </span>
+  <Anchor href="https://github.com/DamSenViet/kle-js">kle-js</Anchor><span> • </span>
+  <Anchor href="https://github.com/DamSenViet/kle-py">kle-py</Anchor><br/>
+  Programming libraries and utilities to edit and preview keyboard layout editor (KLE) files.<br/>
+</Typography>
+
+## Background
+
+[Keyboard layout editor](http://www.keyboard-layout-editor.com/),by ipjrest or
+KLE for short, is a digital tool used as starting point for prototyping keyboard
+layout designs in the process of custom keyboard design and manufacturing. It's
+responsible for creating the layouts of many popular keyboards on the
+[mechanical keyboard subreddit](https://www.reddit.com/r/mechanicalkeyboards/)
+including boards such as the Prime Elise, Bauer, and many more.
+
+<Img alt="KLE Screenshot" src="/work/kle-libs/kle-screenshot.png"/>
+
+The layout prototype is then used to create plate, pcb, and case drawings which
+are all taken to manufacturers for production. Aside from the physical designs,
+keyboards also have to be progrmamed and may store the KLE JSON (or some modified
+form) to represent the layout of the keys. Files also need to be generated
+across a swath of different keyboard control software platforms such as
+QMK, VIA, VIAL to allow custom keyboard users to remap keys to different
+key codes, shortcuts, or even macros.
+
+You can read more about the creation process of custom keyboards from [Matt3o](https://matt3o.com/book/).
+
+## The Problems
+
+When I first started the project, [KLE](https://github.com/ijprest/keyboard-layout-editor)
+was old, and with ipjrest, the original author and maintainer, becoming
+increasingly inactive, it needed a revamp. I envisioned features that KLE had
+not yet implemented such as collision checking, plate generation,
+PCB generation, and even 3D previews with configuration options available to
+keyboard designers. Not only could new potential features help keyboard
+designers with the design, it could even help them on the programming side as
+well, especially when that programming involves embedded systems. There was the
+potential to add tools to automatically generate.
+
+This KLE project was the first part of a greater platform I intended to build.
+The goal of this project was to be able to parse KLE information and provide
+backwards compatiblity with a format that was already well-known by the
+keyboard designer community before continuing development with my new platform.
+
+However, KLE as it was, was very difficult to work with. I spent weeks reading
+through the original KLE source code to understand how KLE stored information
+about individual keys. The KLE JSON format which stored data about the keys in a
+file was designed be memory optimized such that it could be stored with micro
+controller units for the keyboard which were very limited in size. Each key in
+the KLE JSON format was stored as a set of changes recorded against the previous
+key in sequence, meaning that each key could not be individually represented as
+the it was and this was the source of difficulty in interacting with KLE.
+Parsing and serializing KLE information was not simple or customizable at all.
+
+
+## One Big Refactor to Solve it All
+
+Rewriting the KLE source code for parsing and serializing the KLE JSON format
+was also quite the chore and learning exercise. The original source was not
+written in a way that was modular or easily readable - I suspect there was
+difficulty in getting contributions from open source to help fix bugs
+and add features because of this issue.
+
+These were all problems that I tackled in rewriting my own version of the
+KLE libraries that could be more easily understood & distributed. As a big
+supporter of building great developer experiences I made sure that the
+libraries were modular & easily comprehendable, capable of validating the KLE
+data & file, and provided object relational models. In-line documentation
+would help developers understand the properties of the individuals keys they
+worked with and unit tests would provide quality assurance. A documentation
+website was also deployed so that developers could use it a reference and my
+libraries were distributed to the package indexes (PYPI & NPM) so other
+developers could easily include my libraries in their own projects. All these
+small little things that were added in refactoring KLE set up my KLE libraries
+for long-term maintenance.
+
+## For the Sake of the Bigger Picture
+
+The goal of this project was not to build a new platform (we'll leave this for
+another time), it was to refactor KLE in a way that would make it easier to use
+in future projects and give other developers (including myself) the tools
+needed to make interacting with KLE JSON files easier than it already had been
+in the past. With proper modularization, validation, testing, documentation,
+and distributed packaging that made KLE tools easier to install, I hoped that
+what I created would make developer experiences comfortable enough to encourage
+open source contributions to these libraries or even any projects that decided
+to include my libraries in the future.
+
+In a niche space such as designing custom keyboards, I wanted to push the
+envelope in  developer experiences a little further along the line.
+
+
