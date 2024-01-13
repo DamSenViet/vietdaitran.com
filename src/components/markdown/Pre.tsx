@@ -4,7 +4,7 @@ import { useClipboard } from '@mantine/hooks'
 import { MdContentCopy } from 'react-icons/md'
 import { useSnackbar, SnackbarKey } from 'notistack'
 
-export interface PreProps extends ComponentProps<'pre'> {}
+export interface PreProps extends ComponentProps<'pre'> { }
 
 export default function Pre({ children }: PreProps) {
   const ref = React.useRef<HTMLPreElement>()
@@ -79,9 +79,8 @@ export default function Pre({ children }: PreProps) {
 
   return (
     <Box // code wrapper
-      className={`${
-        theme.palette.mode === 'light' ? 'light-code-block' : 'dark-code-block'
-      }`}
+      className={`${theme.palette.mode === 'light' ? 'light-code-block' : 'dark-code-block'
+        }`}
       sx={{
         position: 'relative',
         marginBottom: 2,

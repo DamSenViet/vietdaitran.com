@@ -4,11 +4,10 @@ import {
   TableContainer as MuiTableContainer,
   Table as MuiTable,
 } from '@mui/material'
-import useMovingFade from '@/hooks/useMovingFade'
 
 export default function Table({ children }: ComponentProps<'table'>) {
   return (
-    <MuiTableContainer component={motion.div} {...useMovingFade()}>
+    <MuiTableContainer component={motion.div}>
       <MuiTable
         sx={(theme) => ({
           width: 'auto',
