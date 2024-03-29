@@ -3,8 +3,10 @@ import Section from '@/components/Section'
 import { motion } from 'framer-motion'
 import useMovingFade from '@/hooks/useMovingFade'
 import HeroAnimation from './HeroAnimation'
+import { useRouter } from 'next/router'
 
 export default function Hero() {
+  const router = useRouter()
   return (
     <Section
       sx={{
@@ -70,6 +72,7 @@ export default function Hero() {
             variant="contained"
             color="primary"
             href="/about"
+            onClick={() => router.push('/about')}
             sx={{ mt: 4, borderRadius: 5, px: 2.5, pt: 0.875, pb: 1 }}
           >
             About me
