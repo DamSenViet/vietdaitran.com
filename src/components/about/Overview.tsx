@@ -1,7 +1,6 @@
 import NextImage from 'next/image'
 import { Box, Typography, styled } from '@mui/material'
 import Section from '@/components/Section'
-import aboutImg from '@/assets/aboutBanner.jpeg'
 import { motion } from 'framer-motion'
 import useMovingFade from '@/hooks/useMovingFade'
 
@@ -18,18 +17,6 @@ export default function Overview() {
         },
       }}
     >
-      <Box component={motion.div} {...useMovingFade()}>
-        <Image
-          src={aboutImg}
-          alt={'banner'}
-          priority
-          sx={{
-            width: '100%',
-            height: 'auto',
-            justifySelf: 'flex-start',
-          }}
-        />
-      </Box>
       <Box
         sx={{
           display: 'grid',
