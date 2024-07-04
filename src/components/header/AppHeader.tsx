@@ -98,7 +98,7 @@ export default function AppHeader() {
         <Typography color="text.primary" variant="body2">
           Software Engineer
           <br />
-          UX / UX Designer
+          UI / UX Designer
         </Typography>
       </Box>
       <Box
