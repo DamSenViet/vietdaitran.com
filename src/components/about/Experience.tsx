@@ -43,7 +43,7 @@ const experiences: Experience[] = [
     company: 'Planview',
     icon: planviewLogo,
     iconBackground: '#f7f7f7',
-    role: 'Frontend Developer',
+    role: 'Software Engineer',
     interval: {
       start: new Date('June 17, 2022 00:00:00'),
       end: new Date(),
