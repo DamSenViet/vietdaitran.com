@@ -23,7 +23,7 @@ export interface HomePageProps {
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const workPostIds = getWorkPostIds()
-  const workPostData = workPostIds.map(getWorkPostDatum).reverse().slice(0, 6)
+  const workPostData = workPostIds.map(getWorkPostDatum).reverse().slice(0, 3)
 
   const blogPostIds = getBlogPostIds()
   const blogPostData = blogPostIds.map(getBlogPostDatum).reverse().slice(0, 4)
